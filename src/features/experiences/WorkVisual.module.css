@@ -1,0 +1,8 @@
+.visual{position:relative;overflow:hidden;background:var(--shadow);isolation:isolate;aspect-ratio:6/7;box-shadow:inset 0 0 0 1px #e8e0d315}
+.visual svg{display:block;width:100%;height:100%;object-fit:cover}
+.visual:after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 3px,#ffffff05 4px);box-shadow:inset 0 0 70px #0003}
+.number,.caption{position:absolute;left:22px;font-size:8px;letter-spacing:2px;color:var(--paper)}
+.number{top:20px}.caption{bottom:18px;opacity:.8}
+.films{aspect-ratio:8/7}.games{aspect-ratio:7/8}.music{aspect-ratio:1}.photography{aspect-ratio:6/7}.art{aspect-ratio:5/6}
+.hero{aspect-ratio:6/7;max-height:650px;width:100%}
+@media(max-width:600px){.hero{max-height:460px}}

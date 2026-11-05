@@ -1,0 +1,48 @@
+# Mapa do projeto · Stages 01 e 02
+
+Este documento registra a base. Para o mapa atualizado dos arquivos acrescentados na Stage 03 e suas conexões, consulte [07-discovery.md](07-discovery.md). A busca global, o Discover e o catálogo foram ampliados; as descrições históricas de demonstrações não se aplicam a todos os registros atuais.
+
+Uma pasta organiza responsabilidades; um arquivo concentra uma parte do trabalho. Não foram criadas pastas vazias para APIs, sons ou funcionalidades futuras.
+
+| Pasta / arquivo | Responsabilidade e ligação com o projeto |
+| --- | --- |
+| `src/` | Código que o Vite transforma na aplicação. |
+| `src/main.tsx` | Entrada: encontra `root`, monta React, habilita Router e a política de movimento reduzido. Importa o CSS global. `StrictMode` ajuda a identificar efeitos sem limpeza durante desenvolvimento. |
+| `src/app/` | Composição da aplicação. |
+| `src/app/App.tsx` | `App` reúne navegação, rotas, conteúdo e rodapé. Atualiza título, posição de rolagem e foco quando a página muda. Stage 02 acrescenta as rotas de fichas `/:categoria/:workId` e substitui os estados introdutórios por `RoomExperience`. |
+| `src/data/` | Dados locais independentes da apresentação. |
+| `src/data/rooms.ts` | A interface `Room` define o formato das salas. `rooms` alimenta rotas, busca e cartões; `personalPages` alimenta os estados informativos pessoais. |
+| `src/data/works.ts` | Stage 02: tipo `Work`, 18 obras fictícias e funções `getWork` e `workPath`. Dados locais, sem chamadas de rede. |
+| `src/components/` | Peças compartilhadas da interface. |
+| `src/components/navigation/` | Navegação e pesquisa inicial. |
+| `Navigation.tsx` | `Navigation` controla o painel aberto, o termo pesquisado, atalho global, links ativos e fechamento ao navegar. |
+| `Navigation.module.css` | Aparência da barra fixa, lista lateral e campo de pesquisa; adapta controles no celular. |
+| `src/components/ui/` | Elementos visuais básicos reutilizados. |
+| `Artwork.tsx` | `Artwork` recebe `motif` e `large` e desenha uma ilustração decorativa. Fica fora da árvore de acessibilidade, pois o texto adjacente identifica o ambiente. |
+| `Artwork.module.css` | Seis composições CSS: páginas, projeção, portal, vinil, fotografia e escultura abstrata. Sem arquivos remotos e sem atribuição externa. |
+| `Modal.tsx` | `Modal` reutiliza o diálogo nativo para menu e busca. Gerencia abertura, Escape, clique fora, bloqueio da rolagem e restauração do foco. |
+| `Modal.module.css` | Painel central ou lateral, fundo escurecido e cabeçalho. |
+| `src/features/archive/` | Páginas ligadas ao arquivo cultural. As salas ainda compartilham a estrutura da fundação. |
+| `Pages.tsx` | Exporta `Home`, `RoomGrid`, `Discover` e `Information`. A antiga `Category` introdutória foi substituída pela experiência real da Stage 02. |
+| `Pages.module.css` | Layout editorial, cartões, proporções e adaptações das páginas. |
+| `src/styles/global.css` | Tokens de cor e espaçamento, tipografia, botões, foco, link de salto, rodapé e reduced motion. |
+| `src/test/` | Testes de comportamento, não conteúdo do produto. |
+| `setup.ts` | Prepara os testes: matchMedia, scroll e métodos de dialog que o ambiente simulado não fornece como um navegador real. |
+| `App.test.tsx` | Verifica rotas, menu, busca de destinos, nenhum resultado, informações futuras e 404. |
+| `Experiences.test.tsx` | Stage 02: integridade dos dados, 18 deep links, prévias das seis salas, filtros, retorno com filtros preservados, foco, 404, replay e movimento reduzido simulado. |
+| `index.html` | Documento inicial em inglês, metadados e ponto `root` onde React monta a interface. |
+| `package.json` | Identidade, dependências e comandos npm. Dependências são bibliotecas utilizadas pelo projeto; ferramentas de teste/build ficam em devDependencies. |
+| `Iniciar-NOCTIS.cmd` | Atalho para iniciar a prévia pelo Windows, na pasta correta e na porta fixa 5180. Confere a presença de npm e Vite e preserva mensagens de erro na janela. Não instala dependências nem altera firewall. |
+| `package-lock.json` | Gerado pelo npm: registra versões exatas para repetir a instalação com `npm ci`. |
+| `tsconfig.json` | Ativa TypeScript estrito e explica ao compilador como ler JSX e módulos. Não gera JavaScript; Vite faz a transformação. |
+| `vite.config.ts` | Habilita React no Vite e configura Vitest com DOM simulado. |
+| `.gitignore` | Evita versionar dependências, arquivos gerados e variáveis de ambiente. |
+| `README.md` | Porta de entrada para executar e conhecer o projeto. |
+| `docs/` | Caderno didático. Este arquivo é o mapa; 02 explica fundamentos; 03 e 04 preservam o registro da fundação; 05 explica a Stage 02 e seus arquivos; 06 registra sua validação. |
+| `node_modules/` | Gerado na instalação: código das dependências. Não deve ser editado ou versionado. |
+| `dist/` | Gerado pelo build: versão pronta para servir. Não deve ser editado manualmente. |
+| `tsconfig.tsbuildinfo` | Cache gerado pelo TypeScript para suas verificações; ignorado pelo Git. |
+
+CSS Modules gera nomes de classe isolados. Assim, `.heading` de um componente não interfere em outro arquivo. Estilos realmente compartilhados ficam no CSS global.
+
+Os arquivos de `src/features/experiences/` estão descritos individualmente no [guia da Stage 02](05-experiences.md), com suas funções e conexões.

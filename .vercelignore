@@ -1,0 +1,15 @@
+.git/
+.vercel/
+node_modules/
+dist/
+coverage/
+.env*
+!.env.example
+.npmrc
+*.log
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+service-account*.json

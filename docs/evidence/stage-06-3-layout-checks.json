@@ -1,0 +1,789 @@
+{
+  "categories": [
+    {
+      "artwork": [
+        {
+          "category": "books",
+          "frame": {
+            "bottom": 616.46875,
+            "height": 279.984375,
+            "left": 200,
+            "right": 386.65625,
+            "top": 336.484375,
+            "width": 186.65625,
+            "x": 200,
+            "y": 336.484375
+          },
+          "image": {
+            "fit": "contain",
+            "loaded": true,
+            "natural": [
+              192,
+              300
+            ],
+            "url": "https://www.gutenberg.org/cache/epub/1342/pg1342.cover.medium.jpg"
+          },
+          "state": "ready"
+        },
+        {
+          "category": "books",
+          "frame": {
+            "bottom": 616.46875,
+            "height": 279.984375,
+            "left": 619.15625,
+            "right": 805.8125,
+            "top": 336.484375,
+            "width": 186.65625,
+            "x": 619.15625,
+            "y": 336.484375
+          },
+          "image": {
+            "fit": "contain",
+            "loaded": true,
+            "natural": [
+              195,
+              300
+            ],
+            "url": "https://www.gutenberg.org/cache/epub/84/pg84.cover.medium.jpg"
+          },
+          "state": "ready"
+        },
+        {
+          "category": "books",
+          "frame": {
+            "bottom": 616.46875,
+            "height": 279.984375,
+            "left": 1038.328125,
+            "right": 1224.984375,
+            "top": 336.484375,
+            "width": 186.65625,
+            "x": 1038.328125,
+            "y": 336.484375
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "books",
+          "frame": {
+            "bottom": 1231.453125,
+            "height": 279.984375,
+            "left": 200,
+            "right": 386.65625,
+            "top": 951.46875,
+            "width": 186.65625,
+            "x": 200,
+            "y": 951.46875
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "books",
+          "frame": {
+            "bottom": 1231.453125,
+            "height": 279.984375,
+            "left": 619.15625,
+            "right": 805.8125,
+            "top": 951.46875,
+            "width": 186.65625,
+            "x": 619.15625,
+            "y": 951.46875
+          },
+          "image": null,
+          "state": "unavailable"
+        }
+      ],
+      "path": "/books",
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "artwork": [
+        {
+          "category": "films",
+          "frame": {
+            "bottom": 616.46875,
+            "height": 279.984375,
+            "left": 200,
+            "right": 386.65625,
+            "top": 336.484375,
+            "width": 186.65625,
+            "x": 200,
+            "y": 336.484375
+          },
+          "image": {
+            "fit": "contain",
+            "loaded": true,
+            "natural": [
+              500,
+              671
+            ],
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Boris_Bilinski_-_Filmplakat_f%C3%BCr_Metropolis.jpg/500px-Boris_Bilinski_-_Filmplakat_f%C3%BCr_Metropolis.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20241207212308"
+          },
+          "state": "ready"
+        },
+        {
+          "category": "films",
+          "frame": {
+            "bottom": 616.46875,
+            "height": 279.984375,
+            "left": 619.15625,
+            "right": 805.8125,
+            "top": 336.484375,
+            "width": 186.65625,
+            "x": 619.15625,
+            "y": 336.484375
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "films",
+          "frame": {
+            "bottom": 616.46875,
+            "height": 279.984375,
+            "left": 1038.328125,
+            "right": 1224.984375,
+            "top": 336.484375,
+            "width": 186.65625,
+            "x": 1038.328125,
+            "y": 336.484375
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "films",
+          "frame": {
+            "bottom": 1231.453125,
+            "height": 279.984375,
+            "left": 200,
+            "right": 386.65625,
+            "top": 951.46875,
+            "width": 186.65625,
+            "x": 200,
+            "y": 951.46875
+          },
+          "image": null,
+          "state": "unavailable"
+        }
+      ],
+      "path": "/films",
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "artwork": [
+        {
+          "category": "games",
+          "frame": {
+            "bottom": 616.46875,
+            "height": 279.984375,
+            "left": 106.65625,
+            "right": 479.984375,
+            "top": 336.484375,
+            "width": 373.328125,
+            "x": 106.65625,
+            "y": 336.484375
+          },
+          "image": {
+            "fit": "contain",
+            "loaded": true,
+            "natural": [
+              1175,
+              1175
+            ],
+            "url": "https://thatgamecompany.com/wp-content/uploads/thatgamecompany-games-bg-journey.jpg"
+          },
+          "state": "ready"
+        },
+        {
+          "category": "games",
+          "frame": {
+            "bottom": 566.953125,
+            "height": 180.953125,
+            "left": 518.90625,
+            "right": 906.078125,
+            "top": 386,
+            "width": 387.171875,
+            "x": 518.90625,
+            "y": 386
+          },
+          "image": {
+            "fit": "contain",
+            "loaded": true,
+            "natural": [
+              460,
+              215
+            ],
+            "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/383870/41a7d0ff4c2dab4ed69c53c9a29c931e6f62948d/header.jpg?t=1755789801"
+          },
+          "state": "ready"
+        },
+        {
+          "category": "games",
+          "frame": {
+            "bottom": 616.46875,
+            "height": 279.984375,
+            "left": 944.984375,
+            "right": 1318.3125,
+            "top": 336.484375,
+            "width": 373.328125,
+            "x": 944.984375,
+            "y": 336.484375
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "games",
+          "frame": {
+            "bottom": 1231.453125,
+            "height": 279.984375,
+            "left": 106.65625,
+            "right": 479.984375,
+            "top": 951.46875,
+            "width": 373.328125,
+            "x": 106.65625,
+            "y": 951.46875
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "games",
+          "frame": {
+            "bottom": 1231.453125,
+            "height": 279.984375,
+            "left": 525.828125,
+            "right": 899.15625,
+            "top": 951.46875,
+            "width": 373.328125,
+            "x": 525.828125,
+            "y": 951.46875
+          },
+          "image": null,
+          "state": "unavailable"
+        }
+      ],
+      "path": "/games",
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "artwork": [
+        {
+          "category": "music",
+          "frame": {
+            "bottom": 616.484375,
+            "height": 280,
+            "left": 153.328125,
+            "right": 433.328125,
+            "top": 336.484375,
+            "width": 280,
+            "x": 153.328125,
+            "y": 336.484375
+          },
+          "image": {
+            "fit": "contain",
+            "loaded": true,
+            "natural": [
+              1080,
+              1080
+            ],
+            "url": "https://imagedelivery.net/y8Uk2RiAwNIsFgf5GYjAnw/d8ae3b12-fe29-4431-cf17-10e14eed8800/covers"
+          },
+          "state": "ready"
+        },
+        {
+          "category": "music",
+          "frame": {
+            "bottom": 616.484375,
+            "height": 280,
+            "left": 572.484375,
+            "right": 852.484375,
+            "top": 336.484375,
+            "width": 280,
+            "x": 572.484375,
+            "y": 336.484375
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "music",
+          "frame": {
+            "bottom": 616.484375,
+            "height": 280,
+            "left": 991.65625,
+            "right": 1271.65625,
+            "top": 336.484375,
+            "width": 280,
+            "x": 991.65625,
+            "y": 336.484375
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "music",
+          "frame": {
+            "bottom": 1231.46875,
+            "height": 280,
+            "left": 153.328125,
+            "right": 433.328125,
+            "top": 951.46875,
+            "width": 280,
+            "x": 153.328125,
+            "y": 951.46875
+          },
+          "image": null,
+          "state": "unavailable"
+        }
+      ],
+      "path": "/music",
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "artwork": [
+        {
+          "category": "photography",
+          "frame": {
+            "bottom": 616.46875,
+            "height": 279.984375,
+            "left": 106.65625,
+            "right": 479.984375,
+            "top": 336.484375,
+            "width": 373.328125,
+            "x": 106.65625,
+            "y": 336.484375
+          },
+          "image": {
+            "fit": "contain",
+            "loaded": true,
+            "natural": [
+              821,
+              1024
+            ],
+            "url": "https://data.labs.loc.gov/free-to-use/data/2017762891_1.jpg"
+          },
+          "state": "ready"
+        },
+        {
+          "category": "photography",
+          "frame": {
+            "bottom": 616.46875,
+            "height": 279.984375,
+            "left": 525.828125,
+            "right": 899.15625,
+            "top": 336.484375,
+            "width": 373.328125,
+            "x": 525.828125,
+            "y": 336.484375
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "photography",
+          "frame": {
+            "bottom": 616.46875,
+            "height": 279.984375,
+            "left": 944.984375,
+            "right": 1318.3125,
+            "top": 336.484375,
+            "width": 373.328125,
+            "x": 944.984375,
+            "y": 336.484375
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "photography",
+          "frame": {
+            "bottom": 1231.453125,
+            "height": 279.984375,
+            "left": 106.65625,
+            "right": 479.984375,
+            "top": 951.46875,
+            "width": 373.328125,
+            "x": 106.65625,
+            "y": 951.46875
+          },
+          "image": null,
+          "state": "unavailable"
+        }
+      ],
+      "path": "/photography",
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "artwork": [
+        {
+          "category": "art",
+          "frame": {
+            "bottom": 616.484375,
+            "height": 280,
+            "left": 153.328125,
+            "right": 433.328125,
+            "top": 336.484375,
+            "width": 280,
+            "x": 153.328125,
+            "y": 336.484375
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "art",
+          "frame": {
+            "bottom": 616.484375,
+            "height": 280,
+            "left": 572.484375,
+            "right": 852.484375,
+            "top": 336.484375,
+            "width": 280,
+            "x": 572.484375,
+            "y": 336.484375
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "art",
+          "frame": {
+            "bottom": 616.484375,
+            "height": 280,
+            "left": 991.65625,
+            "right": 1271.65625,
+            "top": 336.484375,
+            "width": 280,
+            "x": 991.65625,
+            "y": 336.484375
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "art",
+          "frame": {
+            "bottom": 1231.46875,
+            "height": 280,
+            "left": 153.328125,
+            "right": 433.328125,
+            "top": 951.46875,
+            "width": 280,
+            "x": 153.328125,
+            "y": 951.46875
+          },
+          "image": null,
+          "state": "unavailable"
+        },
+        {
+          "category": "art",
+          "frame": {
+            "bottom": 1231.46875,
+            "height": 280,
+            "left": 572.484375,
+            "right": 852.484375,
+            "top": 951.46875,
+            "width": 280,
+            "x": 572.484375,
+            "y": 951.46875
+          },
+          "image": null,
+          "state": "unavailable"
+        }
+      ],
+      "path": "/art",
+      "scrollWidth": 1425,
+      "width": 1440
+    }
+  ],
+  "layouts": [
+    {
+      "cardCount": 9,
+      "cards": [
+        {
+          "stage": 259.984375,
+          "title": 1002.453125,
+          "width": 257
+        },
+        {
+          "stage": 259.984375,
+          "title": 1600.4375,
+          "width": 257
+        },
+        {
+          "stage": 259.984375,
+          "title": 2198.421875,
+          "width": 257
+        }
+      ],
+      "height": 740,
+      "maxImageFrame": 259.984375,
+      "path": "/discover",
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "cardCount": 9,
+      "cards": [
+        {
+          "stage": 259.984375,
+          "title": 923.953125,
+          "width": 322.5
+        },
+        {
+          "stage": 259.984375,
+          "title": 1513.9375,
+          "width": 322.5
+        },
+        {
+          "stage": 259.984375,
+          "title": 2103.921875,
+          "width": 322.5
+        }
+      ],
+      "height": 844,
+      "maxImageFrame": 260,
+      "path": "/discover",
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "cardCount": 9,
+      "cards": [
+        {
+          "stage": 279.984375,
+          "title": 902.359375,
+          "width": 313.796875
+        },
+        {
+          "stage": 279.984375,
+          "title": 902.359375,
+          "width": 313.796875
+        },
+        {
+          "stage": 279.984375,
+          "title": 1512.34375,
+          "width": 313.796875
+        }
+      ],
+      "height": 1024,
+      "maxImageFrame": 280,
+      "path": "/discover",
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "cardCount": 9,
+      "cards": [
+        {
+          "stage": 279.984375,
+          "title": 1026.484375,
+          "width": 387.15625
+        },
+        {
+          "stage": 279.984375,
+          "title": 1026.484375,
+          "width": 387.171875
+        },
+        {
+          "stage": 279.984375,
+          "title": 1026.484375,
+          "width": 387.15625
+        }
+      ],
+      "height": 1000,
+      "maxImageFrame": 280,
+      "path": "/discover",
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "cardCount": 12,
+      "cards": [
+        {
+          "stage": 259.984375,
+          "title": 1709.75,
+          "width": 257
+        },
+        {
+          "stage": 259.984375,
+          "title": 2307.734375,
+          "width": 257
+        },
+        {
+          "stage": 259.984375,
+          "title": 2905.71875,
+          "width": 257
+        }
+      ],
+      "height": 740,
+      "maxImageFrame": 259.984375,
+      "path": "/search",
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "cardCount": 12,
+      "cards": [
+        {
+          "stage": 259.984375,
+          "title": 1609.5625,
+          "width": 322.5
+        },
+        {
+          "stage": 259.984375,
+          "title": 2199.546875,
+          "width": 322.5
+        },
+        {
+          "stage": 259.984375,
+          "title": 2789.53125,
+          "width": 322.5
+        }
+      ],
+      "height": 844,
+      "maxImageFrame": 260,
+      "path": "/search",
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "cardCount": 12,
+      "cards": [
+        {
+          "stage": 279.984375,
+          "title": 1218.96875,
+          "width": 313.796875
+        },
+        {
+          "stage": 279.984375,
+          "title": 1218.96875,
+          "width": 313.796875
+        },
+        {
+          "stage": 279.984375,
+          "title": 1828.953125,
+          "width": 313.796875
+        }
+      ],
+      "height": 1024,
+      "maxImageFrame": 280,
+      "path": "/search",
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "cardCount": 12,
+      "cards": [
+        {
+          "stage": 279.984375,
+          "title": 1164.578125,
+          "width": 387.15625
+        },
+        {
+          "stage": 279.984375,
+          "title": 1164.578125,
+          "width": 387.171875
+        },
+        {
+          "stage": 279.984375,
+          "title": 1164.578125,
+          "width": 387.15625
+        }
+      ],
+      "height": 1000,
+      "maxImageFrame": 280,
+      "path": "/search",
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "cardCount": 2,
+      "cards": [
+        {
+          "stage": 259.984375,
+          "title": 1584.71875,
+          "width": 274.5
+        },
+        {
+          "stage": 244.5,
+          "title": 2264.703125,
+          "width": 274.5
+        }
+      ],
+      "height": 740,
+      "maxImageFrame": 259.984375,
+      "path": "/albums/061b12e0-a5d8-4f24-af62-7a8d16283313",
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "cardCount": 2,
+      "cards": [
+        {
+          "stage": 259.984375,
+          "title": 1582.84375,
+          "width": 337.5
+        },
+        {
+          "stage": 260,
+          "title": 2236.828125,
+          "width": 337.5
+        }
+      ],
+      "height": 844,
+      "maxImageFrame": 260,
+      "path": "/albums/061b12e0-a5d8-4f24-af62-7a8d16283313",
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "cardCount": 2,
+      "cards": [
+        {
+          "stage": 265.84375,
+          "title": 1465.84375,
+          "width": 207.234375
+        },
+        {
+          "stage": 177.234375,
+          "title": 1465.84375,
+          "width": 207.234375
+        }
+      ],
+      "height": 1024,
+      "maxImageFrame": 265.84375,
+      "path": "/albums/061b12e0-a5d8-4f24-af62-7a8d16283313",
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "cardCount": 2,
+      "cards": [
+        {
+          "stage": 279.984375,
+          "title": 1529.84375,
+          "width": 333.828125
+        },
+        {
+          "stage": 280,
+          "title": 1529.84375,
+          "width": 333.828125
+        }
+      ],
+      "height": 1000,
+      "maxImageFrame": 280,
+      "path": "/albums/061b12e0-a5d8-4f24-af62-7a8d16283313",
+      "scrollWidth": 1425,
+      "width": 1440
+    }
+  ]
+}
