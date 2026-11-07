@@ -37,3 +37,33 @@
 .detailGrid h1 { overflow-wrap:anywhere; }
 
 @media(max-width:380px) { .preview { display:block; } .preview>figure { max-width:160px; margin:0 auto 16px; } .preview h2 { font-size:27px; } }
+
+.sourceDetails{margin:24px 0;color:var(--muted);font-size:12px;line-height:1.8}.sourceDetails summary{cursor:pointer;min-height:44px;display:list-item;padding-block:12px}.sourceDetails .disclosure{margin-top:8px}.disclosure details{margin-block:12px}.disclosure summary{cursor:pointer;min-height:32px}
+
+.breadcrumb{flex-wrap:wrap;gap:12px 20px}.breadcrumb a{min-height:44px}.breadcrumb>span{margin-left:auto}
+
+.previewCreator{font-size:12px;line-height:1.8;color:var(--bronze);margin:12px 0 0}.preview+.button{margin-top:20px}
+.preview>figure>figcaption{display:none}
+
+/* The whole work is one card, with an explicit actions footer. */
+.card{border:1px solid #b8ad922b;border-radius:var(--radius-card);background:linear-gradient(145deg,#ffffff04,transparent 65%),#191b19;box-shadow:0 8px 24px #0002;transition:border-color var(--motion-smooth),background var(--motion-smooth),box-shadow var(--motion-smooth)}
+.card:hover,.card:focus-within{border-color:#b9a27a80;box-shadow:0 12px 32px #0004;background-color:#1d211c}
+.card .visualButton{border-radius:calc(var(--radius-card) - 1px) calc(var(--radius-card) - 1px) 0 0;overflow:hidden}
+.card .visualButton:focus-visible{outline-offset:-3px}
+.card .visualButton figure{--stage-height:230px}
+.card .visualButton figure>figcaption{padding-inline:18px;text-align:left}
+.card .previewHint{border-radius:var(--radius-pill);padding:8px 10px;background:#121710ef}
+.cardMeta{margin:16px 18px 0;align-items:center;gap:8px;font-size:10px;letter-spacing:.5px}
+.cardMeta>span:last-child{padding:4px 8px;border-radius:var(--radius-pill);background:#a58d7013;font-size:9px}
+.card h3{margin:12px 18px 8px;min-height:2.4em;font-size:25px}
+.card h3 a{gap:10px}
+.card>p{margin:0 18px 18px;min-height:3.4em;line-height:1.65;color:#d0c7b8}
+.card>p>span{display:block;margin-top:4px;font-size:11px;color:var(--muted)}
+.card>section{margin: auto 0 0;padding:12px 18px 16px;border-top:1px solid #b3a38126;background:#0f140f38;border-radius:0 0 var(--radius-card) var(--radius-card)}
+.filters button{border-radius:var(--radius-pill)}
+.empty,.related a{border-radius:var(--radius-card)}
+.related a{transition:background var(--motion-fast),border-color var(--motion-fast)}
+.related a:hover{border-color:#a58d7080}
+@media(max-width:600px){.card .visualButton figure{--stage-height:220px}.card h3{font-size:25px;min-height:0}.card>p{min-height:0}}
+.card .visualButton figure>figcaption{height:44px;min-height:44px;padding:6px 18px;font-size:10px;line-height:1.5}
+.cardMeta{margin-top:12px}

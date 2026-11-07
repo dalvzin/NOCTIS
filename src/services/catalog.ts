@@ -2,18 +2,18 @@ import { works, workPath } from '../data/works';
 import { curatedWorks } from '../data/curated';
 import { rooms } from '../data/rooms';
 import type { SearchResponse, Work, ProviderStatus, CategorySlug } from '../types/catalog';
-import { deduplicate, matchesQuery, safeExternalUrl } from './catalogUtils';
+import { deduplicate, matchesQuery, safeExternalUrl, safeArtworkUrl } from './catalogUtils';
 import { mergeDestinations } from './destinations';
 
-export const localCatalog = [...curatedWorks, ...works];
-const known = new Map(localCatalog.map(work => [work.id, work]));
+export const localCatalog = [...curatedWorks];
+const known = new Map([...localCatalog, ...works].map(work => [work.id, work]));
 const searchCache = new Map<string, { expires: number; result: SearchResponse }>();
 let statuses: { expires: number; values: ProviderStatus[] } | undefined;
 
 export function isWork(value: unknown): value is Work {
   if (!value || typeof value !== 'object') return false;
   const row = value as Partial<Work>;
-  const imageValid = row.image === undefined || (!!row.image && !!safeExternalUrl(row.image.url) && !!safeExternalUrl(row.image.sourceUrl) && ['alt', 'credit', 'rights'].every(key => typeof row.image?.[key as 'alt'] === 'string'));
+  const imageValid = row.image === undefined || (!!row.image && !!safeArtworkUrl(row.image.url) && !!safeExternalUrl(row.image.sourceUrl) && ['alt', 'credit', 'rights'].every(key => typeof row.image?.[key as 'alt'] === 'string'));
   return imageValid && typeof row.id === 'string' && typeof row.title === 'string' && typeof row.creator === 'string'
     && rooms.some(room => room.slug === row.category) && (row.year === null || typeof row.year === 'number')
     && typeof row.format === 'string' && typeof row.description === 'string' && typeof row.note === 'string'
@@ -36,6 +36,7 @@ export function findKnown(category: string, id: string) {
 
 export function withKnownArtwork(work: Work): Work {
   const knownImage = findKnown(work.category, work.id)?.image;
+  if (knownImage?.url.startsWith('/artworks/') && work.source.kind !== 'demo' && work.source.provider === 'aic' && work.image?.url.startsWith('https://www.artic.edu/iiif/')) return {...work,image:knownImage};
   if (!work.image && knownImage) return { ...work, image:knownImage };
   return work.image && knownImage?.url === work.image.url ? { ...work, image:{ ...knownImage, ...work.image } } : work;
 }
@@ -52,7 +53,7 @@ function remember(item: Work) {
   const image = item.image ?? (keepArtwork ? previous?.image : undefined);
   const normalized = { ...item, image, source, destinations: mergeDestinations(item.category, Array.isArray(destinations) ? destinations : []) };
   known.set(item.id, normalized);
-  if (known.size > 200) { const key = [...known.keys()].find(id => !localCatalog.some(work => work.id === id)); if (key) known.delete(key); }
+  if (known.size > 200) { const key = [...known.keys()].find(id => !localCatalog.some(work => work.id === id) && !works.some(work => work.id === id)); if (key) known.delete(key); }
   return normalized;
 }
 

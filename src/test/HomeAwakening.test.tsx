@@ -4,12 +4,12 @@ import { afterEach,beforeEach,describe,expect,it,vi } from 'vitest';
 const preference=vi.hoisted(()=>({reduced:false}));
 vi.mock('../features/personal/context',async original=>({...await original<typeof import('../features/personal/context')>(),useMotionPreference:()=>preference.reduced}));
 import { Home } from '../features/home/Home';
-import { INTRO_SESSION_KEY } from '../features/home/useAwakening';
+import { INTRO_SESSION_KEY, INTRO_VISIT_KEY } from '../features/home/useAwakening';
 import { rooms } from '../data/rooms';
 
 function open(){return render(<MemoryRouter><Home/></MemoryRouter>);}
 function entrance(){return screen.getByRole('region',{name:/Not everything deserves/});}
-beforeEach(()=>{sessionStorage.removeItem(INTRO_SESSION_KEY);preference.reduced=false;vi.stubGlobal('fetch',vi.fn(async()=>new Response(JSON.stringify({items:[],statuses:[]}))));vi.useFakeTimers();});
+beforeEach(()=>{sessionStorage.removeItem(INTRO_SESSION_KEY);localStorage.removeItem(INTRO_VISIT_KEY);preference.reduced=false;vi.stubGlobal('fetch',vi.fn(async()=>new Response(JSON.stringify({items:[],statuses:[]}))));vi.useFakeTimers();});
 afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks();vi.unstubAllGlobals();});
 describe('The Awakening becomes the Living Mosaic',()=>{
  it('keeps all six semantic links in the same DOM throughout the 3.1 second sequence',()=>{
@@ -26,6 +26,9 @@ describe('The Awakening becomes the Living Mosaic',()=>{
  });
  it('shows the final composition directly on a return visit without making a network request',()=>{
   sessionStorage.setItem(INTRO_SESSION_KEY,'seen');const requests=vi.mocked(fetch).mock.calls.length;open();expect(entrance()).toHaveAttribute('data-phase','ready');expect(entrance()).toHaveAttribute('data-instant','true');expect(vi.mocked(fetch).mock.calls).toHaveLength(requests);
+ });
+ it('remembers an earlier visit after session storage is cleared',()=>{
+  localStorage.setItem(INTRO_VISIT_KEY,'seen');open();expect(entrance()).toHaveAttribute('data-phase','ready');expect(screen.queryByRole('button',{name:'Skip intro'})).not.toBeInTheDocument();
  });
  it('respects reduced motion from the start',()=>{
   preference.reduced=true;open();expect(entrance()).toHaveAttribute('data-reduced','true');expect(entrance()).toHaveAttribute('data-phase','ready');expect(screen.queryByRole('button',{name:'Skip intro'})).not.toBeInTheDocument();

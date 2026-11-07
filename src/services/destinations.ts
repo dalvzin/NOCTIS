@@ -56,8 +56,11 @@ export function mergeDestinations(category: CategorySlug, ...groups: (unknown[] 
   const seen = new Set<string>();
   return groups.flatMap(group => group ?? []).flatMap(value => {
     const valid = validateDestination(value, category);
-    if (!valid || seen.has(valid.url)) return [];
-    seen.add(valid.url); return [valid];
+    if (!valid) return [];
+    const parsed = new URL(valid.url);
+    const key = `${parsed.origin}${parsed.pathname.replace(/\/$/, '')}${parsed.search}${parsed.hash}`;
+    if (seen.has(key)) return [];
+    seen.add(key); return [valid];
   });
 }
 

@@ -3,6 +3,7 @@ import { cleanup, fireEvent, render, screen, within, waitFor } from '@testing-li
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { App } from '../app/App';
+import { manuscriptSpread } from './manuscriptHelpers';
 import { normalizeAic, normalizeMusicBrainz, normalizeOpenLibrary, normalizeResponse } from '../services/providers';
 import { deduplicate, filterWorks, safeExternalUrl, validReturnTo } from '../services/catalogUtils';
 import { clearCatalogCache, searchCatalog, isWork, fetchWork } from '../services/catalog';
@@ -89,7 +90,7 @@ describe('Discovery flows', () => {
     expect(document.activeElement?.textContent).toContain('Frankenstein');
     await user.click(input); await user.keyboard('{Enter}');
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 1, name: 'Follow a thread.' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'Find something worth keeping.' })).toBeInTheDocument();
     expect(screen.getByRole('searchbox', { name: 'Search works, creators and subjects' })).toHaveValue('Frankenstein');
   });
   it('opens a real work preview, its full record, and an attributed source link', async () => {
@@ -97,7 +98,10 @@ describe('Discovery flows', () => {
     await user.click(screen.getByRole('button', { name: 'Quick preview: Frankenstein' }));
     await user.click(within(screen.getByRole('dialog')).getByRole('link', { name: 'Open full record' }));
     expect(screen.getByRole('heading', { level: 1, name: 'Frankenstein' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /View source: Project Gutenberg/ })).toHaveAttribute('href', 'https://www.gutenberg.org/ebooks/84');
+    await manuscriptSpread(user, 'archive');
+    expect(screen.getByRole('link', { name: /View Book Details/ })).toHaveAttribute('href', 'https://www.gutenberg.org/ebooks/84');
+    await user.click(screen.getByText('Sources & image credits'));
+    expect(screen.getByText('The source record is linked above.')).toBeVisible();
     expect(screen.queryByText(/This work, its creator and its metadata are fictional/)).not.toBeInTheDocument();
   });
   it('shows editorial collections rather than fake trending or community activity', async () => {

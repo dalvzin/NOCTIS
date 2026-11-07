@@ -2,6 +2,12 @@
 
 Uma biblioteca de experiências culturais. Interface em inglês; documentação em português brasileiro.
 
+Refinamento atual: cantos arredondados, cartões com ações agrupadas e microanimações da navegação. [Arquivos, decisões e verificações desta rodada](docs/24-soft-ui-motion.md). As contagens nas seções abaixo registram as respectivas etapas históricas.
+
+Continuação: [rolagem suave, entrada das páginas e acabamento de Discover](docs/25-navigation-transitions.md), com movimento reduzido e verificações locais.
+
+Books: [abertura compartilhada de Frankenstein, Pride and Prejudice e Dracula](docs/26-shared-book-experience.md), com acabamento das páginas, dados próprios e 306 testes aprovados.
+
 ## Homepage do portfólio
 
 A entrada cinematográfica de 3,1 segundos se torna um mosaico assimétrico dos seis ambientes. Tem Skip intro, memória por sessão, teclado, reduced motion e composições SVG originais, sem vídeo ou áudio. Abaixo ficam seleções de obras reais do catálogo existente. Salas, pesquisa, arquivo pessoal e navegação global foram preservados. Contas/Supabase foram postergados para depois do portfólio e não são exigidos para navegar.
@@ -28,11 +34,11 @@ Abra o endereço exibido pelo Vite. `dev` serve o código durante o desenvolvime
 
 ## Entrega
 
-Homepage e seis experiências preservadas. Catálogo híbrido com 9 obras reais selecionadas e 18 demonstrações fictícias identificadas, busca global Ctrl+K/⌘K, `/search?q=...`, filtros por categoria/formato/criador/tag/período/origem, Quick Preview e fichas com fontes. Discover oferece coleções editoriais reais. Saved, Want to Experience, avaliações privadas de meia estrela, álbuns multimídia e histórico opcional estão disponíveis localmente. O histórico começa desligado. Contas e comunidade têm implementação Supabase preparada: autenticação, perfil, arquivo da conta, álbuns públicos/não listados, likes, follows e remixes. Sem configuração, o site continua no modo local e explica a indisponibilidade. Não existe integração remota validada neste workspace.
+Homepage e seis experiências preservadas. A experiência principal oferece 17 obras reais selecionadas; 18 demonstrações antigas continuam acessíveis por referências legadas e salvamentos existentes. Busca global Ctrl+K/⌘K, `/search?q=...`, filtros por categoria/formato/criador/tag/período, Quick Preview e fichas com fontes. Discover oferece coleções editoriais e a exposição After Hours. Saved, Want to Experience, avaliações privadas de meia estrela, álbuns multimídia e histórico opcional estão disponíveis localmente. O histórico começa desligado. A infraestrutura anterior de contas e comunidade foi preservada, mas não é promovida no portfólio atual nem foi configurada nesta revisão. Não existe integração remota validada neste workspace.
 
 Open Library e Art Institute of Chicago têm consultas externas implementadas e verificadas no navegador. O museu inicialmente devolveu HTTP 403; após ajustes de parâmetros e identificação, a busca respondeu com metadados reais. Falhas continuam sendo exibidas sem impedir o catálogo local. MusicBrainz depende de um contato real em `.env`. TMDB, RAWG e Unsplash foram investigados, mas permanecem desconectados; adicionar uma chave não os habilita nesta versão. Veja o guia de provedores antes de configurar ou publicar.
 
-A seleção editorial possui imagens reais associadas aos nove registros, com origem e créditos. Livros Open Library usam capas e edições fornecidas pela Covers API. O detalhe musical pode consultar a Cover Art Archive com identificação da release. Arte AIC mantém a restrição de domínio público; essa fonte retornou bloqueio 403 na verificação atual e exibiu fallback. Imagens promocionais e capas sob copyright mantêm seus titulares e não são declaradas CC0. Falhas voltam ao estudo NOCTIS identificado. Nada é anunciado como disponível para streaming.
+A seleção editorial possui imagens reais associadas aos 17 registros, com origem e créditos. Livros Open Library usam capas e edições fornecidas pela Covers API; os três livros locais identificam o ebook exato do Gutenberg. O detalhe musical pode consultar a Cover Art Archive com identificação da release. A API AIC retornou bloqueio 403 na revisão atual; as três pinturas selecionadas agora usam reproduções locais verificadas, com procedência em `public/artworks/sources.json`. Imagens promocionais e capas sob copyright mantêm seus titulares e não são declaradas CC0. Falhas ainda exibem o placeholder NOCTIS identificado. Nada é anunciado como disponível para streaming.
 
 Capas de álbuns aceitam JPEG, PNG ou WebP até 2 MiB. Os arquivos ficam no IndexedDB deste navegador, sem envio a servidor; o JSON do arquivo pessoal guarda somente referências. Trocar endereço, porta ou navegador muda os dados acessíveis.
 
@@ -51,6 +57,12 @@ Não há `.env` real configurado. A infraestrutura da Stage 05 foi preservada co
 Verificação Stage 05: TypeScript, lint e build aprovados; **191 testes passaram em 14 arquivos**. `npm run test:security`: 18 testes locais aprovados, incluídos nesse total. Os testes de RLS executaram PostgreSQL via PGlite com visitante/A/B; Auth real, OAuth e Storage remoto não foram testados por falta de configuração. [Relatório completo](docs/15-relatorio-stage05.md).
 
 ## Aprender e evoluir
+
+Stage 06.4A — Frankenstein Manuscript: somente a ficha `gutenberg:books:84` usa o livro interativo. A revisão atual tem duas aberturas no desktop e quatro folhas no celular, com sumário superior, seções identificadas por cor e ações/fontes abaixo do livro. Abertura física, demais fichas, HUD e homepage preservados. TypeScript, lint e build aprovados; **302 testes em 21 arquivos**. Sem deploy. [Revisão atual, arquivos, capturas e testes](docs/23-frankenstein-hierarquia.md); [relatório inicial A–H](docs/22-frankenstein-manuscript.md).
+
+Refinamento atual de Quick Preview e Full Record (05/11/2026): prévia curta com ações rápidas; ficha com nota editorial específica, dados adicionais, rating, álbuns e destinos. Comportamento aplicado às seis categorias; HUD e After Hours preservados. TypeScript, lint e build aprovados; **282 testes em 20 arquivos**. Sem deploy ou mudança no armazenamento. [Arquivos, decisões, capturas desktop/mobile, testes e limites](docs/21-preview-full-record.md).
+
+Revisão editorial atual (05/11/2026): confiabilidade, seleção real, Books como sala piloto e exposição localizada `/discover/after-hours`. Mosaico preservado, prévias com créditos expansíveis e capas automáticas que respeitam escolhas existentes. TypeScript, lint e build aprovados; **267 testes em 19 arquivos**. Nenhuma dependência nova e nenhum deploy. [Arquivos, decisões, fontes, resultados, capturas e pendências para revisão visual](docs/20-editorial-after-hours.md).
 
 Verificação final da Stage 04.1 (04/11/2026): `npm run typecheck`, `npm run lint` e `npm run build` concluídos sem erros; `npm test -- --reporter=dot`: **157 testes passaram, em 8 arquivos**. Upload, substituição, remoção, seleção da capa de uma obra e refresh foram exercitados no navegador integrado, além de medidas em 390×844 e 1365×900. Imagens de cinco categorias carregaram; AIC retornou bloqueio externo e exibiu fallback. Detalhes e limites no guia abaixo.
 

@@ -1,0 +1,236 @@
+{
+  "viewports": [
+    {
+      "height": 1000,
+      "images": 4,
+      "path": "/books",
+      "scrollWidth": 1425,
+      "width": 1440,
+      "works": [
+        "Pride and Prejudice",
+        "Frankenstein",
+        "Dracula"
+      ]
+    },
+    {
+      "height": 1024,
+      "images": 4,
+      "path": "/books",
+      "scrollWidth": 753,
+      "width": 768,
+      "works": [
+        "Pride and Prejudice",
+        "Frankenstein",
+        "Dracula"
+      ]
+    },
+    {
+      "height": 844,
+      "images": 4,
+      "path": "/books",
+      "scrollWidth": 375,
+      "width": 390,
+      "works": [
+        "Pride and Prejudice",
+        "Frankenstein",
+        "Dracula"
+      ]
+    },
+    {
+      "height": 740,
+      "images": 4,
+      "path": "/books",
+      "scrollWidth": 305,
+      "width": 320,
+      "works": [
+        "Pride and Prejudice",
+        "Frankenstein",
+        "Dracula"
+      ]
+    },
+    {
+      "height": 1000,
+      "images": 5,
+      "path": "/discover",
+      "scrollWidth": 1425,
+      "width": 1440,
+      "works": [
+        "Frankenstein",
+        "Journey",
+        "Ambient 2 (The Plateaux of Mirror)"
+      ]
+    },
+    {
+      "height": 1024,
+      "images": 5,
+      "path": "/discover",
+      "scrollWidth": 753,
+      "width": 768,
+      "works": [
+        "Frankenstein",
+        "Journey",
+        "Ambient 2 (The Plateaux of Mirror)"
+      ]
+    },
+    {
+      "height": 844,
+      "images": 5,
+      "path": "/discover",
+      "scrollWidth": 375,
+      "width": 390,
+      "works": [
+        "Frankenstein",
+        "Journey",
+        "Ambient 2 (The Plateaux of Mirror)"
+      ]
+    },
+    {
+      "height": 740,
+      "images": 5,
+      "path": "/discover",
+      "scrollWidth": 305,
+      "width": 320,
+      "works": [
+        "Frankenstein",
+        "Journey",
+        "Ambient 2 (The Plateaux of Mirror)"
+      ]
+    },
+    {
+      "cityHeight": 560,
+      "height": 1000,
+      "images": 3,
+      "path": "/discover/after-hours",
+      "scrollWidth": 1425,
+      "width": 1440,
+      "works": [
+        "Metropolis ",
+        "The Steerage ",
+        "The Bedroom "
+      ]
+    },
+    {
+      "cityHeight": 550,
+      "height": 1024,
+      "images": 3,
+      "path": "/discover/after-hours",
+      "scrollWidth": 753,
+      "width": 768,
+      "works": [
+        "Metropolis ",
+        "The Steerage ",
+        "The Bedroom "
+      ]
+    },
+    {
+      "cityHeight": 1181.625,
+      "height": 844,
+      "images": 3,
+      "path": "/discover/after-hours",
+      "scrollWidth": 375,
+      "width": 390,
+      "works": [
+        "Metropolis ",
+        "The Steerage ",
+        "The Bedroom "
+      ]
+    },
+    {
+      "cityHeight": 1244,
+      "height": 740,
+      "images": 3,
+      "path": "/discover/after-hours",
+      "scrollWidth": 305,
+      "width": 320,
+      "works": [
+        "Metropolis ",
+        "The Steerage ",
+        "The Bedroom "
+      ]
+    }
+  ],
+  "roomImageChecks": [
+    {
+      "room": "games",
+      "images": [
+        {
+          "alt": "Journey — official promotional artwork",
+          "loaded": true,
+          "width": 1175
+        },
+        {
+          "alt": "Firewatch — official store key art",
+          "loaded": true,
+          "width": 460
+        },
+        {
+          "alt": "INSIDE — official store artwork",
+          "loaded": true,
+          "width": 616
+        }
+      ]
+    },
+    {
+      "room": "photography",
+      "images": [
+        {
+          "alt": "Migrant Mother — Dorothea Lange, Nipomo, California, 1936",
+          "loaded": true,
+          "width": 821
+        },
+        {
+          "alt": "The Steerage — Alfred Stieglitz, 1907",
+          "loaded": true,
+          "width": 500
+        }
+      ]
+    },
+    {
+      "room": "films",
+      "images": [
+        {
+          "alt": "Metropolis — French theatrical poster by Boris Bilinski, 1927",
+          "loaded": true,
+          "width": 500
+        },
+        {
+          "alt": "Sherlock Jr. — original 1924 poster",
+          "loaded": true,
+          "width": 500
+        },
+        {
+          "alt": "A Trip to the Moon — original 1902 poster",
+          "loaded": true,
+          "width": 260
+        }
+      ]
+    },
+    {
+      "room": "art",
+      "images": [
+        {
+          "alt": "A Sunday on La Grande Jatte — Georges Seurat",
+          "loaded": true,
+          "width": 500
+        },
+        {
+          "alt": "The Bedroom — 1889 Chicago version",
+          "loaded": true,
+          "width": 500
+        },
+        {
+          "alt": "Paris Street; Rainy Day — Gustave Caillebotte",
+          "loaded": true,
+          "width": 500
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Music: all three official discography covers decoded (1080px).",
+    "Books: ebook covers decoded; hero uses Gutenberg ebook 84, not a commercial edition.",
+    "Native dialog Escape restores trigger focus and body overflow.",
+    "Internal reduce-motion preference tested and restored to device preference.",
+    "Exhibition keyboard Enter opens Bedroom; explicit return link returns to exhibition."
+  ]
+}

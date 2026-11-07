@@ -45,7 +45,7 @@ describe('Stage 06.2 brand and HUD', () => {
   const user=userEvent.setup();open();await user.keyboard('{Meta>}k{/Meta}');
   const input=screen.getByRole('searchbox',{name:'Search works'});expect(input).toHaveFocus();
   await user.type(input,'Frankenstein{Enter}');expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-  expect(screen.getByRole('heading',{level:1})).toHaveTextContent('Follow a thread');
+  expect(screen.getByRole('heading',{level:1})).toHaveTextContent('Find something worth keeping');
  });
  it('does not steal Ctrl K from a work preview', async () => {
   const user=userEvent.setup();open();await user.click(screen.getByRole('button',{name:'Quick preview: Frankenstein'}));

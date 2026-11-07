@@ -6,3 +6,10 @@
 .panelForm button{min-width:var(--control-height);min-height:var(--control-height)}.roomLinks a{min-height:var(--control-height);display:inline-flex;align-items:center}.compactResults small{font-size:11px}
 
 .page h1{font-size:clamp(42px,5vw,64px);margin:24px 0;line-height:1.1}.section{padding-block:var(--section-gap);margin-top:var(--space-8)}.section>h2{font-size:clamp(30px,3.2vw,44px)}
+
+.filters,.empty,.collections a{border-radius:var(--radius-card)}
+.categories button{border-radius:var(--radius-pill)}
+.compactResults>a{border-radius:var(--radius-control);transition:background var(--motion-fast),border-color var(--motion-fast)}
+.thumb{border-radius:8px}
+.roomLinks a{border:1px solid var(--line);padding:8px 14px;border-radius:var(--radius-pill);transition:background var(--motion-fast),border-color var(--motion-fast)}
+.roomLinks a:hover{background:#a58d7012;border-color:#a58d7070}

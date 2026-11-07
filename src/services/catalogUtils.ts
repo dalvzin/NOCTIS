@@ -41,7 +41,12 @@ export function filterWorks(items: Work[], params: URLSearchParams, query = '') 
 
 export function validReturnTo(value: unknown, fallback: string) {
   if (typeof value !== 'string' || value.startsWith('//') || value.includes('\\')) return fallback;
-  const path = value.split('?')[0];
-  return /^\/(books|films|games|music|photography|art|discover|search)$/.test(path) ? value : fallback;
+  const path = value.split(/[?#]/)[0];
+  return /^\/(books|films|games|music|photography|art|discover(?:\/after-hours)?|search|my-archive|albums\/[a-zA-Z0-9_-]+)$/.test(path) ? value : fallback;
 }
 
+
+/** Only bundled artwork paths may be relative; external destinations remain HTTPS-only. */
+export function safeArtworkUrl(value: unknown): string | undefined {
+  return typeof value === 'string' && /^\/artworks\/[a-z0-9-]+\.jpg$/.test(value) ? value : safeExternalUrl(value);
+}

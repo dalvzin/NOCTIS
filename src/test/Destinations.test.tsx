@@ -1,17 +1,17 @@
+import { manuscriptSpread } from './manuscriptHelpers';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { App } from '../app/App';
 import { curatedWorks } from '../data/curated';
-import { works } from '../data/works';
+import { works, workPath } from '../data/works';
 import { rooms } from '../data/rooms';
 import type { Work } from '../types/catalog';
 import { normalizeMusicBrainz, normalizeOpenLibrary } from '../services/providers';
 import { destinationLabel, getDestinations, validateDestination } from '../services/destinations';
 import { clearCatalogCache, fetchWork, isWork, searchCatalog } from '../services/catalog';
 import { ExternalDestinations } from '../features/discovery/ExternalDestinations';
-import { QuickPreview } from '../features/discovery/QuickPreview';
 
 const spotify = `https://open.spotify.com/album/${'A'.repeat(22)}`; // ID sintético, nunca consultado ao vivo.
 const mbid = 'aaaaaaaa-1111-2222-3333-444444444444';
@@ -67,18 +67,18 @@ describe('Extraction and destination classification', () => {
 
 describe('Coverage and rendering across six categories', () => {
   const expected = { books: 'View Book Details', music: 'View on MusicBrainz', films: 'View on TMDB', games: 'Visit Official Website', photography: 'View Original Photograph', art: 'View Museum Collection' };
-  it.each(rooms)('uses an honest destination in preview and full detail for $slug', async room => {
+  it.each(rooms)('keeps destinations out of preview and exposes verified links in full detail for $slug', async room => {
     const user = userEvent.setup();
     const work = curatedWorks.find(item => item.category === room.slug)!;
     render(<MemoryRouter initialEntries={[`/search?category=${room.slug}&source=real`]}><App/></MemoryRouter>);
     await user.click(screen.getByRole('button', { name: `Quick preview: ${work.title}` }));
     const dialog = screen.getByRole('dialog');
     const label = expected[work.category];
-    const link = within(dialog).getByRole('link', { name: new RegExp(`^${label}`) });
-    expect(link).toHaveAttribute('href', getDestinations(work)[0].url);
-    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(within(dialog).queryByRole('link', { name: new RegExp(`^${label}`) })).not.toBeInTheDocument();
     await user.click(within(dialog).getByRole('link', { name: 'Open full record' }));
+    if(room.slug === 'books') await manuscriptSpread(user,'archive');
     expect(screen.getByRole('link', { name: new RegExp(`^${label}`) })).toHaveAttribute('href', getDestinations(work)[0].url);
+    expect(screen.getByRole('link', { name: new RegExp(`^${label}`) })).toHaveAttribute('rel', 'noopener noreferrer');
   });
   it.each(rooms)('shows an explicit unavailable state for fictional $slug items', room => {
     const work = works.find(item => item.category === room.slug)!;
@@ -104,12 +104,12 @@ describe('Coverage and rendering across six categories', () => {
 });
 
 describe('Normalization and cache preservation', () => {
-  it('enriches Quick Preview with a provider-supplied Spotify link, not a generated search URL', async () => {
+  it('enriches the full record with a provider-supplied Spotify link, not a generated search URL', async () => {
     const id = 'bbbbbbbb-1111-2222-3333-444444444444';
     const thin = normalizeMusicBrainz({ id, title: 'Preview fixture' })!;
     const full = normalizeMusicBrainz({ ...mb, id, title: 'Preview fixture' })!;
     vi.mocked(fetch).mockResolvedValueOnce(new Response(JSON.stringify({ item: full })));
-    render(<MemoryRouter><QuickPreview work={thin} returnTo="/music" onClose={() => {}}/></MemoryRouter>);
+    render(<MemoryRouter initialEntries={[workPath(thin)]}><App/></MemoryRouter>);
     expect(await screen.findByRole('link', { name: /^Listen on Spotify/ })).toHaveAttribute('href', spotify);
     expect(screen.getByRole('link', { name: /^View on MusicBrainz/ })).toHaveAttribute('href', `https://musicbrainz.org/release-group/${id}`);
   });

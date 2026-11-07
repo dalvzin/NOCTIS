@@ -1,0 +1,457 @@
+.exhibition {
+  --oxide: #788d79;
+  --wine: #4a3034;
+  --paper: #e6dbc2;
+  background: radial-gradient(ellipse at 85% 12%, #29372d55, transparent 40%), #121817;
+  color: var(--paper);
+  padding: 36px var(--gutter) 0;
+  overflow: hidden;
+}
+
+.heading {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.back {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 12px;
+  min-height: 44px;
+  text-decoration: none;
+  color: #b8baad;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 32px;
+  padding: 24px 0 16px;
+}
+
+.titleRow h1 {
+  font: clamp(40px, 4.6vw, 64px)/1.08 Georgia;
+  letter-spacing: -1.5px;
+  margin: 20px 0;
+}
+
+.titleRow h1 em {
+  font-weight: 400;
+  color: #b7a477;
+}
+
+.invitation {
+  font: italic 18px/1.8 Georgia;
+  color: #b4bcae;
+  max-width: 32ch;
+  padding-bottom: 20px;
+}
+
+.direction {
+  font-size: 12px;
+  letter-spacing: .5px;
+  color: #b3b7aa;
+  margin: 0 0 24px;
+}
+
+.city {
+  position: relative;
+  max-width: 1400px;
+  margin: auto;
+  height: 560px;
+  isolation: isolate;
+  border-block: 1px solid #c7b98b30;
+  background: #17231f;
+}
+
+.city > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.window {
+  position: absolute;
+  left: 8%;
+  top: 18%;
+  width: 24%;
+  padding: 14px 14px 20px;
+  background: #15201deb;
+  border: 1px solid #ad9b6665;
+  box-shadow: 0 8px 42px #0007, 0 0 28px #baa25a0a;
+  text-decoration: none;
+  transition: transform .25s, border-color .25s;
+}
+
+.window:nth-of-type(2) {
+  left: 38%;
+  top: 31%;
+}
+
+.window:nth-of-type(3) {
+  left: 72%;
+  top: 13%;
+  width: 22%;
+}
+
+.window:hover,
+.window:focus-visible {
+  transform: translateY(-4px);
+  border-color: #d5bc7c;
+}
+
+.window:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 5px;
+}
+
+.address {
+  display: block;
+  font: 8px/1.5 Arial;
+  letter-spacing: 1.3px;
+  color: #c0ab76;
+  margin-bottom: 12px;
+}
+
+.window figure {
+  --stage-height: 180px;
+}
+
+.window figure figcaption {
+  display: none;
+}
+
+.window figure > div {
+  background: #101816;
+}
+
+.windowLabel {
+  display: block;
+  margin-top: 16px;
+}
+
+.windowLabel small {
+  display: block;
+  font: italic 13px Georgia;
+  color: #b7a477;
+  margin-bottom: 8px;
+}
+
+.windowLabel strong {
+  display: block;
+  font: clamp(18px, 1.6vw, 24px)/1.2 Georgia;
+  padding-right: 18px;
+}
+
+.windowLabel > span {
+  display: block;
+  font-size: 10px;
+  line-height: 1.7;
+  margin-top: 8px;
+  color: #b9bcaf;
+}
+
+.windowArrow {
+  position: absolute;
+  bottom: 20px;
+  right: 14px;
+  color: #c4b78b;
+}
+
+.route {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 72px;
+  padding-block: 80px;
+}
+
+.routeHeading h2 {
+  font-size: clamp(34px, 3.3vw, 48px);
+  line-height: 1.13;
+}
+
+.routeHeading > p:last-child {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #b3b7aa;
+  max-width: 34ch;
+}
+
+.route ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.route li {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 20px;
+  border-top: 1px solid #c7b98b30;
+  padding: 30px 0;
+}
+
+.number {
+  font: italic 29px Georgia;
+  color: var(--oxide);
+}
+
+.route h3 {
+  font: 29px/1.2 Georgia;
+  margin: 12px 0;
+}
+
+.route h3 a {
+  text-decoration: none;
+}
+
+.route h3 svg {
+  margin-left: 8px;
+}
+
+.creator {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #b7a477;
+}
+
+.note {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #d6d1be;
+}
+
+.route button {
+  min-height: 44px;
+  color: var(--paper);
+}
+
+.credits {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #b3b7aa;
+  margin-top: 16px;
+}
+
+.credits summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px 0;
+}
+
+.foot {
+  max-width: 1200px;
+  margin: auto;
+  border-top: 1px solid #c7b98b30;
+  padding: 28px 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.foot > p {
+  font: italic 22px Georgia;
+  color: #b7a477;
+}
+
+@media (max-width: 1000px) {
+  .city {
+    height: 550px;
+  }
+
+  .window {
+    padding: 12px;
+    left: 5%;
+    width: 27%;
+  }
+
+  .window:nth-of-type(2) {
+    left: 36%;
+  }
+
+  .window:nth-of-type(3) {
+    left: 68%;
+    width: 27%;
+  }
+
+  .window figure {
+    --stage-height: 150px;
+  }
+
+  .windowLabel strong {
+    font-size: 19px;
+  }
+
+  .address {
+    font-size: 7px;
+  }
+
+  .route {
+    gap: 36px;
+    grid-template-columns: .8fr 1.2fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .exhibition {
+    padding-top: 24px;
+  }
+
+  .titleRow {
+    display: block;
+    padding-top: 20px;
+  }
+
+  .titleRow h1 {
+    font-size: clamp(40px, 8vw, 58px);
+  }
+
+  .invitation {
+    font-size: 16px;
+    padding: 0;
+  }
+
+  .invitation br {
+    display: none;
+  }
+
+  .city {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 28px 18px 28px 30px;
+    border-left: 1px solid #b8a17355;
+    background: linear-gradient(90deg, #b5a16f10, transparent 15%), #17231f;
+  }
+
+  .city > svg {
+    display: none;
+  }
+
+  .city .window,
+  .city .window:nth-of-type(2),
+  .city .window:nth-of-type(3) {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #25372d, #1c2220);
+    box-shadow: none;
+  }
+
+  .city .window:nth-of-type(2) {
+    background: linear-gradient(135deg, #3a2a2e, #1c2220);
+  }
+
+  .window:before {
+    content: '';
+    position: absolute;
+    left: -31px;
+    top: 24px;
+    width: 30px;
+    height: 1px;
+    background: #b8a17355;
+  }
+
+  .window figure {
+    --stage-height: 190px;
+  }
+
+  .windowLabel strong {
+    font-size: 26px;
+  }
+
+  .windowLabel > span {
+    font-size: 12px;
+  }
+
+  .address {
+    font-size: 9px;
+  }
+
+  .route {
+    display: block;
+    padding-block: 48px;
+  }
+
+  .routeHeading {
+    margin-bottom: 32px;
+  }
+
+  .routeHeading > p:last-child {
+    max-width: 60ch;
+  }
+
+  .route li {
+    gap: 12px;
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+
+  .foot {
+    display: block;
+  }
+
+  .foot > a {
+    margin-top: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .window {
+    transition: none;
+  }
+
+  .window:hover,
+  .window:focus-visible {
+    transform: none;
+  }
+}
+
+.exhibition[data-reduced=true] .window:hover,
+.exhibition[data-reduced=true] .window:focus-visible {
+  transform: none;
+}
+
+.city .window figure figcaption {
+  display: none;
+}
+
+.city .window .address {
+  font-size: 10px;
+  letter-spacing: .8px;
+}
+
+.windowLabel > span {
+  font-size: 11px;
+}
+
+.credits a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.city,.window{border-radius:var(--radius-card)}
+.city{overflow:hidden}
+.route ol{display:grid;gap:16px}
+.route li{padding:24px;border:1px solid #b1a68138;border-radius:var(--radius-card);background:linear-gradient(135deg,#2c3a2b55,#1c2320);gap:18px;transition:background var(--motion-smooth),border-color var(--motion-smooth),box-shadow var(--motion-smooth)}
+.route li:hover,.route li:focus-within{background:linear-gradient(135deg,#34443077,#252c25);border-color:#c6b68280;box-shadow:0 8px 24px #0003}
+.route .number{display:grid;place-items:center;align-self:start;width:42px;height:42px;border:1px solid #a9b08b50;border-radius:var(--radius-pill);background:#a7b1860d;font-size:23px}
+.route h3{margin:10px 0;font-size:28px}
+.route li :global(.eyebrow){margin:0}
+.route .creator{margin:8px 0 10px}
+.route .note{margin:10px 0 12px;line-height:1.8}
+.route button{display:inline-flex;align-items:center;min-height:44px;border:1px solid #c1ad794f;border-radius:var(--radius-pill);background:#c1ad790a;padding:9px 14px;font-size:12px;line-height:1.7;gap:8px;transition:background var(--motion-fast),border-color var(--motion-fast)}
+.route button:hover,.route button:focus-visible{background:#c1ad7922;border-color:#ddc792}
+.route .credits{margin-top:8px}
+.route .credits summary{padding-block:10px}
+@media(max-width:760px){.route li{padding:20px;gap:12px;grid-template-columns:32px minmax(0,1fr)}.route .number{width:30px;height:30px;font-size:20px}.route h3{font-size:26px}}
+

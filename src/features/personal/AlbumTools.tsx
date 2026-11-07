@@ -5,7 +5,7 @@ import { usePersonalArchive } from './context';
 import { coverStore, type CoverStorage } from './images';
 import { useMedia } from './MediaContext';
 import { changeAlbumCover, uploadAlbumCover } from './covers';
-import { findKnown } from '../../services/catalog';
+import { withKnownArtwork, findKnown } from '../../services/catalog';
 import type { AlbumFields, CommandResult, PersonalAlbum } from './types';
 import styles from './Personal.module.css';
 
@@ -34,9 +34,10 @@ export function AlbumCover({ album }: { album: PersonalAlbum }) {
     if (imageId) void media.get(imageId).then(blob => { if (active && blob) { url = URL.createObjectURL(blob); setImage({ id: imageId, url }); } else if (active) setMissing(true); }).catch(() => { if (active) setMissing(true); });
     return () => { active = false; if (url) URL.revokeObjectURL(url); };
   }, [imageId,media]);
-  const savedWork = album.cover.kind === 'work' ? data.entries[album.cover.workId]?.work : undefined;
+  const automaticId = album.cover.kind === 'none' ? album.workIds.find(id => { const saved = data.entries[id]?.work; return saved && withKnownArtwork(saved).image; }) : undefined;
+  const savedWork = album.cover.kind === 'work' ? data.entries[album.cover.workId]?.work : automaticId ? data.entries[automaticId]?.work : undefined;
   const known = savedWork ? findKnown(savedWork.category, savedWork.id) : undefined;
-  const work = savedWork?.image ? savedWork : known?.image ? known : savedWork;
+  const work = savedWork ? withKnownArtwork(savedWork.image ? savedWork : known?.image ? known : savedWork) : undefined;
   return <div className={`${styles.cover} ${work ? styles.workCover : ''}`} style={accentStyle(album.accent)}>{imageId && image?.id === imageId && !missing ? <img src={image.url} alt={`Uploaded cover for ${album.title}`} loading="lazy" decoding="async" onError={() => setMissing(true)}/> : work ? <ItemImage work={work} context="album"/> : <p>{missing ? 'Cover unavailable in this browser' : imageId ? 'Opening local cover…' : 'A collection of experiences'}</p>}</div>;
 }
 export async function removeAlbumImage(album: PersonalAlbum, storage:CoverStorage=coverStore) { if (album.cover.kind === 'upload') await storage.remove(album.cover.imageId); }
@@ -49,7 +50,7 @@ export function CoverEditor({ album }: { album: PersonalAlbum }) {
     catch { setMessage('Could not update cover. Your previous cover is unchanged.'); }
     finally { setBusy(false); }
   };
-  return <section className={styles.panel} aria-busy={busy}><h2>Album cover</h2><p>Changes are saved immediately. No need to save the album form again.</p><label htmlFor={`${id}-cover`}>Choose a work from this album</label><select id={`${id}-cover`} disabled={busy || !album.workIds.length} value={album.cover.kind === 'work' ? album.cover.workId : ''} onChange={e => void update(e.target.value ? { kind: 'work', workId: e.target.value } : { kind: 'none' })}><option value="">{album.cover.kind === 'upload' ? 'Custom uploaded cover' : 'No work selected'}</option>{album.workIds.map(workId => <option key={workId} value={workId}>{data.entries[workId].work.title}</option>)}</select>{!album.workIds.length && <p>Add a work to this album to select its artwork, or upload your own image below.</p>}
+  return <section className={styles.panel} aria-busy={busy}><h2>Album cover</h2><p>Choose a cover, or let the first illustrated work introduce your album. Changes are saved immediately.</p><label htmlFor={`${id}-cover`}>Choose a work from this album</label><select id={`${id}-cover`} disabled={busy || !album.workIds.length} value={album.cover.kind === 'work' ? album.cover.workId : ''} onChange={e => void update(e.target.value ? { kind: 'work', workId: e.target.value } : { kind: 'none' })}><option value="">{album.cover.kind === 'upload' ? 'Custom uploaded cover' : 'Automatic · first illustrated work'}</option>{album.workIds.map(workId => <option key={workId} value={workId}>{data.entries[workId].work.title}</option>)}</select>{!album.workIds.length && <p>Add a work to this album to select its artwork, or upload your own image below.</p>}
     <p><label htmlFor={`${id}-upload`}>Upload a local cover (JPEG, PNG or WebP · up to 2 MB)</label></p><input id={`${id}-upload`} type="file" accept="image/jpeg,image/png,image/webp" disabled={busy} onChange={async event => {
       const file = event.target.files?.[0]; event.target.value = ''; if (!file) return; setBusy(true); setMessage('Validating and saving cover…');
       try { const result = await uploadAlbumCover(repository, album, file,media); setMessage(result.ok ? (cloud?'Cover saved to your account.':'Cover stored only in this browser.') : result.error ?? 'Could not save cover.'); }

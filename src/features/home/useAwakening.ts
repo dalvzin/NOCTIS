@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const INTRO_SESSION_KEY='noctis.home.awakened.v1';
+export const INTRO_VISIT_KEY='noctis.home.intro-seen.v1';
 export type AwakeningPhase='darkness'|'wordmark'|'opening'|'assembling'|'ready';
-function seen(){try{return sessionStorage.getItem(INTRO_SESSION_KEY)==='seen';}catch{return false;}}
-function remember(){try{sessionStorage.setItem(INTRO_SESSION_KEY,'seen');}catch{/* Sem armazenamento, a entrada continua utilizável e pode ser pulada. */}}
+function seen(){try{if(sessionStorage.getItem(INTRO_SESSION_KEY)==='seen')return true;}catch{/* Try the persistent preference. */}try{return localStorage.getItem(INTRO_VISIT_KEY)==='seen';}catch{return false;}}
+function remember(){try{sessionStorage.setItem(INTRO_SESSION_KEY,'seen');}catch{/* Navigation does not depend on storage. */}try{localStorage.setItem(INTRO_VISIT_KEY,'seen');}catch{/* Skip remains available. */}}
 function deviceReduced(){return typeof window!=='undefined'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;}
 
 export function useAwakening(reduced:boolean|null){

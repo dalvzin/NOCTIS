@@ -1,0 +1,68 @@
+{
+  "mobilePages": [
+    {
+      "contentsAboveReading": true,
+      "controlsInBook": false,
+      "scrollWidth": 375,
+      "status": "Page 1 of 4Introduction",
+      "width": 390
+    },
+    {
+      "contentsAboveReading": true,
+      "controlsInBook": false,
+      "scrollWidth": 375,
+      "status": "Page 2 of 4Introduction",
+      "width": 390
+    },
+    {
+      "contentsAboveReading": true,
+      "controlsInBook": false,
+      "scrollWidth": 375,
+      "status": "Page 3 of 4The story",
+      "width": 390
+    },
+    {
+      "contentsAboveReading": true,
+      "controlsInBook": false,
+      "scrollWidth": 375,
+      "status": "Page 4 of 4The story",
+      "width": 390
+    }
+  ],
+  "narrow320": {
+    "inputs": [
+      223,
+      223
+    ],
+    "scrollWidth": 305,
+    "width": 320
+  },
+  "relocatedStates": {
+    "albums": [
+      {
+        "checked": true,
+        "title": "Manuscript — isolated QA"
+      }
+    ],
+    "inBook": false,
+    "rating": "4.5",
+    "savedButtons": [
+      {
+        "pressed": "true",
+        "text": "Saved"
+      },
+      {
+        "pressed": "true",
+        "text": "Want to Experience ✓"
+      }
+    ]
+  },
+  "checks": [
+    "Contents appear before the reading area.",
+    "The book has two spreads / four reading pages. No rating, album form or destination block is inside it.",
+    "Archive shortcut focuses #frankenstein-archive.",
+    "Existing QA saved/wanted/rating/album state was read on localhost and survived reload. No personal values were changed.",
+    "Desktop 1440x1000 and mobile 390x844 / 320x740 reviewed.",
+    "Automated checks: 302 tests / 21 files; TypeScript, lint and production build passed."
+  ]
+}

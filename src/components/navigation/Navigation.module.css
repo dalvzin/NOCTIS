@@ -17,3 +17,30 @@
 .roomNumber { display:inline-block; width:30px; color:var(--bronze); font-size:10px; letter-spacing:1px; }
 .links .localNote { margin-top:var(--space-6); padding-top:var(--space-4); border-top:1px solid var(--line); font-size:12px; line-height:1.8; color:var(--muted); }
 @media(max-width:600px) { .discover,.divider,.actions kbd { display:none; } .actions { gap:var(--space-1); } .brand { font-size:24px; } .subbrand { font-size:7px; letter-spacing:1.7px; } .header { gap:var(--space-2); } }
+
+/* Short, functional motion; the menu marker grows from its top edge. */
+.actions button{border-radius:var(--radius-pill);transition:background var(--motion-fast),color var(--motion-fast),box-shadow var(--motion-fast)}
+.actions button:hover,.actions button:focus-visible{background:#b3a18114;box-shadow:inset 0 0 0 1px #b3a18126}
+.actions button svg{transition:transform var(--motion-smooth) var(--ease-ui)}
+.actions kbd{border-radius:6px}
+.discover{position:relative;padding-block:12px}
+.discover[aria-current=page]{text-decoration:none}
+.discover::after{content:'';position:absolute;inset:auto 0 5px;height:1px;background:var(--bronze);transform:scaleX(0);transform-origin:left;transition:transform var(--motion-smooth) var(--ease-ui)}
+.discover:hover::after,.discover:focus-visible::after,.discover[aria-current=page]::after{transform:scaleX(1)}
+.discover svg{transition:transform var(--motion-smooth) var(--ease-ui)}
+.discover:hover svg,.discover:focus-visible svg{transform:translate(2px,-2px)}
+.searchTrigger svg{transform-origin:center}
+.searchTrigger:hover svg,.searchTrigger:focus-visible svg{transform:scale(1.08) rotate(-8deg)}
+.searchTrigger:hover svg circle,.searchTrigger:focus-visible svg circle{stroke-dasharray:60;animation:lens-reveal .48s ease-out both}
+@keyframes lens-reveal{from{stroke-dashoffset:60;opacity:.45}to{stroke-dashoffset:0;opacity:1}}
+.menuTrigger svg path{transition:transform var(--motion-smooth) var(--ease-ui)}
+.menuTrigger:hover svg path:first-child,.menuTrigger:focus-visible svg path:first-child{transform:translateX(2px)}
+.menuTrigger:hover svg path:last-child,.menuTrigger:focus-visible svg path:last-child{transform:translateX(-2px)}
+.links a{position:relative;border-left-width:0;border-radius:var(--radius-control);padding-left:23px;transition:background var(--motion-fast),color var(--motion-fast)}
+.links a::before{content:'';position:absolute;left:10px;top:12px;bottom:12px;width:2px;border-radius:var(--radius-pill);background:var(--bronze);opacity:0;transform:scaleY(0);transform-origin:top;transition:transform var(--motion-smooth) var(--ease-ui),opacity var(--motion-fast)}
+.links a:hover::before,.links a:focus-visible::before,.links a[aria-current=page]::before,.links .relatedActive::before{opacity:1;transform:scaleY(1)}
+.links a>span,.links a>svg{transition:transform var(--motion-smooth) var(--ease-ui)}
+.links a:hover>span,.links a:focus-visible>span{transform:translateX(3px)}
+.links a:hover>svg,.links a:focus-visible>svg{transform:translate(2px,-2px)}
+@media(prefers-reduced-motion:reduce){.actions *,.links *{animation:none!important;transition:none!important;transform:none!important}.discover::after{transition:none!important}}
+html[data-motion=reduce] .actions *,html[data-motion=reduce] .links *{animation:none!important;transition:none!important;transform:none!important}html[data-motion=reduce] .discover::after{transition:none!important}

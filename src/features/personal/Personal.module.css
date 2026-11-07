@@ -55,3 +55,23 @@
 .contents>li>.row { margin-top:12px; }
 
 .actions button { min-height:var(--control-height); }
+
+.storageNote{font-size:12px;color:var(--muted);max-width:65ch;margin:0 0 24px;line-height:1.8}.storageNote summary{cursor:pointer;padding-block:10px;min-height:44px}.storageNote p{margin-top:4px}
+
+.tabs a{min-height:44px;display:inline-flex;align-items:center;line-height:1.5}
+
+.actions button{border-radius:var(--radius-control);transition:background var(--motion-fast),border-color var(--motion-fast),color var(--motion-fast)}
+.actions button:not(:disabled):hover{background:#b6a17e17;border-color:#b6a17e99}
+.compactActions .row{gap:8px;align-items:center}
+.compactActions .row button{flex:0 1 auto;min-height:44px;padding:8px 11px;font-size:12px;line-height:1.5;border-radius:var(--radius-pill);white-space:normal}
+.compactActions .row>span{flex-basis:100%;font-size:11px;line-height:1.7;color:#cbbb9f;margin-top:3px}
+.compactActions small{font-size:10px;line-height:1.6;margin-top:7px}
+.albums .album,.panel{border-radius:var(--radius-card)}
+.album{box-shadow:0 8px 24px #0002;transition:border-color var(--motion-fast),background var(--motion-fast)}
+.album:hover{border-color:#b6a17e99;background-color:#ffffff04}
+.cover{border-radius:var(--radius-control);overflow:hidden}
+.panel{padding:24px;border:1px solid var(--line);background:#ffffff03;margin-block:24px}
+.tabs a{border-radius:var(--radius-pill);transition:background var(--motion-fast)}
+.tabs a:hover,.tabs a[aria-current=page]{background:#a58d7012}
+.storageNote{padding:8px 14px;border:1px solid var(--line);border-radius:var(--radius-control);background:#ffffff03}
+@media(max-width:500px){.compactActions .row button{flex:0 1 auto}.panel{padding:20px}}

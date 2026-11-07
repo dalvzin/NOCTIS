@@ -1,0 +1,144 @@
+{
+  "opening": {
+    "front": "hidden",
+    "lining": "visible",
+    "phase": "opening",
+    "scrollY": 0
+  },
+  "closed": {
+    "cover": [
+      {
+        "ready": true,
+        "src": "/artworks/book-84.jpg"
+      },
+      {
+        "ready": true,
+        "src": "/artworks/book-84.jpg"
+      }
+    ],
+    "phase": "closed"
+  },
+  "rapidTurn": {
+    "phase": "reading",
+    "selectionLength": 0,
+    "status": "Pages 3–4 of 6The story"
+  },
+  "sheet": {
+    "bookTransform": "none",
+    "phase": "turning",
+    "sheetTransform": "matrix3d(-0.872885, -0.00260054, 0.487919, 0, -0.00226998, 0.999997, 0.00126886, 0, -0.487921, 0, -0.872888, 0, 0, 0, 0, 1)"
+  },
+  "interruptedResize": {
+    "mobile": "true",
+    "phase": "reading",
+    "scrollWidth": 375,
+    "status": "Page 5 of 6The archive",
+    "width": 390
+  },
+  "mobileLeaves": [
+    {
+      "pages": 1,
+      "scrollWidth": 375,
+      "status": "Page 1 of 6Identity",
+      "width": 390,
+      "runningLabelSize": "10px"
+    },
+    {
+      "pages": 1,
+      "scrollWidth": 375,
+      "status": "Page 2 of 6Identity",
+      "width": 390,
+      "runningLabelSize": "10px"
+    },
+    {
+      "pages": 1,
+      "scrollWidth": 375,
+      "status": "Page 3 of 6The story",
+      "width": 390,
+      "runningLabelSize": "10px"
+    },
+    {
+      "pages": 1,
+      "scrollWidth": 375,
+      "status": "Page 4 of 6The story",
+      "width": 390,
+      "runningLabelSize": "10px"
+    },
+    {
+      "pages": 1,
+      "scrollWidth": 375,
+      "status": "Page 5 of 6The archive",
+      "width": 390,
+      "runningLabelSize": "10px"
+    },
+    {
+      "pages": 1,
+      "scrollWidth": 375,
+      "status": "Page 6 of 6The archive",
+      "width": 390,
+      "runningLabelSize": "10px"
+    }
+  ],
+  "mobileBody": {
+    "font": "17px",
+    "lineHeight": "32.3px",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  "tablet": {
+    "mobile": "false",
+    "pages": 2,
+    "phase": "reading",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  "narrow320": {
+    "scrollWidth": 305,
+    "status": "Page 1 of 6Identity",
+    "width": 320
+  },
+  "otherBook": {
+    "manuscript": false,
+    "title": "Pride and Prejudice"
+  },
+  "archivePersistence": {
+    "buttons": [
+      {
+        "pressed": "true",
+        "text": "Saved"
+      },
+      {
+        "pressed": "true",
+        "text": "Want to Experience ✓"
+      }
+    ],
+    "membership": [
+      {
+        "checked": true,
+        "label": "Manuscript — isolated QA"
+      }
+    ],
+    "rating": "4.5",
+    "source": [
+      {
+        "href": "https://www.gutenberg.org/ebooks/84",
+        "text": "View Book Details ↗ (opens in new tab)"
+      }
+    ]
+  },
+  "reduced": {
+    "animations": false,
+    "cover": false,
+    "phase": "reading",
+    "reduced": "true"
+  },
+  "notes": [
+    "Functional mutations ran only on http://localhost:5180, initially verified empty. Main archive origin http://127.0.0.1:5180 was not used for save/rating/album mutations.",
+    "QA album: Manuscript — isolated QA. Kept only on that separate origin. No storage was cleared.",
+    "Discover and filtered Search entry verified; browser Back preserved /search?q=Frankenstein&format=Novel.",
+    "Closed cover and plate use /artworks/book-84.jpg; opening front face hidden after crossing spine, lining visible.",
+    "Desktop double click advanced one spread; no text selection after fix.",
+    "Reduced motion opened immediately, no animated descendants. QA preference restored to device setting.",
+    "18 new automated tests plus regression: 300 passing tests in 21 files."
+  ]
+}

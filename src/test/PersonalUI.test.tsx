@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { App } from '../app/App';
+import { manuscriptSpread } from './manuscriptHelpers';
 import { LocalArchiveRepository } from '../features/personal/repository';
 import { PersonalProvider } from '../features/personal/context';
 import { localCatalog } from '../services/catalog';
@@ -18,10 +19,11 @@ function fixture(raw?: string) {
   return { repo:create(), create, values };
 }
 function open(repo: LocalArchiveRepository, path: string) { return render(<PersonalProvider repository={repo}><MemoryRouter initialEntries={[path]}><App/></MemoryRouter></PersonalProvider>); }
-const book = localCatalog.find(work=>work.category==='books'&&work.source.kind==='demo')!;
+const book = localCatalog.find(work=>work.id==='gutenberg:books:84')!;
 describe('Personal archive UI', () => {
   it('saves, wishes, half-star rates via a labeled keyboard control, and survives a fresh repository', async () => {
     const f=fixture(), user=userEvent.setup(); open(f.repo,workPath(book));
+    await manuscriptSpread(user,'archive');
     const actions=screen.getByRole('region',{name:`Personal archive: ${book.title}`});
     await user.click(within(actions).getByRole('button',{name:'Save'}));
     await user.click(within(actions).getByRole('button',{name:'Want to Experience'}));
@@ -60,7 +62,7 @@ describe('Personal archive UI', () => {
   it('opens a retained provider snapshot while its provider is offline', async () => {
     const f=fixture(); const snapshot={...book,id:'openlibrary:books:OL999W',legacyId:undefined,title:'An offline snapshot',source:{kind:'live' as const,provider:'openlibrary',externalId:'OL999W',label:'Open Library',url:'https://openlibrary.org/works/OL999W',attribution:'Source metadata: Open Library.'}};
     await f.repo.dispatch({type:'save',work:snapshot,value:true}); vi.mocked(fetch).mockRejectedValueOnce(new Error('offline')); open(f.create(),workPath(snapshot));
-    expect(screen.getByRole('heading',{level:1,name:snapshot.title})).toBeInTheDocument(); await waitFor(()=>expect(screen.getByText(/Additional source details are unavailable/)).toBeInTheDocument()); expect(screen.getByRole('button',{name:'Saved'})).toHaveAttribute('aria-pressed','true');
+    expect(screen.getByRole('heading',{level:1,name:snapshot.title})).toBeInTheDocument(); await waitFor(()=>expect(screen.getByText(/Additional source details are unavailable/)).toBeInTheDocument()); await manuscriptSpread(userEvent.setup(),'archive'); expect(screen.getByRole('button',{name:'Saved'})).toHaveAttribute('aria-pressed','true');
   });
   it('shows an honest unavailable state for a local album URL on another browser', () => { open(fixture().repo,'/albums/other-browser'); expect(screen.getByRole('heading',{level:1})).toHaveTextContent('Album unavailable in this browser'); });
 });

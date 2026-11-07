@@ -1,0 +1,406 @@
+{
+  "samples": [
+    {
+      "room": "books",
+      "width": 1365,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 657,
+        "dialogScrollWidth": 598,
+        "dialogWidth": 598,
+        "height": 657,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 1350,
+        "pageWidth": 1365,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View Book Details ↗ (opens in new tab)"
+        ],
+        "pageWidth": 1365,
+        "ratingControls": 1,
+        "scrollWidth": 1350
+      }
+    },
+    {
+      "room": "films",
+      "width": 1365,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 631,
+        "dialogScrollWidth": 598,
+        "dialogWidth": 598,
+        "height": 631,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 1350,
+        "pageWidth": 1365,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View on TMDB ↗ (opens in new tab)",
+          "View Film Details ↗ (opens in new tab)",
+          "View image source (opens in new tab) ↗"
+        ],
+        "pageWidth": 1365,
+        "ratingControls": 1,
+        "scrollWidth": 1350
+      }
+    },
+    {
+      "room": "games",
+      "width": 1365,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 657,
+        "dialogScrollWidth": 598,
+        "dialogWidth": 598,
+        "height": 657,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 1350,
+        "pageWidth": 1365,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View Game Details ↗ (opens in new tab)",
+          "View image source (opens in new tab) ↗"
+        ],
+        "pageWidth": 1365,
+        "ratingControls": 1,
+        "scrollWidth": 1350
+      }
+    },
+    {
+      "room": "music",
+      "width": 1365,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 667,
+        "dialogScrollWidth": 598,
+        "dialogWidth": 598,
+        "height": 667,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 1350,
+        "pageWidth": 1365,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View Artist Discography ↗ (opens in new tab)"
+        ],
+        "pageWidth": 1365,
+        "ratingControls": 1,
+        "scrollWidth": 1350
+      }
+    },
+    {
+      "room": "photography",
+      "width": 1365,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 657,
+        "dialogScrollWidth": 598,
+        "dialogWidth": 598,
+        "height": 657,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 1350,
+        "pageWidth": 1365,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View Photography Source ↗ (opens in new tab)"
+        ],
+        "pageWidth": 1365,
+        "ratingControls": 1,
+        "scrollWidth": 1350
+      }
+    },
+    {
+      "room": "art",
+      "width": 1365,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 631,
+        "dialogScrollWidth": 598,
+        "dialogWidth": 598,
+        "height": 631,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 1350,
+        "pageWidth": 1365,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View Museum Collection ↗ (opens in new tab)",
+          "Description metadata license: CC BY 4.0 (opens in new tab)",
+          "View image source (opens in new tab) ↗"
+        ],
+        "pageWidth": 1365,
+        "ratingControls": 1,
+        "scrollWidth": 1350
+      }
+    },
+    {
+      "room": "books",
+      "width": 390,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 673,
+        "dialogScrollWidth": 341,
+        "dialogWidth": 341,
+        "height": 673,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 375,
+        "pageWidth": 390,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View Book Details ↗ (opens in new tab)"
+        ],
+        "pageWidth": 390,
+        "ratingControls": 1,
+        "scrollWidth": 375
+      }
+    },
+    {
+      "room": "films",
+      "width": 390,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 647,
+        "dialogScrollWidth": 341,
+        "dialogWidth": 341,
+        "height": 647,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 375,
+        "pageWidth": 390,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View on TMDB ↗ (opens in new tab)",
+          "View Film Details ↗ (opens in new tab)",
+          "View image source (opens in new tab) ↗"
+        ],
+        "pageWidth": 390,
+        "ratingControls": 1,
+        "scrollWidth": 375
+      }
+    },
+    {
+      "room": "games",
+      "width": 390,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 673,
+        "dialogScrollWidth": 341,
+        "dialogWidth": 341,
+        "height": 673,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 375,
+        "pageWidth": 390,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View Game Details ↗ (opens in new tab)",
+          "View image source (opens in new tab) ↗"
+        ],
+        "pageWidth": 390,
+        "ratingControls": 1,
+        "scrollWidth": 375
+      }
+    },
+    {
+      "room": "music",
+      "width": 390,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 751,
+        "dialogScrollWidth": 341,
+        "dialogWidth": 341,
+        "height": 751,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 375,
+        "pageWidth": 390,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View Artist Discography ↗ (opens in new tab)"
+        ],
+        "pageWidth": 390,
+        "ratingControls": 1,
+        "scrollWidth": 375
+      }
+    },
+    {
+      "room": "photography",
+      "width": 390,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 699,
+        "dialogScrollWidth": 341,
+        "dialogWidth": 341,
+        "height": 699,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 375,
+        "pageWidth": 390,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View Photography Source ↗ (opens in new tab)"
+        ],
+        "pageWidth": 390,
+        "ratingControls": 1,
+        "scrollWidth": 375
+      }
+    },
+    {
+      "room": "art",
+      "width": 390,
+      "preview": {
+        "bodyLocked": true,
+        "contentHeight": 647,
+        "dialogScrollWidth": 341,
+        "dialogWidth": 341,
+        "height": 647,
+        "image": [
+          {
+            "fit": "contain",
+            "ready": true
+          }
+        ],
+        "pageScrollWidth": 375,
+        "pageWidth": 390,
+        "ratingControls": 0
+      },
+      "full": {
+        "bodyUnlocked": true,
+        "editorial": true,
+        "links": [
+          "View Museum Collection ↗ (opens in new tab)",
+          "Description metadata license: CC BY 4.0 (opens in new tab)",
+          "View image source (opens in new tab) ↗"
+        ],
+        "pageWidth": 390,
+        "ratingControls": 1,
+        "scrollWidth": 375
+      }
+    }
+  ],
+  "intermediate": {
+    "preview": {
+      "dialogScrollWidth": 598,
+      "dialogWidth": 598,
+      "scrollWidth": 753,
+      "width": 768
+    },
+    "full": {
+      "scrollWidth": 753,
+      "width": 768
+    }
+  },
+  "narrow320": {
+    "work": "Apollo: Atmospheres & Soundtracks",
+    "pageWidth": 320,
+    "pageScrollWidth": 305,
+    "dialogWidth": 256,
+    "dialogScrollWidth": 256,
+    "dialogHeight": 706,
+    "contentHeight": 832,
+    "externalDestinationLinks": 0
+  },
+  "manualChecks": [
+    "Save and Want in preview; full record and reload retain both.",
+    "Rating 4.5 selected in full record; reload and My Archive retain it. Original unsaved/unwanted/unrated state restored afterwards.",
+    "Existing memberships in Covers QA 04.1 and Stage 06.3 — Visual QA present in preview and full record; untouched. Album creation and membership changes covered in automated fixtures.",
+    "Tab and Shift+Tab cycle through visible controls; closed disclosure contents excluded; Escape restores trigger focus and body scrolling.",
+    "Internal Reduce motion makes dialog animation none; preference restored to Follow device preference.",
+    "Search query and format filter retained on return; After Hours return retained.",
+    "No external destination blocks in preview; image attribution remains in its own disclosure.",
+    "HUD and exhibition preserved; no deploy."
+  ]
+}

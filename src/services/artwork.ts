@@ -1,5 +1,5 @@
 import type { Work } from '../types/catalog';
-import { safeExternalUrl } from './catalogUtils';
+import { safeArtworkUrl } from './catalogUtils';
 export type ArtworkContext = 'card' | 'preview' | 'detail' | 'thumbnail' | 'album';
 type Image = NonNullable<Work['image']>;
 const ratios = { books:2/3, films:2/3, games:4/3, music:1, photography:4/3, art:1 };
@@ -8,7 +8,7 @@ const ratios = { books:2/3, films:2/3, games:4/3, music:1, photography:4/3, art:
 export function artworkUrls(image: Work['image'], context: ArtworkContext): string[] {
   if (!image) return [];
   const urls = context === 'detail' ? [image.url, image.thumbnailUrl] : [image.thumbnailUrl, image.url];
-  return [...new Set(urls.map(safeExternalUrl).filter((url): url is string => !!url))];
+  return [...new Set(urls.map(safeArtworkUrl).filter((url): url is string => !!url))];
 }
 export function artworkRatio(work: Work): number {
   const { width, height } = artworkMetadata(work.image);
@@ -21,5 +21,5 @@ export function artworkMetadata(image: Work['image']): Partial<Image> {
   const kinds = ['cover','poster','key-art','photograph','artwork'];
   return { provider:typeof image.provider === 'string' ? image.provider.slice(0,200) : undefined,
     kind:image.kind && kinds.includes(image.kind) ? image.kind : undefined,
-    width:dimension(image.width), height:dimension(image.height), thumbnailUrl:safeExternalUrl(image.thumbnailUrl) ?? undefined };
+    width:dimension(image.width), height:dimension(image.height), thumbnailUrl:safeArtworkUrl(image.thumbnailUrl) ?? undefined };
 }

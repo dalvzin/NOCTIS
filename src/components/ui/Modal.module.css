@@ -11,3 +11,8 @@
 @media(max-width:600px) { .search { margin-inline:auto; } .side .heading { margin-bottom:var(--space-4); } .side .content p { margin-top:var(--space-4); } }
 @media(prefers-reduced-motion:reduce) { .dialog[open] { animation:none; } }
 html[data-motion=reduce] .dialog[open] { animation:none; }
+
+.dialog{border-radius:var(--radius-panel);box-shadow:0 24px 90px #0006}
+.heading button{border-radius:var(--radius-pill);transition:background var(--motion-fast)}
+.heading button:hover{background:#b5a18114}
+.side{border-radius:var(--radius-panel) 0 0 var(--radius-panel)}

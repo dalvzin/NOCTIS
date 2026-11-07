@@ -4,3 +4,15 @@ html[data-motion=reduce] *,html[data-motion=reduce] *::before,html[data-motion=r
 .storageNotice { position:relative; z-index:50; margin:100px 5vw -90px; padding:18px; border:1px solid #be9283; background:#22201e; color:#f0ded4; }
 
 .button{min-height:var(--control-height);line-height:1.5}footer{gap:var(--space-8)}
+
+/* Shared comfort and motion scale. Artworks retain their original proportions. */
+:root{--radius-control:12px;--radius-card:20px;--radius-panel:24px;--radius-pill:999px;--motion-fast:180ms;--motion-smooth:260ms;--ease-ui:cubic-bezier(.2,.65,.25,1)}
+:where(button,input:not([type=checkbox]):not([type=radio]),select,textarea){border-radius:var(--radius-control)}
+input[type=checkbox],input[type=radio]{accent-color:var(--bronze)}
+.button{border-radius:var(--radius-control);padding:12px 18px;gap:20px;transition:background var(--motion-fast),border-color var(--motion-fast),box-shadow var(--motion-fast)}
+.button:hover{box-shadow:0 4px 16px #0002}
+.skip,.storageNotice{border-radius:var(--radius-control)}
+summary{border-radius:var(--radius-control)}
+html{scroll-behavior:smooth}
+html[data-motion=reduce]{scroll-behavior:auto!important}
+main [id]{scroll-margin-top:calc(var(--header-height) + 24px)}

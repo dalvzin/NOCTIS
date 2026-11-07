@@ -105,3 +105,9 @@
  .tileCopy .arrow { position:absolute; right:0; bottom:0; }
  .tileCopy p { max-width:none; padding-right:30px; }
 }
+
+/* The opening wordmark yields to the archive stamp; the header keeps the brand. */
+.archiveStamp{font:italic 24px/1.2 Georgia;color:var(--bronze);margin:0;transition:opacity .4s}.archiveStamp span{font:8px/1.6 Arial;letter-spacing:1px;color:var(--muted);display:block;margin-top:8px}.entrance:not([data-phase=ready]) .archiveStamp{opacity:0}.entrance[data-phase=ready] .wordmark{opacity:0}.entrance[data-phase=ready] .archiveStamp{transition-delay:.4s}.tile:hover{border-color:#c6af8890}.tile:focus-visible{border-color:var(--ivory)}@media(max-width:430px){.archiveStamp{font-size:20px}.archiveStamp span{font-size:7px;max-width:95px}}
+
+.tile{border-radius:var(--radius-card)}
+.arrow{border-radius:var(--radius-pill)}

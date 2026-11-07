@@ -6,7 +6,7 @@ import { catalogMiddleware } from './catalog.mjs';
 
 const root = fileURLToPath(new URL('../dist/', import.meta.url));
 const api = catalogMiddleware();
-const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png' };
+const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.webp':'image/webp', '.json':'application/json' };
 createServer((req, res) => api(req, res, async () => {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);

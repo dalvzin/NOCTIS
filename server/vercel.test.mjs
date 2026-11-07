@@ -16,7 +16,7 @@ describe('Vercel production preparation',()=>{
  it.each(['/discover','/search','/archive','/my-archive','/books/gutenberg:books:84','/albums/local-id'])('serves the SPA fallback for %s',path=>{
   expect(spa.test(path)).toBe(true);expect(config.rewrites.at(-1).destination).toBe('/index.html');
  });
- it.each(['/api','/api/catalog/status','/api/catalog/search','/api/unknown','/assets/missing.js'])('does not turn %s into HTML',path=>expect(spa.test(path)).toBe(false));
+ it.each(['/api','/api/catalog/status','/api/catalog/search','/api/unknown','/assets/missing.js','/artworks/missing.jpg'])('does not turn %s into HTML',path=>expect(spa.test(path)).toBe(false));
  it('builds dist and routes the API before the SPA',()=>{
   expect(config.outputDirectory).toBe('dist');expect(config.installCommand).toBe('npm ci');
   expect(config.rewrites[0]).toEqual({source:'/api/catalog/:path*',destination:'/api/catalog?__noctis_route=:path*'});

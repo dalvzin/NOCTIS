@@ -5,15 +5,11 @@
 .ritual{font:italic 22px/1.5 Georgia;color:var(--bronze)}.description{font-size:14px;line-height:1.9;color:var(--muted);max-width:380px;margin:24px 0 32px}.demo{font-size:8px;letter-spacing:1.7px;color:var(--muted);margin-top:40px}
 .stage{position:relative;max-width:480px;width:100%;justify-self:center}.scene{position:relative;perspective:1000px;isolation:isolate}.composition{transform-origin:center;box-shadow:0 30px 70px #0006}.sceneLabel{position:absolute;bottom:40px;left:22px;color:var(--ivory);font-size:8px;letter-spacing:2px;background:#111113b8;padding:9px 12px}
 .replay{display:flex;align-items:center;gap:9px;margin:20px 0 0 auto;padding:10px 0;font-size:10px;color:var(--muted);min-height:40px}
-.leaf,.leafTwo{display:none;pointer-events:none}
-.books .leaf,.books .leafTwo{display:block;position:absolute;inset:15% 25% 20% 25%;background:linear-gradient(90deg,#8c795c,#c2b191 70%,#8c795c);transform-origin:left;box-shadow:4px 0 16px #0003;opacity:0}
-.books .playing .leaf{animation:pageTurn 1.1s ease-in-out both}.books .playing .leafTwo{animation:pageTurn 1.1s .12s ease-in-out both}
 .films .playing .composition{animation:crt .95s ease-out both}
 .games .playing .composition{animation:boot .9s ease-out both}.games .playing .sceneLabel{animation:signal 1.1s ease-out both}
 .music .playing [data-part=record]{transform-origin:240px 270px;animation:vinyl 1.25s cubic-bezier(.2,.7,.3,1) both}
 .photography .playing .composition{animation:develop 1.25s ease-out both}
 .art .playing .composition{animation:brush 1.1s cubic-bezier(.2,.6,.3,1) both}
-@keyframes pageTurn{0%{opacity:0;transform:rotateY(0)}12%{opacity:1}75%{opacity:1;transform:rotateY(-145deg)}100%{opacity:0;transform:rotateY(-170deg)}}
 @keyframes crt{0%{transform:scaleY(.008) scaleX(.7);opacity:.1}35%{transform:scaleY(.025) scaleX(1);opacity:.7}100%{transform:scale(1);opacity:1}}
 @keyframes boot{0%{opacity:0;transform:scale(.97);clip-path:inset(45%)}100%{opacity:1;transform:scale(1);clip-path:inset(0)}}
 @keyframes signal{0%,50%{opacity:0}100%{opacity:1}}
@@ -23,3 +19,8 @@
 .still .composition,.still .sceneLabel{animation:none!important;transform:none;filter:none;clip-path:none;opacity:1}.still .leaf,.still .leafTwo{display:none}
 @media(max-width:750px){.entrance{grid-template-columns:1fr;padding-block:45px;gap:35px}.copy h1{font-size:clamp(42px,9vw,65px)}.stage{max-width:400px}.composition{max-height:440px;overflow:hidden}.demo{margin-top:25px}.ritual{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.playing *{animation:none!important;transform:none!important;filter:none!important;clip-path:none!important}.leaf,.leafTwo,.replay{display:none!important}}
+
+.pilotBooks{background:radial-gradient(ellipse at 20% 50%,#21322b55,transparent 65%);padding-block:48px}.pilotBooks .copy h1{font-size:clamp(44px,5vw,72px)}.pilotBooks .demo{font-size:10px}.bookPlate{display:grid;grid-template-columns:minmax(0,1fr) 112px;gap:20px;background:#e4dac5;color:#2b2b25;padding:28px;box-shadow:0 24px 70px #0006;position:relative}.bookPlate:after{content:'';position:absolute;inset:7px;border:1px solid #71654e25;pointer-events:none}.bookPlate figure{--stage-height:280px;--muted:#5b574f}.bookPlate figure>div{background:transparent}.bookMargin{border-left:1px solid #94866a65;padding-left:16px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}.bookMargin>span{font:9px/1.7 Arial;letter-spacing:1px;color:#625842}.bookMargin p{font:italic 15px/1.7 Georgia;margin:0}.mosaicEcho{position:absolute;inset:0 0 0 40%;opacity:.09;z-index:-1;pointer-events:none;animation:echo-arrival 1s ease-out both}.mosaicEcho svg{width:100%;height:100%;object-fit:cover}@keyframes echo-arrival{from{opacity:.22}to{opacity:.09}}@media(max-width:850px){.bookPlate{padding:20px;gap:16px;grid-template-columns:minmax(0,1fr) 96px}.bookMargin p{font-size:14px}}@media(max-width:600px){.pilotBooks{padding-block:32px}.pilotBooks .copy h1{font-size:48px;margin:18px 0}.pilotBooks .ritual{font-size:19px}.pilotBooks .description{margin:12px 0 20px}.bookPlate figure{--stage-height:190px}.bookMargin p{font-size:13px}.pilotBooks .demo{margin-top:20px}.mosaicEcho{display:none}}@media(prefers-reduced-motion:reduce){.mosaicEcho{animation:none}}html[data-motion=reduce] .mosaicEcho{animation:none}
+
+.bookPlate{border-radius:14px}
+.bookPlate::after{border-radius:9px}

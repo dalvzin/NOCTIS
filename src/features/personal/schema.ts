@@ -1,6 +1,6 @@
 import { artworkMetadata } from '../../services/artwork';
 import type { Work } from '../../types/catalog';
-import { safeExternalUrl } from '../../services/catalogUtils';
+import { safeExternalUrl, safeArtworkUrl } from '../../services/catalogUtils';
 import { mergeDestinations } from '../../services/destinations';
 import type { ArchiveData } from './types';
 
@@ -23,7 +23,7 @@ export function compactWork(work: Work): Work {
     source: work.source.kind === 'demo' ? { kind: 'demo', provider: 'noctis', label: work.source.label.slice(0, 200) }
       : { kind: work.source.kind, provider: work.source.provider, externalId: work.source.externalId, label: work.source.label.slice(0, 200), url: safeExternalUrl(work.source.url), attribution: work.source.attribution.slice(0, 1500) },
     destinations: mergeDestinations(work.category, work.destinations).slice(0, 4),
-    image: work.image && safeExternalUrl(work.image.url) && safeExternalUrl(work.image.sourceUrl) ? { ...artworkMetadata(work.image), url: work.image.url, alt: work.image.alt.slice(0, 500), credit: work.image.credit.slice(0, 1000), rights: work.image.rights.slice(0, 500), sourceUrl: work.image.sourceUrl } : undefined,
+    image: work.image && safeArtworkUrl(work.image.url) && safeExternalUrl(work.image.sourceUrl) ? { ...artworkMetadata(work.image), url: work.image.url, alt: work.image.alt.slice(0, 500), credit: work.image.credit.slice(0, 1000), rights: work.image.rights.slice(0, 500), sourceUrl: work.image.sourceUrl } : undefined,
     mediaPreviews: [],
   };
 }
@@ -43,7 +43,7 @@ function validWork(value: unknown): value is Work {
   if (source.kind !== 'demo' && (!str(source.externalId, 300) || !str(source.attribution, 1500) || (source.url !== undefined && (!str(source.url, 3000) || !safeExternalUrl(source.url))))) return false;
   if (value.destinations !== undefined && (!Array.isArray(value.destinations) || value.destinations.length > 4 || mergeDestinations(value.category as Work['category'], value.destinations).length !== value.destinations.length)) return false;
   if (value.image !== undefined) {
-    if (!record(value.image) || !str(value.image.url, 3000) || !safeExternalUrl(value.image.url) || !str(value.image.sourceUrl, 3000) || !safeExternalUrl(value.image.sourceUrl) || !str(value.image.alt, 500) || !str(value.image.credit, 1000) || !str(value.image.rights, 500)) return false;
+    if (!record(value.image) || !str(value.image.url, 3000) || !safeArtworkUrl(value.image.url) || !str(value.image.sourceUrl, 3000) || !safeExternalUrl(value.image.sourceUrl) || !str(value.image.alt, 500) || !str(value.image.credit, 1000) || !str(value.image.rights, 500)) return false;
   }
   return true;
 }

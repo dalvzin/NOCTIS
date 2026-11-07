@@ -45,7 +45,8 @@ describe('Album covers',()=>{
     cleanup();render(<PersonalProvider repository={f.create()}><Editor/></PersonalProvider>); await screen.findByRole('img',{name:/Uploaded cover/});
     await user.selectOptions(screen.getByLabelText('Choose a work from this album'),curatedWorks[0].id);
     await screen.findByRole('img',{name:curatedWorks[0].image!.alt}); expect(blobs.size).toBe(0);
-    await user.click(screen.getByRole('button',{name:'Remove cover'})); await waitFor(()=>expect(screen.queryByRole('img')).not.toBeInTheDocument());
+    await user.click(screen.getByRole('button',{name:'Remove cover'})); await waitFor(()=>expect(screen.queryByRole('img',{name:/Uploaded cover/})).not.toBeInTheDocument());
+    expect(screen.getByRole('img',{name:curatedWorks[0].image!.alt})).toBeInTheDocument();
     expect(f.create().getSnapshot().data.albums[0].cover.kind).toBe('none');
   });
   it('preserves the old cover and removes the uncommitted Blob if metadata storage fails',async()=>{
@@ -56,7 +57,7 @@ describe('Album covers',()=>{
   it('keeps metadata unchanged if IndexedDB is full, and does not leak a success state',async()=>{
     const f=await fixture();vi.mocked(coverStore.put).mockRejectedValueOnce(new Error('Image storage is full.'));
     render(<PersonalProvider repository={f.repo}><Editor/></PersonalProvider>);await userEvent.upload(screen.getByLabelText(/Upload a local cover/),new File(['a'],'a.png',{type:'image/png'}));
-    expect(await screen.findByRole('status')).toHaveTextContent('Image storage is full.');expect(f.album().cover.kind).toBe('none');expect(screen.queryByRole('img')).not.toBeInTheDocument();
+    expect(await screen.findByRole('status')).toHaveTextContent('Image storage is full.');expect(f.album().cover.kind).toBe('none');expect(screen.queryByRole('img',{name:/Uploaded cover/})).not.toBeInTheDocument();
   });
   it('releases Blob URLs when a cover is removed and handles missing stored Blobs',async()=>{
     const f=await fixture();await f.repo.dispatch({type:'updateAlbum',id:f.id,fields:{cover:{kind:'upload',imageId:'missing'}}});render(<PersonalProvider repository={f.repo}><Editor/></PersonalProvider>);

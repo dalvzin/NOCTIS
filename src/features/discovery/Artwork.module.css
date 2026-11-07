@@ -19,3 +19,7 @@
 @media(max-width:600px) { .card { --stage-height:260px; } .detail { --stage-height:320px; } .preview { --stage-height:140px; } }
 
 .loading { position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:11px; }
+
+.card .stage{border-radius:calc(var(--radius-card) - 1px) calc(var(--radius-card) - 1px) 0 0}
+.preview .stage,.detail .stage{border-radius:var(--radius-control)}
+.thumbnail .stage,.album .stage{border-radius:10px}
