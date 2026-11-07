@@ -4,6 +4,7 @@ export type BookPhase = 'closed' | 'opening' | 'reading' | 'turning';
 export interface BookState { phase: BookPhase; page: number; target: number; direction: 1 | -1; revision: number }
 export type BookAction =
   | { type: 'open' }
+  | { type: 'replay' }
   | { type: 'settle'; revision?: number }
   | { type: 'go'; page: number; step: 1 | 2; reduced: boolean }
   | { type: 'adapt'; step: 1 | 2 };
@@ -14,6 +15,7 @@ export const initialBookState = (reduced: boolean): BookState => ({ phase: reduc
 
 /** Shared book detail state machine. Busy turns reject new input. */
 export function bookReducer(state: BookState, action: BookAction): BookState {
+  if (action.type === 'replay') return state.phase === 'reading' ? { ...initialBookState(false), revision:state.revision + 1 } : state;
   if (action.type === 'open') return state.phase === 'closed' ? { ...state, phase: 'opening', revision: state.revision + 1 } : state;
   if (action.type === 'settle') {
     if (action.revision !== undefined && action.revision !== state.revision) return state;
@@ -29,10 +31,12 @@ export function bookReducer(state: BookState, action: BookAction): BookState {
   return { phase: action.reduced ? 'reading' : 'turning', page: action.reduced ? target : state.page, target, direction: target > state.page ? 1 : -1, revision: state.revision + 1 };
 }
 
-export function useManuscriptBook(reduced: boolean) {
+export function useManuscriptBook(reduced: boolean, recordId?: string) {
+  const [seen] = useState(() => { try { return !!recordId && sessionStorage.getItem(`noctis.book.seen.${recordId}`) === 'yes'; } catch { return false; } });
   const [mobile, setMobile] = useState(() => window.matchMedia('(max-width: 760px)').matches);
-  const [state, dispatch] = useReducer(bookReducer, reduced, initialBookState);
+  const [state, dispatch] = useReducer(bookReducer, reduced || seen, initialBookState);
   const step: 1 | 2 = mobile ? 1 : 2;
+  useEffect(() => { if (recordId && state.phase === 'reading') { try { sessionStorage.setItem(`noctis.book.seen.${recordId}`, 'yes'); } catch { /* Session memory is optional; never touch personal archive data. */ } } }, [recordId, state.phase]);
   useEffect(() => {
     const query = window.matchMedia('(max-width: 760px)');
     const update = () => setMobile(query.matches);
@@ -52,5 +56,5 @@ export function useManuscriptBook(reduced: boolean) {
     return () => { clearTimeout(timer); document.removeEventListener('visibilitychange', settleHidden); };
   }, [state.phase, state.revision, mobile]);
   const go = (page: number) => dispatch({ type: 'go', page, step, reduced });
-  return { state, mobile, step, go, skip: () => dispatch({ type: 'settle' }) };
+  return { state, mobile, step, go, skip: () => dispatch({ type: 'settle' }), replay: () => { if (!reduced) dispatch({ type:'replay' }); } };
 }

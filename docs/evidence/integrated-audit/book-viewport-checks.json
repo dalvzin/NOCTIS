@@ -1,0 +1,38 @@
+[
+  {
+    "mobile": "true",
+    "scrollWidth": 305,
+    "title": "Frankenstein",
+    "width": 320
+  },
+  {
+    "mobile": "true",
+    "scrollWidth": 305,
+    "title": "Pride and Prejudice",
+    "width": 320
+  },
+  {
+    "mobile": "true",
+    "scrollWidth": 305,
+    "title": "Dracula",
+    "width": 320
+  },
+  {
+    "mobile": "false",
+    "scrollWidth": 753,
+    "title": "Frankenstein",
+    "width": 768
+  },
+  {
+    "mobile": "false",
+    "scrollWidth": 753,
+    "title": "Pride and Prejudice",
+    "width": 768
+  },
+  {
+    "mobile": "false",
+    "scrollWidth": 753,
+    "title": "Dracula",
+    "width": 768
+  }
+]

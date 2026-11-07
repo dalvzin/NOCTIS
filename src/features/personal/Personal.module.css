@@ -75,3 +75,9 @@
 .tabs a:hover,.tabs a[aria-current=page]{background:#a58d7012}
 .storageNote{padding:8px 14px;border:1px solid var(--line);border-radius:var(--radius-control);background:#ffffff03}
 @media(max-width:500px){.compactActions .row button{flex:0 1 auto}.panel{padding:20px}}
+.panel{background:transparent;border:0;border-top:1px solid var(--line);border-radius:0;padding:20px 0}
+.albums .album{border-radius:6px;background:transparent;box-shadow:none;border:0;border-bottom:1px solid var(--line);padding-inline:0}
+.storageNote{background:none;border:0;border-radius:0;padding:0;margin-bottom:18px}.tabs{margin-block:24px;padding-block:12px}
+.cover{border-radius:5px}.heroCover{max-width:340px}.page>h1{font-size:clamp(40px,5vw,64px)}
+.panel>summary{min-height:44px;cursor:pointer;font-size:14px;line-height:1.8;padding-block:10px}.panel .panel{border:0;padding:12px 0;margin:0}
+@media(max-width:600px){.page input,.page select,.actions input,.actions select{font-size:16px}}

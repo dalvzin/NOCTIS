@@ -26,7 +26,7 @@ export function WorkVisual({ work, hero = false }: { work: Work; hero?: boolean 
             <path d="M214 256L260 280" stroke={work.palette[2]} strokeWidth="2"/>
             <circle cx="240" cy="270" r="5" fill={work.palette[2]} stroke="none"/>
           </g>
-          <path d="M390 116L348 295L315 313" fill="none" strokeWidth="5"/>
+          <path data-part="needle" d="M390 116L348 295L315 313" fill="none" strokeWidth="5"/>
         </>}
         {work.category === 'photography' && <><rect x="60" y="60" width="360" height="430" fill={work.palette[1]} stroke="none"/><rect x="75" y="75" width="330" height="375" fill={work.palette[2]} stroke="none"/><path d={`M75 345L${180 + variant * 45} 155L405 330V450H75Z`} fill={work.palette[0]} stroke="none"/><path d="M135 80V450M220 80V450M305 80V450M75 200H405M75 310H405" strokeWidth="7" strokeOpacity=".35"/><path d="M85 86L395 440" strokeOpacity=".3"/></>}
         {work.category === 'art' && <><path d={`M100 440C${30 + variant * 40} 100 360 45 355 290C350 380 260 385 300 470Z`} fill={work.palette[1]} fillOpacity=".6" stroke="none"/><path d="M170 440C130 220 320 100 300 290C290 350 190 400 240 470" fill={work.palette[2]} strokeWidth="3"/><path d="M75 160Q190 100 390 180M60 180Q190 120 410 205M85 205Q240 150 395 225" fill="none" strokeWidth={8 + variant * 4} strokeOpacity=".55"/><path d="M75 475H405" strokeOpacity=".3"/></>}

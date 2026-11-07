@@ -16,8 +16,9 @@ export function BookManuscriptPage({ work, returnTo, sourceStatus }: { work: Wor
   const author = creatorCredit(work);
   const preferredReduced = useMotionPreference();
   const reduced = !!preferredReduced || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const { state, mobile, step, go, skip } = useManuscriptBook(reduced);
+  const { state, mobile, step, go, skip, replay } = useManuscriptBook(reduced, work.id);
   const reading = useRef<HTMLDivElement>(null);
+  const openingSkip = useRef<HTMLButtonElement>(null);
   const requestedFocus = useRef(false);
   // A restored scroll position must not start the opening behind the fixed HUD.
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, []);
@@ -26,6 +27,7 @@ export function BookManuscriptPage({ work, returnTo, sourceStatus }: { work: Wor
   const visible = state.page;
   const goTo = (page: number) => { if (state.phase === 'reading' && page !== state.page) { requestedFocus.current = true; go(page); } };
   const skipOpening = () => { requestedFocus.current = true; skip(); };
+  useEffect(() => { if (entering && requestedFocus.current) openingSkip.current?.focus({preventScroll:true}); }, [entering]);
   useEffect(() => {
     if (state.phase === 'reading' && requestedFocus.current) {
       requestedFocus.current = false;
@@ -51,7 +53,7 @@ export function BookManuscriptPage({ work, returnTo, sourceStatus }: { work: Wor
   return <article className={styles.scene} data-book-tone={presentation.tone} data-book-phase={state.phase} data-reduced={reduced} data-mobile={mobile} onKeyDown={keyboard}>
     <h1 className="srOnly">{work.title}</h1>
     {sourceStatus && <p role="status" className={styles.sourceStatus}>{sourceStatus === 'updating' ? 'Updating source details…' : 'Additional source details are unavailable. Showing the metadata already retrieved.'}</p>}
-    <div className={styles.skipBar}><p>THE READING ROOM / AN OPEN BOOK</p>{entering ? <button onClick={skipOpening}>Skip animation <span aria-hidden="true">↗</span></button> : <a href={`#${presentation.archiveId}`}>Your archive & sources <span aria-hidden="true">↓</span></a>}</div>
+    <div className={styles.skipBar}><p>THE READING ROOM / AN OPEN BOOK</p>{entering ? <button ref={openingSkip} onClick={skipOpening}>Skip animation <span aria-hidden="true">↗</span></button> : <div className={styles.skipActions}><a href={`#${presentation.archiveId}`}>Your archive &amp; sources <span aria-hidden="true">↓</span></a>{!reduced && <button onClick={()=>{requestedFocus.current=true;replay();}}>Replay book opening</button>}</div>}</div>
     <div className={styles.stage}>
       <section className={styles.book} data-manuscript aria-label={`${work.title} manuscript`}>
         <div className={styles.backCover} aria-hidden="true"/>

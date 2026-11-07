@@ -1,7 +1,7 @@
 import { useEffect, useRef, type KeyboardEvent, type ReactNode } from 'react';
 import { X } from 'lucide-react';
 import styles from './Modal.module.css';
-export function Modal({ title, headingLabel, onClose, children, side = false, search = false }: { title: string; headingLabel?: string; onClose: () => void; children: ReactNode; side?: boolean; search?: boolean }) {
+export function Modal({ title, headingLabel, onClose, children, side = false, search = false, wide = false }: { title: string; headingLabel?: string; onClose: () => void; children: ReactNode; side?: boolean; search?: boolean; wide?: boolean }) {
   const ref = useRef<HTMLDialogElement>(null);
   function keepFocus(event: KeyboardEvent<HTMLDialogElement>) {
     if (event.key !== 'Tab') return;
@@ -27,5 +27,5 @@ export function Modal({ title, headingLabel, onClose, children, side = false, se
     document.body.style.overflow = 'hidden';
     return () => { dialog.close(); document.body.style.overflow = overflow; if (previous?.isConnected) previous.focus({ preventScroll: true }); };
   }, [search]);
-  return <dialog ref={ref} aria-label={title} className={`${styles.dialog} ${side ? styles.side : ''} ${search ? styles.search : ''}`} onKeyDown={keepFocus} onCancel={e => { e.preventDefault(); onClose(); }} onClick={e => { if (e.target === e.currentTarget) onClose(); }}><div className={styles.content}><div className={styles.heading}><span className="eyebrow">{headingLabel ?? title}</span><button aria-label={`Close ${title.toLowerCase()}`} onClick={onClose}><X size={20}/></button></div>{children}</div></dialog>;
+  return <dialog ref={ref} aria-label={title} className={`${styles.dialog} ${side ? styles.side : ''} ${search ? styles.search : ''} ${wide ? styles.wide : ''}`} onKeyDown={keepFocus} onCancel={e => { e.preventDefault(); onClose(); }} onClick={e => { if (e.target === e.currentTarget) onClose(); }}><div className={styles.content}><div className={styles.heading}><span className="eyebrow">{headingLabel ?? title}</span><button aria-label={`Close ${title.toLowerCase()}`} onClick={onClose}><X size={20}/></button></div>{children}</div></dialog>;
 }

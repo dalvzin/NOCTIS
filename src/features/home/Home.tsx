@@ -26,7 +26,7 @@ export function Home(){
   <div className={styles.wordmark} aria-hidden="true"><div><NoctisWordmark split/></div><p>A library of experiences.</p></div>
   <nav className={styles.mosaic} aria-label="Six cultural rooms">
    {rooms.map((room,index)=>{const [x,y,angle]=offsets[index];const category=room.slug as CategorySlug;return <Link key={room.slug} to={`/${room.slug}`} state={{fromMosaic:room.slug}} className={`${styles.tile} ${styles[room.slug]}`} aria-label={`${room.name} — ${room.category}. ${descriptions[category]}`} onFocus={finish} onClick={finish} style={{'--enter-x':`${x}px`,'--enter-y':`${y}px`,'--enter-angle':`${angle}deg`,'--tile-delay':`${index*65}ms`} as CSSProperties}>
-    <div className={styles.visual}><RoomScene category={category}/></div><div className={styles.tileShade}/><span className={styles.tileNumber}>0{index+1} / {room.name}</span><div className={styles.tileCopy}><div><h2>{category==='photography'?<>Photo<wbr/>graphy</>:room.category}</h2><p>{descriptions[category]}</p></div><span className={styles.arrow}><ArrowUpRight size={20}/></span></div>
+    <div className={styles.visual}><RoomScene category={category}/></div><div className={styles.tileShade}/><span className={styles.tileNumber}>0{index+1} / {room.name}</span><div className={styles.tileCopy}><div><h2>{room.category}</h2><p>{descriptions[category]}</p></div><span className={styles.arrow}><ArrowUpRight size={20}/></span></div>
    </Link>;})}
   </nav>
   <div className={styles.entranceFoot}><span>SIX ROOMS. A THOUSAND WAYS TO STAY.</span><a href="#curators-selection">A little further in <ArrowDown size={13}/></a><span>COLLECTED WITH INTENTION / EST. 2026</span></div>

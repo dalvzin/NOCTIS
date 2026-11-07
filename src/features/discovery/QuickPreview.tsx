@@ -7,13 +7,16 @@ import { PersonalActions } from '../personal/PersonalActions';
 import { creatorCredit, previewDescription } from '../../services/recordPresentation';
 import styles from './QuickPreview.module.css';
 import { safeExternalUrl } from '../../services/catalogUtils';
+import { artworkRatio } from '../../services/artwork';
 
 export function QuickPreview({ work, returnTo, onClose }: { work: Work; returnTo: string; onClose: () => void }) {
   const credit = creatorCredit(work);
-  return <Modal title={`Quick Preview: ${work.title}`} headingLabel="Quick Preview" onClose={onClose}>
-    <div className={styles.preview}>
+  const ratio = artworkRatio(work);
+  const wide = ratio > 1.15 && !['books','films','music'].includes(work.category);
+  return <Modal title={`Quick Preview: ${work.title}`} headingLabel="Quick Preview" onClose={onClose} wide={wide}>
+    <div className={styles.preview} data-composition={wide ? 'landscape' : work.category === 'music' ? 'square' : 'portrait'}>
       <div className={styles.identity}>
-        <ItemImage work={work} compactCredits/>
+        <ItemImage work={work} context="preview" compactCredits/>
         <div className={styles.heading}>
           <p className={styles.metadata}>{work.format}{work.year !== null && <> / {work.year}</>}</p>
           <h2>{work.title}</h2>

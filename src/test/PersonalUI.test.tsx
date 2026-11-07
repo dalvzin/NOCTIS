@@ -45,6 +45,7 @@ describe('Personal archive UI', () => {
     const id=f.repo.getSnapshot().data.albums[0].id; cleanup(); open(f.create(),`/albums/${id}`);
     await user.click(screen.getByText('Edit album',{exact:true})); await user.clear(screen.getByRole('textbox',{name:'Album title'})); await user.type(screen.getByRole('textbox',{name:'Album title'}),'After hours'); await user.selectOptions(screen.getByRole('combobox',{name:'Layout preset'}),'editorial'); await user.click(screen.getByRole('button',{name:'Save album changes'}));
     expect(screen.getByRole('heading',{name:'After hours',level:1})).toBeInTheDocument();
+    await user.click(screen.getByText('Change album cover',{exact:true}));
     await user.selectOptions(screen.getByRole('combobox',{name:'Choose a work from this album'}),book.id); expect(f.create().getSnapshot().data.albums[0].cover).toEqual({kind:'work',workId:book.id});
     await user.click(screen.getByRole('button',{name:'Delete album'})); await user.click(screen.getByRole('button',{name:'Cancel'})); expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     await user.click(screen.getByRole('button',{name:'Delete album'})); await user.click(screen.getByRole('button',{name:'Confirm'})); await waitFor(()=>expect(screen.getByRole('heading',{name:'My Archive'})).toBeInTheDocument()); expect(f.create().getSnapshot().data.albums).toEqual([]);

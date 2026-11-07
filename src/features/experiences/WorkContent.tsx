@@ -16,13 +16,13 @@ export function WorkContent({ work }: { work: Work }) {
   const linked = (url: string | undefined) => !!url && destinations.some(destination => sameDestination(destination.url, url));
   const facts = work.facts.filter(([label, value]) => value.trim() && !/^(author|artist|photographer|director|developer|creator|year|format|type)$/i.test(label));
   return <>
+    {!!work.tags.length && <div className={styles.tags} aria-label="Subjects">{work.tags.map(tag => <span key={tag}>{tag}</span>)}</div>}
     <div className={styles.body}>
       <div className={styles.reading}>
         {note && <section className={styles.note} aria-labelledby="editorial-note-title"><p className="eyebrow">NOCTIS / EDITORIAL</p><h2 id="editorial-note-title">A closer look</h2><p>{note}</p><small>An original reading by NOCTIS{work.source.kind === 'demo' ? ' of this fictional demonstration' : ''}.</small></section>}
-        {!!(facts.length || work.tags.length || work.mood) && <section className={styles.information} aria-labelledby="record-information-title"><h2 id="record-information-title">Inside the record</h2>
+        {!!(facts.length || work.mood) && <section className={styles.information} aria-labelledby="record-information-title"><h2 id="record-information-title">Record details</h2>
           {!!facts.length && <dl>{facts.map(([label, value], index) => <div key={`${label}-${index}`}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
           {work.mood && <p><span>Atmosphere</span> {work.mood}</p>}
-          {!!work.tags.length && <div className={styles.tags} aria-label="Subjects">{work.tags.map(tag => <span key={tag}>{tag}</span>)}</div>}
         </section>}
       </div>
       <aside className={styles.personal} aria-labelledby="your-archive-title"><p className="eyebrow">YOUR RELATIONSHIP WITH THE WORK</p><h2 id="your-archive-title">Your archive</h2><p>Keep it close, plan to experience it, or add a private rating.</p><PersonalActions work={work}/></aside>

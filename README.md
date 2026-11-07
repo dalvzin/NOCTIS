@@ -2,6 +2,8 @@
 
 Uma biblioteca de experiências culturais. Interface em inglês; documentação em português brasileiro.
 
+Revisão integrada mais recente: [auditoria, escopo real da busca, hierarquia, proporções, livros, exposição e evidências](docs/27-integrated-audit.md). Alterações apenas locais; as seções seguintes registram etapas anteriores.
+
 Refinamento atual: cantos arredondados, cartões com ações agrupadas e microanimações da navegação. [Arquivos, decisões e verificações desta rodada](docs/24-soft-ui-motion.md). As contagens nas seções abaixo registram as respectivas etapas históricas.
 
 Continuação: [rolagem suave, entrada das páginas e acabamento de Discover](docs/25-navigation-transitions.md), com movimento reduzido e verificações locais.

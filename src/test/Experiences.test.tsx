@@ -54,23 +54,27 @@ describe('Experiences', () => {
 
   it('combines real film format and title filters and preserves results navigation', async () => {
     const user = userEvent.setup();open('/films');
+    await user.click(screen.getByText('Refine selection'));
     await user.click(screen.getByRole('button', { name:'Short film' }));expect(screen.getByRole('status')).toHaveTextContent('1 work');
     await user.type(screen.getByRole('searchbox'),'no match');expect(screen.getByRole('status')).toHaveTextContent('0 works');
-    await user.click(screen.getByRole('button',{name:'Reset filters'}));expect(screen.getByRole('status')).toHaveTextContent('3 works');
+    await user.click(await screen.findByRole('button',{name:'Reset filters'}));expect(screen.getByRole('status')).toHaveTextContent('3 works');
     await user.type(screen.getByRole('searchbox'),'KEATON');expect(screen.getByRole('status')).toHaveTextContent('1 work');
     await user.click(screen.getByRole('link',{name:'Sherlock Jr.'}));await user.click(screen.getByRole('link',{name:'Back to the collection'}));
     expect(screen.getByRole('searchbox')).toHaveValue('KEATON');
   });
   it('ignores an unknown format while retaining a valid query',()=>{
-    open('/films?format=Unknown&q=moon');expect(screen.getByRole('button',{name:'All'})).toHaveAttribute('aria-pressed','true');
+    open('/films?format=Unknown&q=moon');expect(screen.queryByRole('button',{name:'Unknown'})).not.toBeInTheDocument();
     expect(screen.getByRole('status')).toHaveTextContent('1 work');expect(screen.getByRole('link',{name:'A Trip to the Moon'})).toBeInTheDocument();
   });
 
-  it.each(rooms)('filters by a category-specific format in $slug', async room => {
+  it.each(rooms)('offers format refinement only when it changes the selection in $slug', async room => {
     const user = userEvent.setup();
     const local = curatedWorks.filter(work => work.category === room.slug);
     const format = local[1].format;
     open(`/${room.slug}?source=demo`);
+    expect(screen.getByText('Refine selection').closest('details')).not.toHaveAttribute('open');
+    await user.click(screen.getByText('Refine selection'));
+    if(new Set(local.map(work=>work.format)).size < 2){expect(screen.queryByRole('button',{name:format})).not.toBeInTheDocument();expect(screen.getAllByRole('article')).toHaveLength(local.length);return;}
     await user.click(screen.getByRole('button', { name: format }));
     const expected = local.filter(work => work.format === format);
     expect(screen.getAllByRole('article')).toHaveLength(expected.length);
@@ -132,7 +136,8 @@ describe('Experiences', () => {
     const user = userEvent.setup();
     open('/games?format=Game&q=inside');
     await user.click(screen.getByRole('button', { name: /Replay games/ }));
-    expect(screen.getByRole('button', { name: 'Game' })).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.queryByRole('button', { name: 'Game' })).not.toBeInTheDocument();
+    expect(screen.getByRole('searchbox')).toHaveValue('inside');
     expect(screen.getByRole('status')).toHaveTextContent('1 work');
   });
 });

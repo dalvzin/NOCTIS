@@ -1,7 +1,7 @@
 import { act, cleanup, fireEvent, render, renderHook, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { App } from '../app/App';
 import { curatedWorks } from '../data/curated';
 import { workPath } from '../data/works';
@@ -13,6 +13,7 @@ import { manuscriptSpread } from './manuscriptHelpers';
 
 const book = curatedWorks.find(work => work.id === 'gutenberg:books:84')!;
 const matchImplementation = vi.mocked(window.matchMedia).getMockImplementation()!;
+beforeEach(()=>{for(const key of Object.keys(sessionStorage))if(key.startsWith('noctis.book.seen.'))sessionStorage.removeItem(key);});
 afterEach(() => { cleanup(); vi.useRealTimers(); vi.restoreAllMocks(); vi.mocked(window.matchMedia).mockImplementation(matchImplementation); });
 function fixture() {
   const values = new Map<string, string>();
@@ -22,6 +23,14 @@ function fixture() {
 function open(path = workPath(book), repo = fixture().repo) { return render(<PersonalProvider repository={repo}><MemoryRouter initialEntries={[path]}><App/></MemoryRouter></PersonalProvider>); }
 
 describe('Shared book manuscripts', () => {
+  it('opens immediately on a return visit and offers replay with a reachable skip control',async()=>{
+    const user=userEvent.setup(); const view=open();await manuscriptSpread(user,'identity');view.unmount();
+    const returned=open();expect(returned.container.querySelector('[data-book-phase]')).toHaveAttribute('data-book-phase','reading');
+    await user.click(screen.getByRole('button',{name:'Replay book opening'}));
+    expect(returned.container.querySelector('[data-book-phase]')).toHaveAttribute('data-book-phase','closed');
+    expect(screen.getByRole('button',{name:/Skip animation/})).toHaveFocus();
+    await user.click(screen.getByRole('button',{name:/Skip animation/}));expect(screen.getByRole('region',{name:/Spread 1/})).toHaveFocus();
+  });
   it('keeps the Books room illustration static without a second book-opening ritual', () => {
     open('/books');
     expect(screen.queryByRole('button', { name:/Replay books/ })).not.toBeInTheDocument();

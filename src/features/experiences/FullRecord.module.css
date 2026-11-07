@@ -5,3 +5,18 @@
 .sources{padding:24px;border:1px solid var(--line);border-radius:var(--radius-card);background:#ffffff02}
 .provenance{padding:16px 20px;background:#ffffff03;border:1px solid var(--line);border-radius:var(--radius-control);align-self:start}
 @media(max-width:760px){.sources{padding:20px}.provenance{padding:12px 16px}}
+.note{border-radius:5px;box-shadow:none}.personal{border:0;border-top:1px solid var(--line);border-radius:0;padding:24px 0}
+.sources{background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:24px 0}.provenance{background:none;border:0;border-radius:0;padding:0}
+.tags{max-width:1280px;margin:20px auto;gap:10px}.tags>span{padding:0 12px 0 0;border:0;border-radius:0;font-size:12px;color:var(--muted)}
+.body{margin-block:28px}.information{margin-top:24px}.note>p:not(:global(.eyebrow)){font-size:19px}.header{padding-bottom:24px}
+.header>figure[data-artwork-category=photography],.header>figure[data-artwork-category=art],.header>figure[data-artwork-category=games]{max-width:600px;width:100%}
+.header>figure[data-artwork-category=photography]>div,.header>figure[data-artwork-category=art]>div{height:auto}
+.header>figure[data-artwork-category=photography] [data-artwork-frame],.header>figure[data-artwork-category=art] [data-artwork-frame]{width:100%;max-height:none}
+.header>figure[data-artwork-category=games]>div{height:auto}
+.header[data-record-medium=films]>figure{animation:projection-frame .45s ease-out}.header[data-record-medium=games]>figure{animation:record-presence .4s ease-out}.header[data-record-medium=music]>figure{animation:record-presence .4s ease-out}.header[data-record-medium=photography]>figure{animation:photographic-record .5s ease-out}.header[data-record-medium=art]>figure{animation:painting-record .45s ease-out}
+@keyframes projection-frame{from{clip-path:inset(45% 0);opacity:.4}to{clip-path:inset(0);opacity:1}}
+@keyframes record-presence{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes photographic-record{from{opacity:.4;filter:contrast(.7) brightness(1.2)}to{opacity:1;filter:none}}
+@keyframes painting-record{from{opacity:.5;transform:scale(1.025)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.header>figure{animation:none!important}}
+html[data-motion=reduce] .header>figure{animation:none!important}

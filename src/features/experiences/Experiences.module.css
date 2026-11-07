@@ -67,3 +67,24 @@
 @media(max-width:600px){.card .visualButton figure{--stage-height:220px}.card h3{font-size:25px;min-height:0}.card>p{min-height:0}}
 .card .visualButton figure>figcaption{height:44px;min-height:44px;padding:6px 18px;font-size:10px;line-height:1.5}
 .cardMeta{margin-top:12px}
+
+/* The collection is an exhibition surface, not a stack of application panels. */
+.collection{padding-block:42px}.collectionHeading{align-items:start;margin-bottom:24px}.collectionHeading>p{font-size:14px;max-width:48ch;margin-top:20px}
+.toolbar{align-items:start;flex-wrap:wrap;padding:14px 0;gap:16px}.find{font-size:12px;letter-spacing:0;gap:8px}.find input{width:280px;min-height:44px}
+.refinements{flex:1;min-width:0;max-width:700px}.refinements>summary{min-height:44px;cursor:pointer;display:flex;align-items:center;justify-content:flex-end;gap:10px;font-size:12px;color:var(--muted)}
+.refinements[open]>summary{margin-bottom:16px}.refinements>fieldset{margin-block:12px}.resultCount{font-size:12px;letter-spacing:.3px;margin-block:20px}
+.card,.card:hover,.card:focus-within{background:transparent;box-shadow:none;border-color:transparent;border-radius:4px}
+.card .visualButton{border-radius:4px}.cardMeta{margin-inline:0}.card h3{margin-inline:0;min-height:0}.card>p{margin-inline:0;min-height:0}
+.cardMeta>span:last-child{background:transparent;padding:0;font-size:11px}.card>section{padding:12px 0 0;background:none;border-radius:0;border-color:var(--line)}
+.card .visualButton figure>figcaption{padding-inline:0;height:44px;min-height:44px;font-size:11px}
+.card:focus-within{border-bottom-color:var(--bronze)}.previewHint{border-radius:10px!important}
+.card.photography .visualButton figure>div,.card.art .visualButton figure>div{height:auto;background:transparent;border-radius:2px}
+.card.photography [data-artwork-frame],.card.art [data-artwork-frame]{width:100%;max-height:none}
+.room[data-room=photography] .workGrid,.room[data-room=art] .workGrid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:44px}
+.room[data-room=music] .card .visualButton figure{--stage-height:280px}
+.room[data-room=games] .card .visualButton figure{--stage-height:220px}
+.card.films .visualButton{background:#090a0c;border-block:8px solid #090a0c}
+.related{margin-top:48px}.related a{border:0;border-top:1px solid var(--line);border-radius:4px;padding-inline:0}.related a:hover{background:transparent}
+@media(max-width:600px){.collection{padding-block:32px}.collectionHeading>p{margin-top:14px}.toolbar{display:block}.find input{width:100%}.refinements>summary{justify-content:flex-start;margin-top:8px}.room[data-room=photography] .workGrid,.room[data-room=art] .workGrid{grid-template-columns:1fr;gap:36px}}
+.room .cardMeta>span:last-child{display:none}.filters button{min-height:44px}
+@media(max-width:600px){.find input{font-size:16px}}

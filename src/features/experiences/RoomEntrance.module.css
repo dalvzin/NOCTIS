@@ -24,3 +24,14 @@
 
 .bookPlate{border-radius:14px}
 .bookPlate::after{border-radius:9px}
+.entrance{padding-block:36px;gap:clamp(24px,4vw,64px)}.copy h1{margin-block:20px}.description{margin-block:18px;font-size:14px}.demo{display:none}
+.bookPlate{grid-template-columns:minmax(0,.9fr) minmax(170px,1fr);padding:24px;gap:24px;border-radius:6px;box-shadow:0 16px 48px #0004}
+.bookPlate::after{border-radius:3px}.bookMargin p{font-size:16px;line-height:1.75}.bookMargin>span{font-size:11px;letter-spacing:.3px}.bookMargin{gap:18px}.bookPlate figure{--stage-height:240px}
+@media(max-width:850px){.bookPlate{grid-template-columns:minmax(0,1fr)}.bookMargin{border-left:0;border-top:1px solid #94866a65;padding:16px 0 0}.bookMargin>span:first-child{display:none}.bookMargin p{font-size:16px}.bookMargin>span:last-child{font-size:12px}.bookPlate figure{--stage-height:190px}}
+.motionControls{display:flex;align-items:center;justify-content:flex-end;gap:16px;margin-top:12px;flex-wrap:wrap}.motionControls>button{min-height:44px;font-size:12px;padding:8px 0;color:var(--muted)}.motionControls .replay{margin:0}
+.films .playing .composition{animation:project-reveal .72s ease-out both}.games .playing .composition{animation:boot .7s ease-out both}.games .playing .sceneLabel{animation:signal .7s ease-out both}
+.music .playing [data-part=record]{animation:vinyl .78s ease-out both}.music .playing [data-part=needle]{transform-origin:390px 116px;animation:needle-land .78s ease-out both}
+.photography .playing .composition{animation:develop .8s ease-out both}.art .playing .composition{animation:art-distance .8s ease-out both}
+@keyframes project-reveal{from{clip-path:inset(48% 0);opacity:.2}to{clip-path:inset(0);opacity:1}}
+@keyframes needle-land{from{transform:rotate(-13deg)}to{transform:rotate(0)}}
+@keyframes art-distance{from{transform:scale(1.08);opacity:.5}to{transform:scale(1);opacity:1}}

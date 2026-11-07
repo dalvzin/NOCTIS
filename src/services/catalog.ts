@@ -65,7 +65,21 @@ export function localSearch(query: string, category = '') {
   return localCatalog.filter(work => (!category || work.category === category) && matchesQuery(work, query));
 }
 
-export async function searchCatalog(query: string, category = '', signal?: AbortSignal): Promise<SearchResponse> {
+export async function searchCatalog(query: string, category = '', signal?: AbortSignal, onProgress?: (result: SearchResponse) => void): Promise<SearchResponse> {
+  // Global UI requests each room independently. A slow provider cannot hide
+  // records already returned by another; direct service consumers keep the API.
+  if (!category && query.trim().length >= 2 && onProgress) {
+    const completed = new Map<string, SearchResponse>();
+    const snapshot = (): SearchResponse => ({ items: deduplicate([...localSearch(query), ...[...completed.values()].flatMap(result => result.items)]), statuses: [...completed.values()].flatMap(result => result.statuses) });
+    await Promise.all(rooms.map(async room => {
+      const result = await searchCatalog(query, room.slug, signal);
+      if (signal?.aborted) return;
+      completed.set(room.slug, result);
+      onProgress(snapshot());
+    }));
+    if (signal?.aborted) throw signal.reason;
+    return snapshot();
+  }
   const q = query.trim().slice(0, 120), key = `${category}|${q.toLowerCase()}`;
   const hit = searchCache.get(key);
   if (hit && hit.expires > Date.now()) return { ...hit.result, items: hit.result.items.map(item => known.get(item.id) ?? item) };

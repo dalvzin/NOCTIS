@@ -16,3 +16,5 @@ html[data-motion=reduce] .dialog[open] { animation:none; }
 .heading button{border-radius:var(--radius-pill);transition:background var(--motion-fast)}
 .heading button:hover{background:#b5a18114}
 .side{border-radius:var(--radius-panel) 0 0 var(--radius-panel)}
+.wide{width:min(820px,calc(100% - 32px))}
+.heading{position:sticky;top:0;z-index:3;background:var(--obsidian);padding-block:8px}

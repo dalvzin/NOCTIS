@@ -1029,3 +1029,21 @@
 .paging .nextPage:not([aria-disabled=true]):hover{background:var(--book-cover);color:#fff7e8}
 .folio>span:first-child{min-width:0;overflow-wrap:anywhere;max-width:85%}
 @media(max-width:760px){.leaf{background-color:var(--paper)}.paper{background:var(--paper)}.prosePanel{padding:17px}.leafContent .lead{font-size:20px;padding:14px}.leafContent .reflection{font-size:16px}.bookHeader{background:transparent}}
+
+/* A compact editorial spread: typography leads; UI boxes stay outside paper. */
+.scene{padding-top:24px}.stage{max-width:1080px}.skipBar{max-width:1080px;margin-bottom:12px}
+.skipActions{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.skipActions a,.skipActions button{display:inline-flex;align-items:center;gap:10px;font:12px/1.7 Arial,sans-serif;min-height:44px;padding:8px 12px;color:#e5dac4;text-decoration:none;border:1px solid #b8a07845;border-radius:10px}
+.skipActions button{border-color:transparent;color:#bfb5a2}.skipActions :is(a,button):hover{background:#ffffff08}
+.leaf{min-height:0;padding-inline:clamp(24px,3vw,42px)}.leafContent{padding-top:18px}.leafContent h2{font-size:34px;margin:12px 0 18px}
+.titlePage .bookName{font-size:42px}.plate figure{--stage-height:170px}.leafContent .lead{font-size:20px;background:none;border:0;padding:0;margin:14px 0 18px}
+.prosePanel{background:transparent;border:0;border-radius:0;box-shadow:none;padding:0}.prosePanel p{font-size:17px;line-height:1.8}
+.leafContent .dropCap::first-letter{font-size:52px;padding-top:7px}.leafContent .reflection{font-size:16px;padding-left:14px}.leafContent .marginNumber{margin-top:24px}
+.leafContent .chapterBand{padding:8px 0;background:none;border-left:0;border-bottom:2px solid var(--book-accent);border-radius:0;margin-bottom:14px}
+.catalogFacts{gap:14px}.catalogFacts>div{background:none;border:0;border-bottom:1px solid var(--rule);padding:8px 0;border-radius:0}.catalogFacts dd{font-size:15px}.catalogFacts dt{font-size:11px}
+.folio{margin-top:20px;padding-top:12px}.controls{margin-inline:24px;padding-top:12px}.bookFooter{padding-block:4px 10px}.companion{margin-top:40px;padding-top:28px}
+@media(max-width:760px){.scene{padding:20px 15px 48px}.stage{max-width:520px}.leaf{min-height:0;padding:18px 22px}.leafContent h2{font-size:31px}.titlePage .bookName{font-size:36px}.titlePage .author{font-size:16px}.leafContent .lead{font-size:19px}.plate figure{--stage-height:160px}.catalogFacts{margin-block:12px}.leafContent .marginNumber{margin-top:20px}.leafContent .smallNote{font-size:12px}.bookHeader .contents{padding-top:8px}.controls{margin-inline:16px}.skipActions{gap:4px}.skipActions a,.skipActions button{font-size:12px}.bookHeader{padding-block:8px}}
+@media(min-width:380px) and (max-width:760px){.catalogFacts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.scene{animation:none}.stage,.skipBar{max-width:1120px}
+.bookHeader>p{display:none}.bookHeader{padding-block:8px;gap:12px}.bookHeader .contents{flex-basis:auto;flex:0 1 auto;border:0;margin:0;padding:0;gap:8px}.contentsLabel{display:none}
+.leafContent p{margin:12px 0}.leafContent h2{font-size:32px;margin:8px 0 14px}.leafContent .chapterBand{padding-block:5px;margin-bottom:12px;font-size:11px}.leafContent .smallNote{margin-block:10px}.leafContent .reflection{margin-block:14px}.subjects{margin:16px 0}.subjects li{padding:5px 8px;border:0;border-left:1px solid var(--rule);font-size:12px}.rule{margin-block:20px}
+@media(max-width:760px){.bookHeader .contents{flex-basis:100%;border-top:1px solid var(--rule);padding-top:8px;margin-top:4px}.leafContent p{margin-block:12px}.leafContent h2{font-size:30px}}

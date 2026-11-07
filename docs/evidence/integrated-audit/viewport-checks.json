@@ -1,0 +1,310 @@
+[
+  {
+    "h1": "Not everything deserves to be forgotten.",
+    "height": 900,
+    "path": "/",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "h1": "The Reading Room",
+    "height": 900,
+    "path": "/books",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "h1": "The Screening Room",
+    "height": 900,
+    "path": "/films",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "h1": "The Console Room",
+    "height": 900,
+    "path": "/games",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "h1": "The Listening Room",
+    "height": 900,
+    "path": "/music",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "h1": "The Darkroom",
+    "height": 900,
+    "path": "/photography",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "h1": "The Gallery",
+    "height": 900,
+    "path": "/art",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "h1": "Let curiositylead the way.",
+    "height": 900,
+    "path": "/discover",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "h1": "Find something worth keeping.",
+    "height": 900,
+    "path": "/search",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "h1": "My Archive",
+    "height": 900,
+    "path": "/my-archive",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "h1": "After HoursThe City Remembers",
+    "height": 900,
+    "path": "/discover/after-hours",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "h1": "Not everything deserves to be forgotten.",
+    "height": 900,
+    "path": "/",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": "The Reading Room",
+    "height": 900,
+    "path": "/books",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": "The Screening Room",
+    "height": 900,
+    "path": "/films",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": "The Console Room",
+    "height": 900,
+    "path": "/games",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": "The Listening Room",
+    "height": 900,
+    "path": "/music",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": "The Darkroom",
+    "height": 900,
+    "path": "/photography",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": "The Gallery",
+    "height": 900,
+    "path": "/art",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": "Let curiositylead the way.",
+    "height": 900,
+    "path": "/discover",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": "Find something worth keeping.",
+    "height": 900,
+    "path": "/search",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": "My Archive",
+    "height": 900,
+    "path": "/my-archive",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": "After HoursThe City Remembers",
+    "height": 900,
+    "path": "/discover/after-hours",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": "Not everything deserves to be forgotten.",
+    "height": 900,
+    "path": "/",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": "The Reading Room",
+    "height": 900,
+    "path": "/books",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": "The Screening Room",
+    "height": 900,
+    "path": "/films",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": "The Console Room",
+    "height": 900,
+    "path": "/games",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": "The Listening Room",
+    "height": 900,
+    "path": "/music",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": "The Darkroom",
+    "height": 900,
+    "path": "/photography",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": "The Gallery",
+    "height": 900,
+    "path": "/art",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": "Let curiositylead the way.",
+    "height": 900,
+    "path": "/discover",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": "Find something worth keeping.",
+    "height": 900,
+    "path": "/search",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": "My Archive",
+    "height": 900,
+    "path": "/my-archive",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": "After HoursThe City Remembers",
+    "height": 900,
+    "path": "/discover/after-hours",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": "Not everything deserves to be forgotten.",
+    "height": 900,
+    "path": "/",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "h1": "The Reading Room",
+    "height": 900,
+    "path": "/books",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "h1": "The Screening Room",
+    "height": 900,
+    "path": "/films",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "h1": "The Console Room",
+    "height": 900,
+    "path": "/games",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "h1": "The Listening Room",
+    "height": 900,
+    "path": "/music",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "h1": "The Darkroom",
+    "height": 900,
+    "path": "/photography",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "h1": "The Gallery",
+    "height": 900,
+    "path": "/art",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "h1": "Let curiositylead the way.",
+    "height": 900,
+    "path": "/discover",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "h1": "Find something worth keeping.",
+    "height": 900,
+    "path": "/search",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "h1": "My Archive",
+    "height": 900,
+    "path": "/my-archive",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "h1": "After HoursThe City Remembers",
+    "height": 900,
+    "path": "/discover/after-hours",
+    "scrollWidth": 1425,
+    "width": 1440
+  }
+]

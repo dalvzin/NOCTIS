@@ -13,3 +13,5 @@
 .thumb{border-radius:8px}
 .roomLinks a{border:1px solid var(--line);padding:8px 14px;border-radius:var(--radius-pill);transition:background var(--motion-fast),border-color var(--motion-fast)}
 .roomLinks a:hover{background:#a58d7012;border-color:#a58d7070}
+.filters{border-radius:6px}.compactResults>a{border-radius:8px}.providers>p{margin:10px 0;font-size:12px;max-width:70ch}.providers summary{min-height:44px}
+@media(max-width:600px){.searchForm input,.panelForm input,.filters input,.filters select{font-size:16px}}

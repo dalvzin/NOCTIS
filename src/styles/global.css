@@ -16,3 +16,7 @@ summary{border-radius:var(--radius-control)}
 html{scroll-behavior:smooth}
 html[data-motion=reduce]{scroll-behavior:auto!important}
 main [id]{scroll-margin-top:calc(var(--header-height) + 24px)}
+/* Distinct surface hierarchy: temporary UI keeps generous curves; editorial
+   paper and exhibited works use restrained corners and fewer frames. */
+:root{--radius-control:10px;--radius-card:12px;--muted:#b7b1a8}
+.eyebrow{letter-spacing:1.6px;font-size:11px}
