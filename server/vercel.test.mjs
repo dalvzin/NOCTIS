@@ -42,6 +42,8 @@ describe('Vercel production preparation', () => {
     '/api/unknown',
     '/assets/missing.js',
     '/artworks/missing.jpg',
+    '/media/missing.mp4',
+    '/media/trip-to-the-moon-excerpt.mp4',
   ])('does not turn %s into HTML', (path) => expect(spa.test(path)).toBe(false));
   it('builds dist and routes the API before the SPA', () => {
     expect(config.outputDirectory).toBe('dist');

@@ -15,7 +15,7 @@
       "destination": "/api/catalog?__noctis_route=:path*"
     },
     {
-      "source": "/((?!api(?:/|$)|assets(?:/|$)|artworks(?:/|$)).*)",
+      "source": "/((?!api(?:/|$)|assets(?:/|$)|artworks(?:/|$)|media(?:/|$)).*)",
       "destination": "/index.html"
     }
   ]

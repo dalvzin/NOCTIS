@@ -65,7 +65,7 @@ Também foi reforçado o fundo de contraste dos títulos de Films e preservada a
 
 ## Verificações realizadas
 
-- `npm test`: **327 testes passaram em 23 arquivos**, incluindo a regressão do fragmento de URL.
+- `npm test`: **329 testes passaram em 23 arquivos**, incluindo a regressão do fragmento de URL e a proteção das rotas de vídeo contra o fallback SPA.
 - `npm run typecheck`, `npm run lint` e `npm run build`: passaram. O lint atual usa verificações adicionais do TypeScript.
 - Navegador: as seis salas abriram com as contagens corretas (3/3/3/3/4/3), sem imagens carregadas com erro nem overflow horizontal na revisão desktop.
 - Fotografias: as quatro imagens carregaram, com altura de 250 px e `object-fit: contain`. Revisão em desktop e viewport de 390×844; nenhuma rolagem horizontal observada no celular.
@@ -78,6 +78,12 @@ Também foi reforçado o fundo de contraste dos títulos de Films e preservada a
 As capturas reais ficam em `docs/evidence/real-media/`. Testes unitários usam fixtures; não equivalem a testar todos os provedores externos ou todos os dispositivos. Não foram realizados teste em aparelho físico, auditoria por leitor de tela real ou investigação exaustiva de todos os dados possíveis. Não foi configurada autenticação nem integração nova de API nesta rodada.
 
 ## Publicação
+
+A conferência do primeiro deploy revelou erros TS2688 na transpilação da função de catálogo: o compilador estava herdando `vite/client` e `vitest/globals` do frontend/testes. O `tsconfig.json` raiz agora tem `types: []`; a declaração exclusiva do navegador está em `src/vite-env.d.ts`. Os testes importam suas funções do Vitest explicitamente. Isso evita exigir tipos do cliente na função de servidor, sem remover a tipagem do frontend. A [documentação do runtime Node.js da Vercel](https://vercel.com/docs/functions/runtimes/node-js) descreve o uso da configuração TypeScript raiz.
+
+O `vercel.json` também exclui `/media` do fallback SPA, assim como já fazia com `/assets` e `/artworks`. Sem isso, uma URL de vídeo poderia receber o HTML da aplicação. Duas verificações de regressão foram adicionadas em `server/vercel.test.mjs`, e a suíte completa foi executada novamente. Nenhuma configuração de autenticação ou variável privada foi modificada.
+
+A proteção de acesso existente da Vercel foi preservada: uma sessão sem acesso ao projeto pode ser encaminhada ao login da plataforma. Isso não é a autenticação de usuários do NOCTIS.
 
 Esta revisão inclui a formatação anterior, a nova intro e sua correção de Skip. A publicação foi autorizada pelo usuário junto desta rodada. O repositório permanece privado; não se altera a configuração de contas ou a visibilidade do GitHub. O resultado efetivo do deploy é informado na conversa após a verificação da Vercel.
 

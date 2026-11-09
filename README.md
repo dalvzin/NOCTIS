@@ -2,7 +2,7 @@
 
 Uma biblioteca de experiências culturais. Interface em inglês; documentação em português brasileiro.
 
-Revisão com mídias reais: seis salas com obras do catálogo, trecho silencioso de cinema, fotografias com tamanho controlado e duas adições históricas. **19 obras reais; 327 testes em 23 arquivos.** [Arquivos, fontes, direitos, verificação e limites](docs/30-midias-reais.md).
+Revisão com mídias reais: seis salas com obras do catálogo, trecho silencioso de cinema, fotografias com tamanho controlado e duas adições históricas. **19 obras reais; 329 testes em 23 arquivos.** [Arquivos, fontes, direitos, verificação e limites](docs/30-midias-reais.md).
 
 Código organizado com Prettier: `npm run format` aplica a formatação e `npm run format:check` confere o padrão. [Configuração e guia de leitura](docs/28-formatacao.md).
 
