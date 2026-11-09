@@ -1,10 +1,37 @@
 export type CategorySlug = 'books' | 'films' | 'games' | 'music' | 'photography' | 'art';
 export type Provider = 'openlibrary' | 'aic' | 'musicbrainz';
-export type DestinationKind = 'spotify' | 'musicbrainz' | 'book-details' | 'publisher' | 'bookstore' | 'official' | 'storefront' | 'streaming' | 'distributor' | 'tmdb' | 'film-details' | 'game-details' | 'photograph' | 'photo-context' | 'museum' | 'discography';
-export interface Destination { kind: DestinationKind; url: string; verifiedBy: 'provider' | 'curator' }
+export type DestinationKind =
+  | 'spotify'
+  | 'musicbrainz'
+  | 'book-details'
+  | 'publisher'
+  | 'bookstore'
+  | 'official'
+  | 'storefront'
+  | 'streaming'
+  | 'distributor'
+  | 'tmdb'
+  | 'film-details'
+  | 'game-details'
+  | 'photograph'
+  | 'photo-context'
+  | 'museum'
+  | 'discography';
+export interface Destination {
+  kind: DestinationKind;
+  url: string;
+  verifiedBy: 'provider' | 'curator';
+}
 export type Source =
   | { kind: 'demo'; provider: 'noctis'; label: string }
-  | { kind: 'curated' | 'live'; provider: string; externalId: string; label: string; url?: string; attribution: string };
+  | {
+      kind: 'curated' | 'live';
+      provider: string;
+      externalId: string;
+      label: string;
+      url?: string;
+      attribution: string;
+    };
 
 export interface Work {
   id: string;
@@ -23,7 +50,18 @@ export interface Work {
   tags: string[];
   source: Source;
   destinations?: Destination[];
-  image?: { url: string; alt: string; credit: string; rights: string; sourceUrl: string; provider?: string; kind?: 'cover' | 'poster' | 'key-art' | 'photograph' | 'artwork'; width?: number; height?: number; thumbnailUrl?: string };
+  image?: {
+    url: string;
+    alt: string;
+    credit: string;
+    rights: string;
+    sourceUrl: string;
+    provider?: string;
+    kind?: 'cover' | 'poster' | 'key-art' | 'photograph' | 'artwork';
+    width?: number;
+    height?: number;
+    thumbnailUrl?: string;
+  };
   mediaPreviews: { type: 'video' | 'audio'; url: string; rights: string; attribution: string }[];
 }
 
@@ -33,5 +71,7 @@ export interface ProviderStatus {
   state: 'ready' | 'unavailable' | 'error' | 'success';
   message: string;
 }
-export interface SearchResponse { items: Work[]; statuses: ProviderStatus[] }
-
+export interface SearchResponse {
+  items: Work[];
+  statuses: ProviderStatus[];
+}

@@ -16,16 +16,16 @@ A pasta ainda se chama `frankenstein` por sua origem histórica. Ela agora cont�
 
 ## Arquivos importantes
 
-| Arquivo | Função nesta rodada |
-| --- | --- |
-| `src/features/experiences/WorkDetail.tsx` | Seleciona a apresentação de livro para registros reais de Books; mantém as demais categorias e demonstrações antigas no formato anterior. Repassa o estado de atualização/falha da fonte. |
-| `src/features/frankenstein/FrankensteinManuscriptPage.tsx` | Exporta agora `BookManuscriptPage`: abertura, navegação, teclado, monograma e identificação dinâmica. A chave da obra impede reaproveitar o estado da página anterior ao trocar de livro. |
-| `src/features/frankenstein/bookPresentation.ts` | Seleção segura dos textos editoriais, cor, edição, número e destino do atalho de arquivo. |
-| `src/features/frankenstein/ManuscriptLeaf.tsx` | Renderiza as quatro páginas com o conteúdo do registro atual, sem autoria ou reflexão fixa do Frankenstein. Reutiliza a validação de autoria da aplicação. |
-| `src/features/frankenstein/ManuscriptCompanion.tsx` | Usa o destino correto para o atalho de arquivo. O antigo `#frankenstein-archive` continua válido no Frankenstein. |
-| `src/features/frankenstein/FrankensteinManuscript.module.css` | Papel marfim mais claro, fundos de parágrafo com curva e borda, notas com margem destacada, dados agrupados e acentos sálvia, oliva e vinho discreto. |
-| `src/features/frankenstein/useManuscriptBook.ts` | Máquina de estados existente, reutilizada sem alterar os tempos: 350 ms fechado + 1480 ms abrindo; virada de 720 ms com recuperação em 740 ms no desktop, 260 ms no celular. |
-| `src/features/experiences/RoomEntrance.tsx` e `.module.css` | Removem o ritual de folhas na entrada de Books, preservando o destaque estático e as outras salas. |
+| Arquivo                                                       | Função nesta rodada                                                                                                                                                                       |
+| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/features/experiences/WorkDetail.tsx`                     | Seleciona a apresentação de livro para registros reais de Books; mantém as demais categorias e demonstrações antigas no formato anterior. Repassa o estado de atualização/falha da fonte. |
+| `src/features/frankenstein/FrankensteinManuscriptPage.tsx`    | Exporta agora `BookManuscriptPage`: abertura, navegação, teclado, monograma e identificação dinâmica. A chave da obra impede reaproveitar o estado da página anterior ao trocar de livro. |
+| `src/features/frankenstein/bookPresentation.ts`               | Seleção segura dos textos editoriais, cor, edição, número e destino do atalho de arquivo.                                                                                                 |
+| `src/features/frankenstein/ManuscriptLeaf.tsx`                | Renderiza as quatro páginas com o conteúdo do registro atual, sem autoria ou reflexão fixa do Frankenstein. Reutiliza a validação de autoria da aplicação.                                |
+| `src/features/frankenstein/ManuscriptCompanion.tsx`           | Usa o destino correto para o atalho de arquivo. O antigo `#frankenstein-archive` continua válido no Frankenstein.                                                                         |
+| `src/features/frankenstein/FrankensteinManuscript.module.css` | Papel marfim mais claro, fundos de parágrafo com curva e borda, notas com margem destacada, dados agrupados e acentos sálvia, oliva e vinho discreto.                                     |
+| `src/features/frankenstein/useManuscriptBook.ts`              | Máquina de estados existente, reutilizada sem alterar os tempos: 350 ms fechado + 1480 ms abrindo; virada de 720 ms com recuperação em 740 ms no desktop, 260 ms no celular.              |
+| `src/features/experiences/RoomEntrance.tsx` e `.module.css`   | Removem o ritual de folhas na entrada de Books, preservando o destaque estático e as outras salas.                                                                                        |
 
 Os testes em `FrankensteinManuscript.test.tsx`, `Experiences.test.tsx`, `Destinations.test.tsx`, `RecordSurfaces.test.tsx` e `PersonalUI.test.tsx` foram atualizados para a abertura compartilhada e para alcançar os conteúdos após abrir/virar o livro. Nenhuma dependência nova.
 

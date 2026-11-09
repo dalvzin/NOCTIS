@@ -19,27 +19,27 @@ Para imagens do catálogo, a situação era diferente:
 
 ## Arquivos e responsabilidades
 
-| Arquivo | Responsabilidade nesta etapa |
-| --- | --- |
-| `src/features/personal/images.ts` | Acesso ao IndexedDB, confirmação de transações, tratamento de bloqueio/erros/prazo máximo, validação de tamanho/formato/resolução e decodificação com alternativa por `<img>`. |
-| `src/features/personal/covers.ts` | Novo serviço que coordena envio, substituição, compensação quando metadados falham e remoção do Blob antigo após confirmação. |
-| `src/features/personal/AlbumTools.tsx` | Editor, estado ocupado, feedback imediato, indicação correta de capa enviada, carregamento de Blob URL e liberação de memória. Não troca uma imagem de edição já salva por outra edição conhecida. |
-| `src/features/personal/PersonalPages.tsx` | Torna o editor da capa visível na página do álbum, separado do formulário recolhido de texto. |
-| `src/features/personal/Personal.module.css` | Contém capas enviadas e capas de obras; limita a capa principal e impede expansão indevida da grade. |
-| `src/features/discovery/ItemImage.tsx` | Exibe imagem, crédito e direitos; volta ao estudo NOCTIS quando a URL falta ou o navegador informa falha. |
-| `src/features/discovery/Artwork.module.css` | Novo módulo específico de proporções e dimensões. Os créditos ficam fora do quadro da imagem, sem recorte. |
-| `src/data/artwork.ts` | Novo mapa de sete imagens editoriais verificadas: URL, obra, crédito, direitos e página de origem. |
-| `src/data/curated.ts` | Associa esse mapa aos registros existentes, sem trocar seus IDs. Corrige a atribuição da fotografia. Mantém as imagens AIC já existentes. |
-| `src/services/providers.ts` | Normaliza capas Open Library e imagens aprovadas da CAA, com identificação da edição/release. |
-| `src/services/catalog.ts` | Preserva a capa de uma edição ao carregar o detalhe da obra; permite complementar um snapshot antigo sem imagem usando o mesmo ID conhecido. |
-| `src/features/experiences/WorkCard.tsx` | Usa esse complemento de imagem em cartões salvos antes desta etapa; a imagem já presente no snapshot tem prioridade. |
-| `server/catalog.mjs` | Solicita campos de capa de livros. Faz consulta CAA somente no detalhe musical, com cache, limite de frequência e timeout independente. |
-| `src/test/Covers.test.tsx` | Testa edição completa, compensação de falha, referências persistidas, fallback e associação de imagens. O armazenamento binário é simulado nestes testes. |
-| `src/test/Discovery.test.tsx` | Atualiza a expectativa sobre capas OL: exibir pela API, sem inventar licença livre. |
-| `src/test/PersonalUI.test.tsx` | Corrige opções `exact` indevidas em consultas `getByRole`, encontradas na verificação TypeScript que havia ficado pendente. |
-| `server/catalog.test.mjs` | Testa os campos de capa solicitados e a integração CAA com respostas simuladas, incluindo ausência de imagem. |
-| `docs/fixtures/` | Dois PNGs sintéticos usados para testar upload e substituição, sem utilizar arquivos pessoais do usuário. |
-| `docs/evidence/` | Captura do álbum de teste com a capa selecionada e o editor disponível. |
+| Arquivo                                     | Responsabilidade nesta etapa                                                                                                                                                                       |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/features/personal/images.ts`           | Acesso ao IndexedDB, confirmação de transações, tratamento de bloqueio/erros/prazo máximo, validação de tamanho/formato/resolução e decodificação com alternativa por `<img>`.                     |
+| `src/features/personal/covers.ts`           | Novo serviço que coordena envio, substituição, compensação quando metadados falham e remoção do Blob antigo após confirmação.                                                                      |
+| `src/features/personal/AlbumTools.tsx`      | Editor, estado ocupado, feedback imediato, indicação correta de capa enviada, carregamento de Blob URL e liberação de memória. Não troca uma imagem de edição já salva por outra edição conhecida. |
+| `src/features/personal/PersonalPages.tsx`   | Torna o editor da capa visível na página do álbum, separado do formulário recolhido de texto.                                                                                                      |
+| `src/features/personal/Personal.module.css` | Contém capas enviadas e capas de obras; limita a capa principal e impede expansão indevida da grade.                                                                                               |
+| `src/features/discovery/ItemImage.tsx`      | Exibe imagem, crédito e direitos; volta ao estudo NOCTIS quando a URL falta ou o navegador informa falha.                                                                                          |
+| `src/features/discovery/Artwork.module.css` | Novo módulo específico de proporções e dimensões. Os créditos ficam fora do quadro da imagem, sem recorte.                                                                                         |
+| `src/data/artwork.ts`                       | Novo mapa de sete imagens editoriais verificadas: URL, obra, crédito, direitos e página de origem.                                                                                                 |
+| `src/data/curated.ts`                       | Associa esse mapa aos registros existentes, sem trocar seus IDs. Corrige a atribuição da fotografia. Mantém as imagens AIC já existentes.                                                          |
+| `src/services/providers.ts`                 | Normaliza capas Open Library e imagens aprovadas da CAA, com identificação da edição/release.                                                                                                      |
+| `src/services/catalog.ts`                   | Preserva a capa de uma edição ao carregar o detalhe da obra; permite complementar um snapshot antigo sem imagem usando o mesmo ID conhecido.                                                       |
+| `src/features/experiences/WorkCard.tsx`     | Usa esse complemento de imagem em cartões salvos antes desta etapa; a imagem já presente no snapshot tem prioridade.                                                                               |
+| `server/catalog.mjs`                        | Solicita campos de capa de livros. Faz consulta CAA somente no detalhe musical, com cache, limite de frequência e timeout independente.                                                            |
+| `src/test/Covers.test.tsx`                  | Testa edição completa, compensação de falha, referências persistidas, fallback e associação de imagens. O armazenamento binário é simulado nestes testes.                                          |
+| `src/test/Discovery.test.tsx`               | Atualiza a expectativa sobre capas OL: exibir pela API, sem inventar licença livre.                                                                                                                |
+| `src/test/PersonalUI.test.tsx`              | Corrige opções `exact` indevidas em consultas `getByRole`, encontradas na verificação TypeScript que havia ficado pendente.                                                                        |
+| `server/catalog.test.mjs`                   | Testa os campos de capa solicitados e a integração CAA com respostas simuladas, incluindo ausência de imagem.                                                                                      |
+| `docs/fixtures/`                            | Dois PNGs sintéticos usados para testar upload e substituição, sem utilizar arquivos pessoais do usuário.                                                                                          |
+| `docs/evidence/`                            | Captura do álbum de teste com a capa selecionada e o editor disponível.                                                                                                                            |
 
 Nenhuma dependência foi adicionada.
 

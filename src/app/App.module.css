@@ -1,9 +1,23 @@
 /* Navigation is immediate; only the arriving content moves. No exit delay,
    captured screenshot, persistent transform or duplicate interactive page. */
-.page[data-enter=true] { animation: arrive 320ms var(--ease-ui); }
-@keyframes arrive {
-  from { opacity: .25; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
+.page[data-enter='true'] {
+  animation: arrive 320ms var(--ease-ui);
 }
-@media(prefers-reduced-motion:reduce) { .page[data-enter=true] { animation:none; } }
-html[data-motion=reduce] .page[data-enter=true] { animation:none; }
+@keyframes arrive {
+  from {
+    opacity: 0.25;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page[data-enter='true'] {
+    animation: none;
+  }
+}
+html[data-motion='reduce'] .page[data-enter='true'] {
+  animation: none;
+}

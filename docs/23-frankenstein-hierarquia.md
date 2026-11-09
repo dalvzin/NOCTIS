@@ -18,31 +18,31 @@ Nenhuma alteração foi aplicada à homepage, ao HUD, à exposição, aos outros
 
 ## Arquivos e decisões
 
-| Arquivo | Responsabilidade nesta revisão |
-| --- | --- |
-| `features/frankenstein/ManuscriptCompanion.tsx` | Novo bloco abaixo do livro. Reutiliza os componentes existentes de ações e destinos; mantém procedência e direitos. |
-| `ManuscriptLeaf.tsx` | Agora contém apenas as quatro páginas de leitura. As áreas de arquivo/fontes foram removidas das folhas, inclusive das faces decorativas da animação. |
-| `ManuscriptControls.tsx` | Sumário superior e paginação mais evidente, com nomes de destino e fim explícito. |
-| `FrankensteinManuscriptPage.tsx` | Compõe livro e seção independente; adiciona o atalho e limita as setas de leitura ao próprio livro. |
-| `useManuscriptBook.ts` | Limites de navegação atualizados para quatro páginas. Bloqueio de sobreposição, recuperação e tempos da abertura foram preservados. |
-| `FrankensteinManuscript.module.css` | Hierarquia, cores, campos de metadados, estados interativos e painéis fora do papel. Estilos antigos das ações dentro das folhas foram removidos. |
-| `test/FrankensteinManuscript.test.tsx` | Dois testes novos verificam ordem do sumário e separação das ações; os testes existentes foram adaptados à nova organização. |
-| `test/manuscriptHelpers.ts` | Acesso ao arquivo agora usa a seção externa; não tenta abrir uma página de arquivo inexistente. |
+| Arquivo                                         | Responsabilidade nesta revisão                                                                                                                        |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `features/frankenstein/ManuscriptCompanion.tsx` | Novo bloco abaixo do livro. Reutiliza os componentes existentes de ações e destinos; mantém procedência e direitos.                                   |
+| `ManuscriptLeaf.tsx`                            | Agora contém apenas as quatro páginas de leitura. As áreas de arquivo/fontes foram removidas das folhas, inclusive das faces decorativas da animação. |
+| `ManuscriptControls.tsx`                        | Sumário superior e paginação mais evidente, com nomes de destino e fim explícito.                                                                     |
+| `FrankensteinManuscriptPage.tsx`                | Compõe livro e seção independente; adiciona o atalho e limita as setas de leitura ao próprio livro.                                                   |
+| `useManuscriptBook.ts`                          | Limites de navegação atualizados para quatro páginas. Bloqueio de sobreposição, recuperação e tempos da abertura foram preservados.                   |
+| `FrankensteinManuscript.module.css`             | Hierarquia, cores, campos de metadados, estados interativos e painéis fora do papel. Estilos antigos das ações dentro das folhas foram removidos.     |
+| `test/FrankensteinManuscript.test.tsx`          | Dois testes novos verificam ordem do sumário e separação das ações; os testes existentes foram adaptados à nova organização.                          |
+| `test/manuscriptHelpers.ts`                     | Acesso ao arquivo agora usa a seção externa; não tenta abrir uma página de arquivo inexistente.                                                       |
 
 Os caminhos da tabela são relativos a `src/`. Os dados reais, a capa do ebook 84 e os identificadores pessoais são os mesmos. O componente de ações não foi copiado: a localização mudou, a persistência continua no repositório existente.
 
 ## Verificação executada
 
-| Verificação | Resultado |
-| --- | --- |
-| `npm run typecheck` | Passou. |
-| `npm run lint` | Passou; checagem estática TypeScript do projeto. |
-| `npm test -- --reporter=dot` | **302 testes passaram em 21 arquivos.** |
-| `npm run build` | Passou; distribuição em `dist/`. |
-| Navegador desktop | Introdução, história, sumário superior, paginação e seção externa revisados em 1440×1000. |
-| Navegador mobile | Quatro páginas conferidas em 390×844; formulário de álbum expandido em 320×740. Sem transbordamento horizontal. |
-| Foco do atalho | Your archive & sources levou ao bloco e focou `#frankenstein-archive`. |
-| Estados pessoais existentes | Na origem separada `localhost:5180`, Saved, Want, rating 4,5 e associação ao álbum de QA continuaram presentes e sobreviveram ao reload. Nenhum valor pessoal foi alterado nesse ensaio. |
+| Verificação                  | Resultado                                                                                                                                                                                |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run typecheck`          | Passou.                                                                                                                                                                                  |
+| `npm run lint`               | Passou; checagem estática TypeScript do projeto.                                                                                                                                         |
+| `npm test -- --reporter=dot` | **302 testes passaram em 21 arquivos.**                                                                                                                                                  |
+| `npm run build`              | Passou; distribuição em `dist/`.                                                                                                                                                         |
+| Navegador desktop            | Introdução, história, sumário superior, paginação e seção externa revisados em 1440×1000.                                                                                                |
+| Navegador mobile             | Quatro páginas conferidas em 390×844; formulário de álbum expandido em 320×740. Sem transbordamento horizontal.                                                                          |
+| Foco do atalho               | Your archive & sources levou ao bloco e focou `#frankenstein-archive`.                                                                                                                   |
+| Estados pessoais existentes  | Na origem separada `localhost:5180`, Saved, Want, rating 4,5 e associação ao álbum de QA continuaram presentes e sobreviveram ao reload. Nenhum valor pessoal foi alterado nesse ensaio. |
 
 Os testes automatizados cobrem salvar/desfazer, desejo, rating, álbuns e persistência na nova posição, além de teclado, movimento reduzido, isolamento de outras fichas e limites de paginação. A primeira execução encontrou uma expectativa de teste que buscava o crédito em dois lugares do DOM; a consulta foi limitada à seção de procedência e a execução final passou.
 

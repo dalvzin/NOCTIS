@@ -4,17 +4,17 @@ Data: 04/11/2026. Node.js 24.21.0, npm 11.19.0. Projeto existente ampliado sem i
 
 ## Comandos realmente executados
 
-| Verificação | Resultado final |
-| --- | --- |
-| Base antes da Stage 03 | 60 testes, TypeScript e build aprovados. |
-| `npm run typecheck` | Aprovado. |
-| `npm run lint` | Aprovado. Usa as regras estáticas de TypeScript para código não utilizado, inalcançável e rótulos; não é ESLint nem uma auditoria completa de estilo. |
-| `npm test -- --reporter=dot` | 83 testes aprovados em 4 arquivos. |
-| `npm run build` | Aprovado. JavaScript: aproximadamente 454,5 kB / 146,3 kB gzip; CSS: 26,7 kB / 6,4 kB gzip. |
-| `node --check server/start.mjs` | Sintaxe aprovada. |
-| `node --check server/catalog.mjs` | Sintaxe aprovada. |
-| Inspeção do bundle | Zero ocorrências dos marcadores privados pesquisados: `NOCTIS_CONTACT`, nomes convencionais de chaves TMDB/RAWG/Unsplash e `AIC-User-Agent`. |
-| Arquivos de ambiente | Somente `.env.example`; não foi criado arquivo com credenciais reais. |
+| Verificação                       | Resultado final                                                                                                                                       |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Base antes da Stage 03            | 60 testes, TypeScript e build aprovados.                                                                                                              |
+| `npm run typecheck`               | Aprovado.                                                                                                                                             |
+| `npm run lint`                    | Aprovado. Usa as regras estáticas de TypeScript para código não utilizado, inalcançável e rótulos; não é ESLint nem uma auditoria completa de estilo. |
+| `npm test -- --reporter=dot`      | 83 testes aprovados em 4 arquivos.                                                                                                                    |
+| `npm run build`                   | Aprovado. JavaScript: aproximadamente 454,5 kB / 146,3 kB gzip; CSS: 26,7 kB / 6,4 kB gzip.                                                           |
+| `node --check server/start.mjs`   | Sintaxe aprovada.                                                                                                                                     |
+| `node --check server/catalog.mjs` | Sintaxe aprovada.                                                                                                                                     |
+| Inspeção do bundle                | Zero ocorrências dos marcadores privados pesquisados: `NOCTIS_CONTACT`, nomes convencionais de chaves TMDB/RAWG/Unsplash e `AIC-User-Agent`.          |
+| Arquivos de ambiente              | Somente `.env.example`; não foi criado arquivo com credenciais reais.                                                                                 |
 
 A pasta não possui repositório Git. Portanto não houve revisão de histórico de commits nem a afirmação de que commits existentes foram auditados. A inspeção cobriu os arquivos disponíveis e o bundle gerado, com o escopo acima; não equivale a um scanner completo de segredos.
 
@@ -44,10 +44,10 @@ Durante a implementação, corrigimos incompatibilidades de tipos na declaraçã
 
 Usamos o servidor Windows já aberto pelo usuário na porta 5180, sem encerrá-lo.
 
-1. **Open Library:** a busca `Frankenstein`, filtrada para Books, retornou registros reais além da curadoria. Abrimos Quick Preview de *Cleopatra and Frankenstein*, de Coco Mellors, entramos na ficha e conferimos o destino `https://openlibrary.org/works/OL25345096W`. Campos ausentes foram informados, sem resumo inventado.
-2. **Art Institute:** a busca `monet` inicialmente devolveu HTTP 403. A interface mostrou a falha e preservou o restante do site. Após ajustar parâmetros ao formato documentado e enviar `AIC-User-Agent`, o teste final retornou 12 registros reais, incluindo *Water Lilies* e *Bordighera*. Não é possível concluir a causa exata do primeiro 403 apenas com essa sequência.
-3. **Imagens:** algumas URLs oficiais não carregaram neste ambiente. Na prévia de *Bordighera*, conferimos o fallback SVG e o aviso “Source image unavailable · Original NOCTIS placeholder”. Não declaramos sucesso de carregamento de imagens que falharam. A atribuição e a referência à licença acompanharam os metadados.
-4. **Curadoria:** abrimos `/discover?collection=inhabited-spaces`, a prévia de *The Bedroom* e sua ficha, conferindo fonte e aviso de curadoria real. O destino de retorno manteve a coleção escolhida.
+1. **Open Library:** a busca `Frankenstein`, filtrada para Books, retornou registros reais além da curadoria. Abrimos Quick Preview de _Cleopatra and Frankenstein_, de Coco Mellors, entramos na ficha e conferimos o destino `https://openlibrary.org/works/OL25345096W`. Campos ausentes foram informados, sem resumo inventado.
+2. **Art Institute:** a busca `monet` inicialmente devolveu HTTP 403. A interface mostrou a falha e preservou o restante do site. Após ajustar parâmetros ao formato documentado e enviar `AIC-User-Agent`, o teste final retornou 12 registros reais, incluindo _Water Lilies_ e _Bordighera_. Não é possível concluir a causa exata do primeiro 403 apenas com essa sequência.
+3. **Imagens:** algumas URLs oficiais não carregaram neste ambiente. Na prévia de _Bordighera_, conferimos o fallback SVG e o aviso “Source image unavailable · Original NOCTIS placeholder”. Não declaramos sucesso de carregamento de imagens que falharam. A atribuição e a referência à licença acompanharam os metadados.
+4. **Curadoria:** abrimos `/discover?collection=inhabited-spaces`, a prévia de _The Bedroom_ e sua ficha, conferindo fonte e aviso de curadoria real. O destino de retorno manteve a coleção escolhida.
 5. **Teclado:** Ctrl+K abriu o painel abaixo da barra com foco no campo. ArrowDown moveu foco para Frankenstein. Enter no campo abriu `/search?q=Frankenstein` e fechou o painel. Na conferência final, Escape devolveu foco ao botão Search archive; na prévia de Bordighera, devolveu foco ao cartão correto.
 6. **Filtros e histórico:** aplicamos década 1810 e criador Shelley; a URL refletiu ambos e exibiu um resultado. Depois trocamos a categoria e usamos Voltar: o criador e os filtros anteriores retornaram.
 7. **Responsividade:** medimos busca, Discover, Books e ficha de arte em viewports de 320 e 768 px. Nenhuma dessas páginas apresentou rolagem horizontal; a área útil medida foi de 305 e 753 px por causa da barra vertical. A captura móvel da ferramenta tem limitações de escala; isso não substitui avaliação em aparelho real.

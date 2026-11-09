@@ -14,23 +14,23 @@ Discover desenha o sublinhado da esquerda para a direita. A lupa recebe uma brev
 
 ## Arquivos desta rodada
 
-| Arquivo | Responsabilidade |
-| --- | --- |
-| `src/styles/global.css` | Escala de curvas e duração; controles, botões gerais, avisos e disclosures. |
-| `src/components/navigation/Navigation.tsx` | Classes específicas para lupa e menu; os eventos existentes foram preservados. |
-| `src/components/navigation/Navigation.module.css` | Hovers e foco de Discover, lupa, menu e indicador lateral. |
-| `src/components/ui/Modal.module.css` | Curvas dos diálogos, painel lateral e botão de fechar. |
-| `src/features/experiences/Experiences.module.css` | Superfície unificada dos cartões, hierarquia e rodapé de ações. |
-| `src/features/personal/PersonalActions.tsx` | Classe que distingue ações compactas dos controles completos. |
-| `src/features/personal/Personal.module.css` | Botões compactos, painéis, álbuns, abas e capas. |
-| `src/features/discovery/Artwork.module.css` | Cantos das molduras de imagem; proporções preservadas. |
-| `src/features/discovery/Discovery.module.css` | Filtros, resultados, estados vazios e atalhos. |
-| `src/features/discovery/Editorial.module.css` | Seleções editoriais e cartões de temas com superfícies e hover. |
-| `src/features/home/Home.module.css` | Curvas dos seis ambientes; estrutura e ilustrações preservadas. |
-| `src/features/exhibitions/AfterHours.module.css` | Etapas do percurso e botão de Quick Preview. |
-| `src/features/experiences/FullRecord.module.css` | Painéis de notas, arquivo, fontes e proveniência. |
-| `src/features/experiences/RoomEntrance.module.css` | Pequeno acabamento da placa de abertura da sala. |
-| `src/features/frankenstein/FrankensteinManuscript.module.css` | Curvas de controles e painéis, preservando o formato físico do livro. |
+| Arquivo                                                       | Responsabilidade                                                               |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `src/styles/global.css`                                       | Escala de curvas e duração; controles, botões gerais, avisos e disclosures.    |
+| `src/components/navigation/Navigation.tsx`                    | Classes específicas para lupa e menu; os eventos existentes foram preservados. |
+| `src/components/navigation/Navigation.module.css`             | Hovers e foco de Discover, lupa, menu e indicador lateral.                     |
+| `src/components/ui/Modal.module.css`                          | Curvas dos diálogos, painel lateral e botão de fechar.                         |
+| `src/features/experiences/Experiences.module.css`             | Superfície unificada dos cartões, hierarquia e rodapé de ações.                |
+| `src/features/personal/PersonalActions.tsx`                   | Classe que distingue ações compactas dos controles completos.                  |
+| `src/features/personal/Personal.module.css`                   | Botões compactos, painéis, álbuns, abas e capas.                               |
+| `src/features/discovery/Artwork.module.css`                   | Cantos das molduras de imagem; proporções preservadas.                         |
+| `src/features/discovery/Discovery.module.css`                 | Filtros, resultados, estados vazios e atalhos.                                 |
+| `src/features/discovery/Editorial.module.css`                 | Seleções editoriais e cartões de temas com superfícies e hover.                |
+| `src/features/home/Home.module.css`                           | Curvas dos seis ambientes; estrutura e ilustrações preservadas.                |
+| `src/features/exhibitions/AfterHours.module.css`              | Etapas do percurso e botão de Quick Preview.                                   |
+| `src/features/experiences/FullRecord.module.css`              | Painéis de notas, arquivo, fontes e proveniência.                              |
+| `src/features/experiences/RoomEntrance.module.css`            | Pequeno acabamento da placa de abertura da sala.                               |
+| `src/features/frankenstein/FrankensteinManuscript.module.css` | Curvas de controles e painéis, preservando o formato físico do livro.          |
 
 São estilos de componentes já existentes. Não foi criado um segundo sistema de cartões, nem foram substituídos os componentes de navegação ou persistência. Os demais arquivos modificados no checkout pertencem às rodadas anteriores.
 

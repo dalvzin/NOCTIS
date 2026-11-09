@@ -8,33 +8,33 @@ Não foram adicionadas bibliotecas. Acrescentamos um serviço Node de consulta d
 
 ## Mapa dos arquivos novos
 
-| Arquivo | Responsabilidade e conexão |
-| --- | --- |
-| `src/types/catalog.ts` | Formato normalizado `Work`, categorias, provedores, resposta da busca e estados de disponibilidade. `Source` distingue dados fictícios, curados e externos por uma união discriminada. |
-| `src/data/curated.ts` | Nove obras reais com fontes verificadas e duas coleções editoriais. Descrições e conexões são textos próprios do NOCTIS, não avaliações ou estatísticas. |
-| `src/services/` | Nova camada entre dados e componentes. Reúne acesso ao catálogo, regras de busca e adaptação de respostas. |
-| `src/services/catalogUtils.ts` | Normaliza texto para busca, valida links HTTPS, filtra dados, agrupa duplicatas e restringe destinos de retorno a páginas internas conhecidas. |
-| `src/services/providers.ts` | Adaptadores tipados de Open Library, Art Institute of Chicago e MusicBrainz. Recebem dados desconhecidos, validam campos e produzem `Work` ou rejeitam o registro. Compartilhado pelo serviço Node e testes. Não contém chaves. |
-| `src/services/catalog.ts` | Catálogo local compartilhado, consultas aos endpoints internos, validação das respostas, cache de buscas e registro em memória de obras externas conhecidas. Resolve também deep links e enriquecimento de fichas. |
-| `src/hooks/` | Nova pasta para comportamentos React reutilizáveis que precisam de estado/efeitos. |
-| `src/hooks/useCatalogSearch.ts` | Debounce, cancelamento, estado de carregamento, tentativas manuais e proteção contra respostas antigas. Alimenta sala, painel e página de resultados. |
-| `src/features/discovery/` | Nova pasta com as interfaces de descoberta, reutilizando cartões e conteúdo da Stage 02. |
-| `SearchPanel.tsx` | Painel compacto abaixo da navegação. Mostra sugestões editoriais, pesquisa obras, permite setas nos resultados e Enter para a página completa. |
-| `SearchPage.tsx` | Rota `/search`, formulário de pesquisa, seleção de categoria, filtros, resultados, limites e estado vazio. A URL preserva a consulta. |
-| `DiscoverPage.tsx` | Curator’s Selection, Hidden Gems editorial, duas coleções por URL, categorias e obras em destaque. Não simula comunidade ou popularidade. |
-| `CatalogFilters.tsx` | Filtros sobre registros carregados: formato, criador, tag/assunto, década e real/demonstração. Opções vêm dos dados efetivamente disponíveis. |
-| `CatalogResults.tsx` | Grade reutilizável, limite inicial de 12, botão de mostrar mais e estado de Quick Preview. Usado por busca, Discover e salas. |
-| `QuickPreview.tsx` | Composição compartilhada da prévia: imagem, conteúdo, origem e link para ficha. Usa o `Modal` já existente. |
-| `ItemImage.tsx` | Usa a imagem licenciada disponível, carrega sob demanda e volta ao SVG original quando falta ou falha. O placeholder é identificado. |
-| `ProviderNotice.tsx` | Estado de consulta e disponibilidade real de cada fonte, com detalhes recolhíveis e tentativa manual após falha. |
-| `Discovery.module.css` | Estilos isolados dos filtros, painel, página de busca, coleções e imagens. Preserva os tokens existentes. |
-| `server/` | Código executado somente no Node, não no navegador. |
-| `server/catalog.mjs` | Endpoints internos, hosts externos fixos, validação de entradas, identificação da aplicação, cache, limite de frequência e normalização. Exporta serviço e middleware para testar sem rede real. |
-| `server/catalog.d.mts` | Declaração TypeScript do middleware JavaScript para a configuração Vite. Não gera comportamento em execução. |
-| `server/start.mjs` | Servidor da distribuição: serve apenas `dist/`, suporta rotas do React e liga os mesmos endpoints de catálogo. Não expõe arquivos `.env`. |
-| `server/catalog.test.mjs` | Testes do serviço com respostas sintéticas e frequência controlada, em ambiente Node. Não fazem chamadas reais. |
-| `src/test/Discovery.test.tsx` | Normalização, direitos de imagem, deduplicação, filtros, falhas, cache, corrida entre respostas, deep links e fluxo da descoberta. |
-| `.env.example` | Nomes e explicações de configuração, sem credenciais. É a única exceção `.env*` que pode ser versionada. |
+| Arquivo                         | Responsabilidade e conexão                                                                                                                                                                                                      |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/types/catalog.ts`          | Formato normalizado `Work`, categorias, provedores, resposta da busca e estados de disponibilidade. `Source` distingue dados fictícios, curados e externos por uma união discriminada.                                          |
+| `src/data/curated.ts`           | Nove obras reais com fontes verificadas e duas coleções editoriais. Descrições e conexões são textos próprios do NOCTIS, não avaliações ou estatísticas.                                                                        |
+| `src/services/`                 | Nova camada entre dados e componentes. Reúne acesso ao catálogo, regras de busca e adaptação de respostas.                                                                                                                      |
+| `src/services/catalogUtils.ts`  | Normaliza texto para busca, valida links HTTPS, filtra dados, agrupa duplicatas e restringe destinos de retorno a páginas internas conhecidas.                                                                                  |
+| `src/services/providers.ts`     | Adaptadores tipados de Open Library, Art Institute of Chicago e MusicBrainz. Recebem dados desconhecidos, validam campos e produzem `Work` ou rejeitam o registro. Compartilhado pelo serviço Node e testes. Não contém chaves. |
+| `src/services/catalog.ts`       | Catálogo local compartilhado, consultas aos endpoints internos, validação das respostas, cache de buscas e registro em memória de obras externas conhecidas. Resolve também deep links e enriquecimento de fichas.              |
+| `src/hooks/`                    | Nova pasta para comportamentos React reutilizáveis que precisam de estado/efeitos.                                                                                                                                              |
+| `src/hooks/useCatalogSearch.ts` | Debounce, cancelamento, estado de carregamento, tentativas manuais e proteção contra respostas antigas. Alimenta sala, painel e página de resultados.                                                                           |
+| `src/features/discovery/`       | Nova pasta com as interfaces de descoberta, reutilizando cartões e conteúdo da Stage 02.                                                                                                                                        |
+| `SearchPanel.tsx`               | Painel compacto abaixo da navegação. Mostra sugestões editoriais, pesquisa obras, permite setas nos resultados e Enter para a página completa.                                                                                  |
+| `SearchPage.tsx`                | Rota `/search`, formulário de pesquisa, seleção de categoria, filtros, resultados, limites e estado vazio. A URL preserva a consulta.                                                                                           |
+| `DiscoverPage.tsx`              | Curator’s Selection, Hidden Gems editorial, duas coleções por URL, categorias e obras em destaque. Não simula comunidade ou popularidade.                                                                                       |
+| `CatalogFilters.tsx`            | Filtros sobre registros carregados: formato, criador, tag/assunto, década e real/demonstração. Opções vêm dos dados efetivamente disponíveis.                                                                                   |
+| `CatalogResults.tsx`            | Grade reutilizável, limite inicial de 12, botão de mostrar mais e estado de Quick Preview. Usado por busca, Discover e salas.                                                                                                   |
+| `QuickPreview.tsx`              | Composição compartilhada da prévia: imagem, conteúdo, origem e link para ficha. Usa o `Modal` já existente.                                                                                                                     |
+| `ItemImage.tsx`                 | Usa a imagem licenciada disponível, carrega sob demanda e volta ao SVG original quando falta ou falha. O placeholder é identificado.                                                                                            |
+| `ProviderNotice.tsx`            | Estado de consulta e disponibilidade real de cada fonte, com detalhes recolhíveis e tentativa manual após falha.                                                                                                                |
+| `Discovery.module.css`          | Estilos isolados dos filtros, painel, página de busca, coleções e imagens. Preserva os tokens existentes.                                                                                                                       |
+| `server/`                       | Código executado somente no Node, não no navegador.                                                                                                                                                                             |
+| `server/catalog.mjs`            | Endpoints internos, hosts externos fixos, validação de entradas, identificação da aplicação, cache, limite de frequência e normalização. Exporta serviço e middleware para testar sem rede real.                                |
+| `server/catalog.d.mts`          | Declaração TypeScript do middleware JavaScript para a configuração Vite. Não gera comportamento em execução.                                                                                                                    |
+| `server/start.mjs`              | Servidor da distribuição: serve apenas `dist/`, suporta rotas do React e liga os mesmos endpoints de catálogo. Não expõe arquivos `.env`.                                                                                       |
+| `server/catalog.test.mjs`       | Testes do serviço com respostas sintéticas e frequência controlada, em ambiente Node. Não fazem chamadas reais.                                                                                                                 |
+| `src/test/Discovery.test.tsx`   | Normalização, direitos de imagem, deduplicação, filtros, falhas, cache, corrida entre respostas, deep links e fluxo da descoberta.                                                                                              |
+| `.env.example`                  | Nomes e explicações de configuração, sem credenciais. É a única exceção `.env*` que pode ser versionada.                                                                                                                        |
 
 ## Arquivos existentes que mudaram
 

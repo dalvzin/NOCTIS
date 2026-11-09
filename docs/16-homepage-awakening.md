@@ -1,5 +1,7 @@
 # Stage 06.1 — The Awakening + The Living Mosaic
 
+> Registro histórico: a abertura, os tempos e a regra de memória foram substituídos pela [revisão cinematográfica atual](29-abertura-cinematografica.md). Consulte esse guia para Skip, Replay e comportamento após refresh.
+
 ## A. Mudanças visuais e escopo
 
 A homepage deixa o grande bloco de texto seguido por seis cartões iguais. A primeira tela agora é uma entrada editorial com um mosaico assimétrico ocupando a maior parte do viewport desktop. Books abre a composição; Art ocupa um painel horizontal maior; Films e Games compartilham uma coluna de proporções diferentes; Music e Photography completam o conjunto.
@@ -12,13 +14,13 @@ Somente a homepage foi redesenhada. Salas, fichas, busca, My Archive, editor de 
 
 ## B. A sequência de animação
 
-| Momento aproximado | Fase | O que acontece |
-| --- | --- | --- |
-| 0–260 ms | `darkness` | Obsidian com um detalhe de luz central. A navegação global e o botão de pular continuam disponíveis. |
-| 260–950 ms | `wordmark` | Surge a marca NOCTIS com tipografia editorial. |
-| 950–1450 ms | `opening` | As duas partes da marca se afastam discretamente, sugerindo uma passagem. |
-| 1450–3100 ms | `assembling` | A camada escura perde opacidade; os seis fragmentos entram com pequenos deslocamentos e rotações. A mesma marca segue para a faixa editorial. |
-| A partir de 3100 ms | `ready` | O mosaico fica acomodado e mantém seus efeitos curtos de interação. |
+| Momento aproximado  | Fase         | O que acontece                                                                                                                                |
+| ------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0–260 ms            | `darkness`   | Obsidian com um detalhe de luz central. A navegação global e o botão de pular continuam disponíveis.                                          |
+| 260–950 ms          | `wordmark`   | Surge a marca NOCTIS com tipografia editorial.                                                                                                |
+| 950–1450 ms         | `opening`    | As duas partes da marca se afastam discretamente, sugerindo uma passagem.                                                                     |
+| 1450–3100 ms        | `assembling` | A camada escura perde opacidade; os seis fragmentos entram com pequenos deslocamentos e rotações. A mesma marca segue para a faixa editorial. |
+| A partir de 3100 ms | `ready`      | O mosaico fica acomodado e mantém seus efeitos curtos de interação.                                                                           |
 
 **A animação se torna a homepage:** os links são renderizados uma única vez, nas suas áreas finais de CSS Grid. Apenas transformações e opacidade mudam. Não existe um conjunto de fragmentos descartado e substituído por uma segunda grade. Um teste confirma que os seis elementos DOM são os mesmos antes e depois da introdução.
 
@@ -26,30 +28,30 @@ Os tempos são uma composição visual, não uma simulação de download. Nenhum
 
 ## C. Como cada categoria se comporta
 
-| Categoria | Composição original | Movimento |
-| --- | --- | --- |
-| Books | Livro de capa rígida, volume aberto, páginas e luz de uma janela. | O livro se acomoda na entrada; a página faz uma virada breve em hover/foco. |
-| Films & Series | Projetor, película e uma cidade imaginada na tela. | A iluminação aparece gradualmente; a interação intensifica o feixe sem flashes. |
-| Games | Monitor, paisagem vetorial e controle. | O sinal emerge durante a entrada; a linha de boot se forma na interação. |
-| Music | Toca-discos com sulcos, selo e braço. | O conjunto se acomoda com rotação curta; o vinil gira suavemente no hover/foco, sem áudio. |
-| Photography | Ampliação pendurada por prendedores, com cena urbana original. | A imagem se desenvolve em opacidade; uma camada de emulsão desaparece na interação. |
-| Art | Moldura, iluminação e natureza-morta original. | A luz revela a composição; um traço de pincel se desenha no hover/foco. |
+| Categoria      | Composição original                                               | Movimento                                                                                  |
+| -------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Books          | Livro de capa rígida, volume aberto, páginas e luz de uma janela. | O livro se acomoda na entrada; a página faz uma virada breve em hover/foco.                |
+| Films & Series | Projetor, película e uma cidade imaginada na tela.                | A iluminação aparece gradualmente; a interação intensifica o feixe sem flashes.            |
+| Games          | Monitor, paisagem vetorial e controle.                            | O sinal emerge durante a entrada; a linha de boot se forma na interação.                   |
+| Music          | Toca-discos com sulcos, selo e braço.                             | O conjunto se acomoda com rotação curta; o vinil gira suavemente no hover/foco, sem áudio. |
+| Photography    | Ampliação pendurada por prendedores, com cena urbana original.    | A imagem se desenvolve em opacidade; uma camada de emulsão desaparece na interação.        |
+| Art            | Moldura, iluminação e natureza-morta original.                    | A luz revela a composição; um traço de pincel se desenha no hover/foco.                    |
 
 São animações finitas, não seis loops contínuos. No toque, a cena pronta, o nome, o descritor e a seta já comunicam a navegação sem depender de hover. Todo o tile é um link, com alvo muito maior que 44 px de altura. Os efeitos também respondem a `:focus-visible`.
 
 ## D. Arquivos e responsabilidades
 
-| Arquivo | Responsabilidade e conexão |
-| --- | --- |
-| `src/features/home/Home.tsx` | Monta faixa editorial, marca, seis links do mosaico, seleção real, Hidden Gems e convite final. Usa as rotas de `rooms`, os registros de `curatedWorks` e os cartões/Quick Preview existentes. |
-| `src/features/home/useAwakening.ts` | Hook que controla as cinco fases, timers, memória da sessão, pulo, mudança de preferência e interrupção quando a aba fica oculta. Limpa timers ao desmontar. |
-| `src/features/home/RoomScene.tsx` | Seis composições SVG originais. `useId` fornece identificadores únicos para gradientes, evitando que uma cena utilize por engano a definição de outra. |
-| `src/features/home/Home.module.css` | Áreas do mosaico, proporções responsivas, tipografia, estados da entrada, microanimações, foco e pausa fora do viewport. Seus nomes ficam isolados por CSS Modules. |
-| `src/features/archive/Pages.tsx` | Passa a reexportar o novo Home. RoomGrid e Information continuam disponíveis, preservando seus usos em outras páginas. |
-| `src/test/HomeAwakening.test.tsx` | Testes da sequência, identidade dos links, memória por sessão, skip/foco, reduced motion, destinos, obras reais, lazy loading, observação do viewport e armazenamento bloqueado. |
-| `docs/evidence/stage-06-1-*.jpg` | Capturas da entrada, homepage pronta e composições móveis verificadas. |
-| `docs/evidence/stage-06-1-layout-checks.json` | Medidas reais de viewport, conteúdo, altura do mosaico e setas nos sete tamanhos conferidos. |
-| `README.md` | Aponta a direção atual, documentação e resultados desta etapa. |
+| Arquivo                                       | Responsabilidade e conexão                                                                                                                                                                     |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/features/home/Home.tsx`                  | Monta faixa editorial, marca, seis links do mosaico, seleção real, Hidden Gems e convite final. Usa as rotas de `rooms`, os registros de `curatedWorks` e os cartões/Quick Preview existentes. |
+| `src/features/home/useAwakening.ts`           | Hook que controla as cinco fases, timers, memória da sessão, pulo, mudança de preferência e interrupção quando a aba fica oculta. Limpa timers ao desmontar.                                   |
+| `src/features/home/RoomScene.tsx`             | Seis composições SVG originais. `useId` fornece identificadores únicos para gradientes, evitando que uma cena utilize por engano a definição de outra.                                         |
+| `src/features/home/Home.module.css`           | Áreas do mosaico, proporções responsivas, tipografia, estados da entrada, microanimações, foco e pausa fora do viewport. Seus nomes ficam isolados por CSS Modules.                            |
+| `src/features/archive/Pages.tsx`              | Passa a reexportar o novo Home. RoomGrid e Information continuam disponíveis, preservando seus usos em outras páginas.                                                                         |
+| `src/test/HomeAwakening.test.tsx`             | Testes da sequência, identidade dos links, memória por sessão, skip/foco, reduced motion, destinos, obras reais, lazy loading, observação do viewport e armazenamento bloqueado.               |
+| `docs/evidence/stage-06-1-*.jpg`              | Capturas da entrada, homepage pronta e composições móveis verificadas.                                                                                                                         |
+| `docs/evidence/stage-06-1-layout-checks.json` | Medidas reais de viewport, conteúdo, altura do mosaico e setas nos sete tamanhos conferidos.                                                                                                   |
+| `README.md`                                   | Aponta a direção atual, documentação e resultados desta etapa.                                                                                                                                 |
 
 Não foi adicionada dependência. Não foi alterada a configuração de provedores, conta, banco, RLS, armazenamento ou autenticação.
 
@@ -114,14 +116,14 @@ No navegador integrado foi observado `darkness → ready` em uma primeira entrad
 O controle existente Reduce motion foi exercitado, e a homepage mostrou `data-reduced=true`, `ready` e transição instantânea. A preferência foi restaurada para Follow device preference depois do teste. Não foi alterada a configuração de movimento do sistema operacional.
 
 | Viewport CSS confirmado | Largura de conteúdo | Altura do mosaico | Setas cortadas |
-| --- | --- | --- | --- |
-| 320×740 | 305 px | 821 px | 0 |
-| 390×844 | 375 px | 821 px | 0 |
-| 768×1024 | 753 px | 799 px | 0 |
-| 1365×768 | 1350 px | 543 px | 0 |
-| 1920×1080 | 1905 px | 855 px | 0 |
-| 1280×600 | 1265 px | 503 px | 0 |
-| 640×400 | 625 px | 851 px | 0 |
+| ----------------------- | ------------------- | ----------------- | -------------- |
+| 320×740                 | 305 px              | 821 px            | 0              |
+| 390×844                 | 375 px              | 821 px            | 0              |
+| 768×1024                | 753 px              | 799 px            | 0              |
+| 1365×768                | 1350 px             | 543 px            | 0              |
+| 1920×1080               | 1905 px             | 855 px            | 0              |
+| 1280×600                | 1265 px             | 503 px            | 0              |
+| 640×400                 | 625 px              | 851 px            | 0              |
 
 A diferença de quinze pixels é a barra de rolagem do ambiente. Não houve conteúdo mais largo que o viewport. 640×400 foi um teste de reflow, não um teste de zoom real a 200%.
 

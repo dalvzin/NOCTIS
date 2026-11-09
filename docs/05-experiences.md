@@ -8,20 +8,20 @@ Há três obras em cada sala. Todos os nomes de obras, criadores, descrições e
 
 ## Pastas e arquivos
 
-| Arquivo | O que faz e onde entra |
-| --- | --- |
-| `src/data/works.ts` | Define `CategorySlug` e `Work`, contém as 18 obras e exporta `getWork` e `workPath`. É a fonte única do catálogo local. |
-| `src/features/experiences/` | Nova pasta que reúne a experiência cultural compartilhada pelas seis salas. A separação evita colocar catálogo e detalhes no arquivo da homepage. |
-| `RoomExperience.tsx` | Página de uma sala. Seleciona suas obras, lê os filtros da URL, calcula os resultados, abre/fecha a prévia e monta os cartões. |
-| `RoomEntrance.tsx` | Abertura editorial da sala. Escolhe a frase e a composição, consulta movimento reduzido e permite repetir a animação decorativa. |
-| `RoomEntrance.module.css` | Fundos atmosféricos, layout da entrada e seis animações. As classes de cada sala ficam isoladas neste módulo. |
-| `WorkVisual.tsx` | Desenha uma composição SVG apropriada à categoria, utilizando a paleta do registro. `hero` escolhe a proporção de destaque. É reutilizado na sala, cartão, prévia e ficha. |
-| `WorkVisual.module.css` | Define texturas, legendas, moldura e proporções das composições. Livros, fotografia e arte ganham proporções verticais; cinema tem quadro mais largo e música um quadrado. |
-| `WorkCard.tsx` | Cartão com dois controles distintos: a imagem abre Quick Preview; o título é um link de acesso direto à ficha. Sem links aninhados em botões. |
-| `WorkContent.tsx` | Texto compartilhado por prévia e ficha: autoria, ano, formato, descrição, metadados e aviso de demonstração. `compact` omite a nota editorial na prévia. |
-| `WorkDetail.tsx` | Página completa de uma obra. Lê `workId` da URL, confere se pertence à sala e apresenta conteúdo, nota de curadoria, retorno e duas obras relacionadas. Endereço inválido mostra 404. |
-| `Experiences.module.css` | Grade da coleção, filtros, cartões, estado vazio, conteúdo da prévia, ficha e relacionados. Também adapta esses elementos para telas menores. |
-| `src/test/Experiences.test.tsx` | Testa os dados e os fluxos novos. A preferência de movimento reduzido é simulada, sem mudar a configuração do computador. |
+| Arquivo                         | O que faz e onde entra                                                                                                                                                                |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/data/works.ts`             | Define `CategorySlug` e `Work`, contém as 18 obras e exporta `getWork` e `workPath`. É a fonte única do catálogo local.                                                               |
+| `src/features/experiences/`     | Nova pasta que reúne a experiência cultural compartilhada pelas seis salas. A separação evita colocar catálogo e detalhes no arquivo da homepage.                                     |
+| `RoomExperience.tsx`            | Página de uma sala. Seleciona suas obras, lê os filtros da URL, calcula os resultados, abre/fecha a prévia e monta os cartões.                                                        |
+| `RoomEntrance.tsx`              | Abertura editorial da sala. Escolhe a frase e a composição, consulta movimento reduzido e permite repetir a animação decorativa.                                                      |
+| `RoomEntrance.module.css`       | Fundos atmosféricos, layout da entrada e seis animações. As classes de cada sala ficam isoladas neste módulo.                                                                         |
+| `WorkVisual.tsx`                | Desenha uma composição SVG apropriada à categoria, utilizando a paleta do registro. `hero` escolhe a proporção de destaque. É reutilizado na sala, cartão, prévia e ficha.            |
+| `WorkVisual.module.css`         | Define texturas, legendas, moldura e proporções das composições. Livros, fotografia e arte ganham proporções verticais; cinema tem quadro mais largo e música um quadrado.            |
+| `WorkCard.tsx`                  | Cartão com dois controles distintos: a imagem abre Quick Preview; o título é um link de acesso direto à ficha. Sem links aninhados em botões.                                         |
+| `WorkContent.tsx`               | Texto compartilhado por prévia e ficha: autoria, ano, formato, descrição, metadados e aviso de demonstração. `compact` omite a nota editorial na prévia.                              |
+| `WorkDetail.tsx`                | Página completa de uma obra. Lê `workId` da URL, confere se pertence à sala e apresenta conteúdo, nota de curadoria, retorno e duas obras relacionadas. Endereço inválido mostra 404. |
+| `Experiences.module.css`        | Grade da coleção, filtros, cartões, estado vazio, conteúdo da prévia, ficha e relacionados. Também adapta esses elementos para telas menores.                                         |
+| `src/test/Experiences.test.tsx` | Testa os dados e os fluxos novos. A preferência de movimento reduzido é simulada, sem mudar a configuração do computador.                                                             |
 
 Arquivos existentes que mudaram:
 
@@ -65,14 +65,14 @@ O link carrega `returnTo` em `location.state`, um pequeno estado da navegação 
 
 Concentramos a animação no objeto de entrada, por aproximadamente um segundo. Ela não é uma espera obrigatória, não cobre os controles e não roda em loop. O texto faz uma entrada sutil de 10 pixels por 550 ms com Motion; a estrutura e o catálogo continuam disponíveis desde o início.
 
-| Sala | Composição e efeito | Implementação |
-| --- | --- | --- |
-| The Reading Room | Um volume editorial e duas folhas que viram | `pageTurn`: folhas decorativas com `rotateY`, ponto de apoio à esquerda e desaparecimento ao terminar. Perspectiva sugere profundidade. |
-| The Screening Room | Quadro de projeção em verdes escuros | `crt`: uma linha horizontal cresce até o quadro completo usando escala e opacidade. Não usa piscadas ou flashes. |
-| The Console Room | Portal geométrico e sinal de sistema pronto | `boot`: escala discreta e `clip-path`; `signal` revela a legenda ao final. Não simula um jogo funcional nem oferece um botão Play fictício. |
-| The Listening Room | Disco, sulcos e braço de toca-discos | `vinyl`: o grupo SVG marcado `data-part="record"` gira 55 graus e repousa. O braço permanece parado. Não há reprodução de áudio. |
-| The Darkroom | Moldura e composição de janela | `develop`: contraste, opacidade e tonalidade se assentam, evocando a revelação. Não há flash de câmera. |
-| The Gallery | Forma orgânica e gestos largos | `brush`: um recorte poligonal percorre a composição, evocando uma pincelada. Não anima a página inteira. |
+| Sala               | Composição e efeito                         | Implementação                                                                                                                               |
+| ------------------ | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| The Reading Room   | Um volume editorial e duas folhas que viram | `pageTurn`: folhas decorativas com `rotateY`, ponto de apoio à esquerda e desaparecimento ao terminar. Perspectiva sugere profundidade.     |
+| The Screening Room | Quadro de projeção em verdes escuros        | `crt`: uma linha horizontal cresce até o quadro completo usando escala e opacidade. Não usa piscadas ou flashes.                            |
+| The Console Room   | Portal geométrico e sinal de sistema pronto | `boot`: escala discreta e `clip-path`; `signal` revela a legenda ao final. Não simula um jogo funcional nem oferece um botão Play fictício. |
+| The Listening Room | Disco, sulcos e braço de toca-discos        | `vinyl`: o grupo SVG marcado `data-part="record"` gira 55 graus e repousa. O braço permanece parado. Não há reprodução de áudio.            |
+| The Darkroom       | Moldura e composição de janela              | `develop`: contraste, opacidade e tonalidade se assentam, evocando a revelação. Não há flash de câmera.                                     |
+| The Gallery        | Forma orgânica e gestos largos              | `brush`: um recorte poligonal percorre a composição, evocando uma pincelada. Não anima a página inteira.                                    |
 
 CSS `@keyframes` descreve estados intermediários de uma animação. O seletor da sala aplica apenas o efeito daquela categoria. Não foram necessárias bibliotecas adicionais. Motion for React continua responsável pela entrada do texto e pela integração com a preferência do sistema.
 

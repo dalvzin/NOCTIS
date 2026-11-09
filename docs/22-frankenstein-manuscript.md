@@ -14,11 +14,11 @@ A identificação exige simultaneamente ID `gutenberg:books:84`, categoria `book
 
 As três aberturas são:
 
-| Abertura | Página esquerda | Página direita |
-| --- | --- | --- |
-| I — The identity | Capa real do ebook selecionado, título, autora e identificação da edição. | Introdução editorial, ano da obra, autora, formato e referência do ebook. |
-| II — The story | Descrição existente, identificada como síntese editorial. | Nota específica e leitura original do NOCTIS, com assuntos do registro. |
-| III — The archive | Save, Want to Experience, rating privado e Add to Album. | Destino verificado, procedência e direitos da imagem. |
+| Abertura          | Página esquerda                                                           | Página direita                                                            |
+| ----------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| I — The identity  | Capa real do ebook selecionado, título, autora e identificação da edição. | Introdução editorial, ano da obra, autora, formato e referência do ebook. |
+| II — The story    | Descrição existente, identificada como síntese editorial.                 | Nota específica e leitura original do NOCTIS, com assuntos do registro.   |
+| III — The archive | Save, Want to Experience, rating privado e Add to Album.                  | Destino verificado, procedência e direitos da imagem.                     |
 
 Não foi criada uma sinopse factual longa nem reproduzido texto de uma edição moderna. A data de 1818 vem do registro existente e identifica a publicação da obra; não é apresentada como a data de uma edição impressa correspondente à capa. A imagem é explicitamente identificada como capa do **Project Gutenberg ebook 84**, sem alegar que seja a encadernação original de 1818.
 
@@ -53,19 +53,19 @@ Ao mudar de modo de layout durante uma abertura/virada, o livro estabiliza na p�
 
 ## C. Arquivos criados e modificados
 
-| Arquivo | Responsabilidade |
-| --- | --- |
-| `src/features/frankenstein/FrankensteinManuscriptPage.tsx` | Seleção canônica, estrutura física, capa, composição das folhas, teclado, foco e retorno ao contexto anterior. |
-| `src/features/frankenstein/ManuscriptLeaf.tsx` | Conteúdo das seis páginas; dados reais, identificação editorial e integração das ações/fontes existentes. |
-| `src/features/frankenstein/ManuscriptControls.tsx` | Sumário das três aberturas, Previous/Next, limites e anúncio dos números de página. |
-| `src/features/frankenstein/useManuscriptBook.ts` | Estados, bloqueio de comandos concorrentes, duração, layout e recuperação de interrupções. |
-| `src/features/frankenstein/FrankensteinManuscript.module.css` | Papel, capa, lombada, profundidade, faces, viradas, tipografia, controles em tinta e responsividade. |
-| `src/features/experiences/WorkDetail.tsx` | Um desvio isolado para a obra canônica. O restante da ficha padrão foi preservado. |
-| `src/test/FrankensteinManuscript.test.tsx` | 18 testes novos do protótipo, da seleção por ID e da máquina de estados. |
-| `src/test/manuscriptHelpers.ts` | Ajuda os fluxos de teste anteriores a entrar na abertura correta do novo livro. |
+| Arquivo                                                                                              | Responsabilidade                                                                                                                 |
+| ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `src/features/frankenstein/FrankensteinManuscriptPage.tsx`                                           | Seleção canônica, estrutura física, capa, composição das folhas, teclado, foco e retorno ao contexto anterior.                   |
+| `src/features/frankenstein/ManuscriptLeaf.tsx`                                                       | Conteúdo das seis páginas; dados reais, identificação editorial e integração das ações/fontes existentes.                        |
+| `src/features/frankenstein/ManuscriptControls.tsx`                                                   | Sumário das três aberturas, Previous/Next, limites e anúncio dos números de página.                                              |
+| `src/features/frankenstein/useManuscriptBook.ts`                                                     | Estados, bloqueio de comandos concorrentes, duração, layout e recuperação de interrupções.                                       |
+| `src/features/frankenstein/FrankensteinManuscript.module.css`                                        | Papel, capa, lombada, profundidade, faces, viradas, tipografia, controles em tinta e responsividade.                             |
+| `src/features/experiences/WorkDetail.tsx`                                                            | Um desvio isolado para a obra canônica. O restante da ficha padrão foi preservado.                                               |
+| `src/test/FrankensteinManuscript.test.tsx`                                                           | 18 testes novos do protótipo, da seleção por ID e da máquina de estados.                                                         |
+| `src/test/manuscriptHelpers.ts`                                                                      | Ajuda os fluxos de teste anteriores a entrar na abertura correta do novo livro.                                                  |
 | `Discovery.test.tsx`, `EditorialRevision.test.tsx`, `PersonalUI.test.tsx`, `RecordSurfaces.test.tsx` | Adaptam os testes que antes procuravam todas as ações imediatamente na ficha de Frankenstein. Agora navegam pelas páginas reais. |
-| `docs/evidence/frankenstein/` | Capturas da implementação e registro dos ensaios no navegador. |
-| `README.md`, este documento | Estado atual, aprendizado e roteiro de revisão. |
+| `docs/evidence/frankenstein/`                                                                        | Capturas da implementação e registro dos ensaios no navegador.                                                                   |
+| `README.md`, este documento                                                                          | Estado atual, aprendizado e roteiro de revisão.                                                                                  |
 
 O repositório já continha mudanças das rodadas anteriores. Elas foram preservadas. A arquitetura não ganhou um sistema genérico para livros: remover a pasta `frankenstein` e o import/desvio de `WorkDetail` desacopla este experimento.
 
@@ -81,24 +81,24 @@ No navegador de QA foram exercitados Save, Unsave, Want to Experience, rating 4,
 
 ## E. Verificações executadas
 
-| Verificação | Resultado final |
-| --- | --- |
-| `npm run typecheck` | Passou. |
-| `npm run lint` | Passou; corresponde às regras estáticas TypeScript já configuradas no projeto. |
-| `npm test -- --reporter=dot` | **300 testes passaram em 21 arquivos**, incluindo 18 novos. Base anterior: 282 testes em 20 arquivos. |
-| `npm run build` | Passou; saída `dist/`. Bundle principal: 443,11 kB / 138,78 kB gzip. CSS principal: 72,89 kB / 15,54 kB gzip. |
-| Entrada de catálogo | Discover e busca filtrada abriram a obra correta. Acesso direto também verificado. |
-| Contexto | Retorno preservou `/discover` e `/search?q=Frankenstein&format=Novel`; o botão Voltar do navegador retornou à busca filtrada. |
-| Capa e entrada | Imagem `/artworks/book-84.jpg` carregada, estados fechado/abrindo/aberto observados, face externa oculta após a passagem pela lombada. |
-| Desktop | Três aberturas, Next/Previous e navegação por sumário; livro permanece aberto. Uma folha gira enquanto a transformação do livro estabilizado permanece `none`. |
-| Cliques repetidos | Duplo clique avançou uma abertura, sem enfileirar outra. Seleção acidental de texto encontrada no ensaio foi corrigida nos controles. |
-| Interrupção | Redimensionamento durante uma virada estabilizou em modo de página individual no destino correto. Redutor também cobre interrupção na abertura e conclusões antigas. |
-| Mobile | Seis páginas individuais em 390×844; título e formulário de álbuns verificados a 320×740. Sem transbordamento horizontal. Texto corrido medido em 17 px / entrelinha 32,3 px. |
-| Tablet | 768×1024 mostrou duas páginas, sem transbordamento horizontal. |
-| Movimento reduzido | Preferência interna verificada no navegador: livro já aberto, sem capa animada e sem animações nos descendentes. Preferência do sistema coberta por teste automatizado. |
-| Ações e persistência | Salvamento/desfazer, desejo, rating, álbum e associação após reload verificados no navegador de QA e nos testes. |
-| Isolamento | Pride and Prejudice manteve a ficha padrão no navegador; todos os outros 16 registros editoriais, além de uma edição alternativa de Frankenstein, foram cobertos por testes. |
-| Higiene | `git diff --check` sem erros de whitespace. Sem push ou deploy. |
+| Verificação                  | Resultado final                                                                                                                                                               |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run typecheck`          | Passou.                                                                                                                                                                       |
+| `npm run lint`               | Passou; corresponde às regras estáticas TypeScript já configuradas no projeto.                                                                                                |
+| `npm test -- --reporter=dot` | **300 testes passaram em 21 arquivos**, incluindo 18 novos. Base anterior: 282 testes em 20 arquivos.                                                                         |
+| `npm run build`              | Passou; saída `dist/`. Bundle principal: 443,11 kB / 138,78 kB gzip. CSS principal: 72,89 kB / 15,54 kB gzip.                                                                 |
+| Entrada de catálogo          | Discover e busca filtrada abriram a obra correta. Acesso direto também verificado.                                                                                            |
+| Contexto                     | Retorno preservou `/discover` e `/search?q=Frankenstein&format=Novel`; o botão Voltar do navegador retornou à busca filtrada.                                                 |
+| Capa e entrada               | Imagem `/artworks/book-84.jpg` carregada, estados fechado/abrindo/aberto observados, face externa oculta após a passagem pela lombada.                                        |
+| Desktop                      | Três aberturas, Next/Previous e navegação por sumário; livro permanece aberto. Uma folha gira enquanto a transformação do livro estabilizado permanece `none`.                |
+| Cliques repetidos            | Duplo clique avançou uma abertura, sem enfileirar outra. Seleção acidental de texto encontrada no ensaio foi corrigida nos controles.                                         |
+| Interrupção                  | Redimensionamento durante uma virada estabilizou em modo de página individual no destino correto. Redutor também cobre interrupção na abertura e conclusões antigas.          |
+| Mobile                       | Seis páginas individuais em 390×844; título e formulário de álbuns verificados a 320×740. Sem transbordamento horizontal. Texto corrido medido em 17 px / entrelinha 32,3 px. |
+| Tablet                       | 768×1024 mostrou duas páginas, sem transbordamento horizontal.                                                                                                                |
+| Movimento reduzido           | Preferência interna verificada no navegador: livro já aberto, sem capa animada e sem animações nos descendentes. Preferência do sistema coberta por teste automatizado.       |
+| Ações e persistência         | Salvamento/desfazer, desejo, rating, álbum e associação após reload verificados no navegador de QA e nos testes.                                                              |
+| Isolamento                   | Pride and Prejudice manteve a ficha padrão no navegador; todos os outros 16 registros editoriais, além de uma edição alternativa de Frankenstein, foram cobertos por testes.  |
+| Higiene                      | `git diff --check` sem erros de whitespace. Sem push ou deploy.                                                                                                               |
 
 As setas de teclado da leitura e a preservação das teclas dos campos são cobertas por testes automatizados. No navegador, também foi confirmado que uma seta no seletor de rating não vira a página. Leitor de tela completo e dispositivos físicos não foram ensaiados.
 

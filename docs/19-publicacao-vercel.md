@@ -6,14 +6,14 @@ Nenhum push, deploy ou configuração de autenticação foi realizado. Design e 
 
 O projeto é a pasta `outputs/noctis` desta conversa: aquela que contém package.json, src e server. Publique o código completo dessa pasta, incluindo api e vercel.json; apenas dist não inclui o serviço de catálogo.
 
-| Opção Vercel | Valor |
-| --- | --- |
-| Framework | Vite |
-| Install Command | npm ci |
-| Build Command | npm run build |
-| Output Directory | dist |
-| Node.js | 24.x |
-| Root Directory | Pasta que contém package.json e vercel.json |
+| Opção Vercel     | Valor                                       |
+| ---------------- | ------------------------------------------- |
+| Framework        | Vite                                        |
+| Install Command  | npm ci                                      |
+| Build Command    | npm run build                               |
+| Output Directory | dist                                        |
+| Node.js          | 24.x                                        |
+| Root Directory   | Pasta que contém package.json e vercel.json |
 
 package.json e package-lock.json declaram Node 24.x, sem dependências novas. O ambiente local executou Node 24.21.0.
 
@@ -33,11 +33,11 @@ O cache e o controle de frequência existentes são por instância de servidor. 
 
 Nenhuma variável é obrigatória para o portfólio com catálogo local e arquivo pessoal.
 
-| Variável | Orientação |
-| --- | --- |
-| NOCTIS_CONTACT | Opcional, somente no servidor da Vercel. Necessária para habilitar MusicBrainz. Use contato real que autorize enviar no User-Agent aos provedores. |
-| HOST e PORT | Somente para o servidor local. Não configure na Vercel. |
-| VITE_SUPABASE_URL e VITE_SUPABASE_PUBLISHABLE_KEY | Deixe ausentes. Supabase e autenticação continuam adiados. |
+| Variável                                          | Orientação                                                                                                                                         |
+| ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NOCTIS_CONTACT                                    | Opcional, somente no servidor da Vercel. Necessária para habilitar MusicBrainz. Use contato real que autorize enviar no User-Agent aos provedores. |
+| HOST e PORT                                       | Somente para o servidor local. Não configure na Vercel.                                                                                            |
+| VITE_SUPABASE_URL e VITE_SUPABASE_PUBLISHABLE_KEY | Deixe ausentes. Supabase e autenticação continuam adiados.                                                                                         |
 
 Variáveis VITE_ são públicas na build. Não coloque nelas senhas ou chaves privadas. A proteção de build existente contra chaves Supabase privilegiadas permanece ativa. TMDB, RAWG e Unsplash continuam sem integração configurada; não há tokens desses serviços sendo lidos.
 
@@ -56,18 +56,18 @@ Esta pasta ainda não é um repositório Git. Portanto, não há índice/histór
 
 ## Arquivos alterados
 
-| Arquivo | Responsabilidade |
-| --- | --- |
-| vercel.json, novo | Framework, instalação, build, saída e rotas API/SPA. |
-| api/catalog.mjs, novo | Adaptador do catálogo existente para Vercel Functions. |
-| .vercelignore, novo | Proteção do futuro upload de código pela CLI. |
-| .gitignore | Proteção ampliada de arquivos locais e privados. |
-| .env.example | Explicação das variáveis opcionais e locais. |
-| package.json e package-lock.json | Família Node 24.x, sem novas dependências. |
-| src/app/App.tsx | Atalho /archive para /my-archive. |
-| server/vercel.test.mjs, novo | Testes das rotas, adaptador e respostas JSON. |
-| src/test/App.test.tsx | Verifica o atalho e a aba preservada. |
-| README.md e este documento | Instruções e limites da preparação. |
+| Arquivo                          | Responsabilidade                                       |
+| -------------------------------- | ------------------------------------------------------ |
+| vercel.json, novo                | Framework, instalação, build, saída e rotas API/SPA.   |
+| api/catalog.mjs, novo            | Adaptador do catálogo existente para Vercel Functions. |
+| .vercelignore, novo              | Proteção do futuro upload de código pela CLI.          |
+| .gitignore                       | Proteção ampliada de arquivos locais e privados.       |
+| .env.example                     | Explicação das variáveis opcionais e locais.           |
+| package.json e package-lock.json | Família Node 24.x, sem novas dependências.             |
+| src/app/App.tsx                  | Atalho /archive para /my-archive.                      |
+| server/vercel.test.mjs, novo     | Testes das rotas, adaptador e respostas JSON.          |
+| src/test/App.test.tsx            | Verifica o atalho e a aba preservada.                  |
+| README.md e este documento       | Instruções e limites da preparação.                    |
 
 ## Resultados reais
 

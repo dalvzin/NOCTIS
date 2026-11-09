@@ -4,15 +4,15 @@ Consulta às referências oficiais em 04/11/2026. O status observado no aplicati
 
 ## Resumo de integração
 
-| Categoria | Provedor | Situação nesta entrega |
-| --- | --- | --- |
-| Books | Open Library | Adaptador e consulta de busca/ficha implementados. Busca real confirmada no Brave. Sem chave. |
-| Art | Art Institute of Chicago | Adaptador, atribuição e restrição de imagens implementados. Houve HTTP 403 inicial; o teste final de busca por Monet respondeu com 12 registros reais. Imagens podem falhar separadamente e têm fallback. |
-| Music | MusicBrainz | Adaptador de grupos de lançamentos e busca/ficha implementados; desativado sem `NOCTIS_CONTACT`. Não validado ao vivo com um contato real. |
-| Music artwork | Cover Art Archive | Investigado; reprodução automática de capas adiada, pois acesso técnico não prova licença para reutilização. |
-| Films & Series | TMDB | Investigado e desconectado: sem credenciais e sem implantação validada de branding. Não há adaptador habilitável por chave nesta versão. |
-| Games | RAWG | Investigado e desconectado: sem chave; é necessário confirmar o plano e as condições aplicáveis. Não há adaptador habilitável por chave nesta versão. |
-| Photography | Unsplash | Investigado e desconectado: sem aplicação/chave API aprovada. Não há adaptador habilitável por chave nesta versão. |
+| Categoria      | Provedor                 | Situação nesta entrega                                                                                                                                                                                    |
+| -------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Books          | Open Library             | Adaptador e consulta de busca/ficha implementados. Busca real confirmada no Brave. Sem chave.                                                                                                             |
+| Art            | Art Institute of Chicago | Adaptador, atribuição e restrição de imagens implementados. Houve HTTP 403 inicial; o teste final de busca por Monet respondeu com 12 registros reais. Imagens podem falhar separadamente e têm fallback. |
+| Music          | MusicBrainz              | Adaptador de grupos de lançamentos e busca/ficha implementados; desativado sem `NOCTIS_CONTACT`. Não validado ao vivo com um contato real.                                                                |
+| Music artwork  | Cover Art Archive        | Investigado; reprodução automática de capas adiada, pois acesso técnico não prova licença para reutilização.                                                                                              |
+| Films & Series | TMDB                     | Investigado e desconectado: sem credenciais e sem implantação validada de branding. Não há adaptador habilitável por chave nesta versão.                                                                  |
+| Games          | RAWG                     | Investigado e desconectado: sem chave; é necessário confirmar o plano e as condições aplicáveis. Não há adaptador habilitável por chave nesta versão.                                                     |
+| Photography    | Unsplash                 | Investigado e desconectado: sem aplicação/chave API aprovada. Não há adaptador habilitável por chave nesta versão.                                                                                        |
 
 Todas as categorias têm conteúdo local real selecionado e demonstrações identificadas. O painel de fontes não declara que uma API desconectada foi consultada.
 
@@ -64,15 +64,15 @@ Sem `.env`, a aplicação continua funcionando; Open Library e Art Institute pod
 
 ## Fontes da curadoria local
 
-| Registro | Fonte do metadado e destino apresentado |
-| --- | --- |
-| Pride and Prejudice | [Project Gutenberg 1342](https://www.gutenberg.org/ebooks/1342): título, autora e primeira publicação. Sem reprodução de capa. |
-| Frankenstein | [Project Gutenberg 84](https://www.gutenberg.org/ebooks/84): obra de Shelley, primeira publicação 1818; a ficha não promete uma edição específica. Sem capa. |
-| Metropolis | [MoMA](https://www.moma.org/collection/works/299946): Fritz Lang, 1927. Sem alegação de disponibilidade para streaming. |
-| Journey | [thatgamecompany](https://thatgamecompany.com/journey/) e [anúncio PlayStation de 2012](https://blog.playstation.com/2012/02/16/journey-takes-its-first-steps-this-march): desenvolvedora, ano e plataforma original. |
-| Firewatch | [site oficial](https://www.firewatchgame.com/) e [Campo Santo, About](https://www.camposanto.com/about/): criador e ano. |
-| Ambient 2 (The Plateaux of Mirror) | [discografia oficial de Brian Eno](https://www.brian-eno.net/information): título, artistas e 1980. O link é identificado como fonte, não player. |
-| Migrant Mother | [guia da Library of Congress](https://guides.loc.gov/migrant-mother): Dorothea Lange, março de 1936. A fotografia não foi reproduzida. |
-| La Grande Jatte e The Bedroom | Registros API oficiais do Art Institute acima; imagens somente com liberação específica. |
+| Registro                           | Fonte do metadado e destino apresentado                                                                                                                                                                               |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pride and Prejudice                | [Project Gutenberg 1342](https://www.gutenberg.org/ebooks/1342): título, autora e primeira publicação. Sem reprodução de capa.                                                                                        |
+| Frankenstein                       | [Project Gutenberg 84](https://www.gutenberg.org/ebooks/84): obra de Shelley, primeira publicação 1818; a ficha não promete uma edição específica. Sem capa.                                                          |
+| Metropolis                         | [MoMA](https://www.moma.org/collection/works/299946): Fritz Lang, 1927. Sem alegação de disponibilidade para streaming.                                                                                               |
+| Journey                            | [thatgamecompany](https://thatgamecompany.com/journey/) e [anúncio PlayStation de 2012](https://blog.playstation.com/2012/02/16/journey-takes-its-first-steps-this-march): desenvolvedora, ano e plataforma original. |
+| Firewatch                          | [site oficial](https://www.firewatchgame.com/) e [Campo Santo, About](https://www.camposanto.com/about/): criador e ano.                                                                                              |
+| Ambient 2 (The Plateaux of Mirror) | [discografia oficial de Brian Eno](https://www.brian-eno.net/information): título, artistas e 1980. O link é identificado como fonte, não player.                                                                     |
+| Migrant Mother                     | [guia da Library of Congress](https://guides.loc.gov/migrant-mother): Dorothea Lange, março de 1936. A fotografia não foi reproduzida.                                                                                |
+| La Grande Jatte e The Bedroom      | Registros API oficiais do Art Institute acima; imagens somente com liberação específica.                                                                                                                              |
 
 As descrições curtas, seleções e tags editoriais foram escritas para o NOCTIS. Não são críticas copiadas, estatísticas, gêneros oficiais prometidos ou recomendações personalizadas.

@@ -1,1 +1,106 @@
-.art{position:relative;overflow:hidden;min-height:220px;background:#1b1b1b;display:grid;place-items:center;isolation:isolate}.art:after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,#ffffff03 4px);pointer-events:none}.object{width:100px;height:140px;background:#776551;box-shadow:18px 20px 40px #0007;transform:rotate(-12deg)}.caption{position:absolute;bottom:18px;left:20px;font:8px Arial;letter-spacing:3px;color:#d2c3ae}.pages{background:#27231f}.pages .object{border-left:8px solid #42392f;border-right:5px solid #c4b599;background:repeating-linear-gradient(0deg,#72614c,#72614c 3px,#85725b 4px);transform:rotate(-18deg)}.screen{background:#1d2324}.screen .object{width:165px;height:105px;border:12px solid #343c3b;background:radial-gradient(ellipse,#a6b4a1,#526961 35%,#101817 75%);transform:rotate(-7deg);box-shadow:0 0 50px #78917a18}.portal{background:#202024}.portal .object{background:#17171c;border:1px solid #817b99;box-shadow:inset 0 0 30px #7e769333,0 0 0 14px #3c394544,0 0 0 28px #3c394522;transform:perspective(200px) rotateY(-20deg)}.vinyl{background:#272323}.vinyl .object{width:155px;height:155px;border-radius:50%;background:repeating-radial-gradient(circle,#292726 0 2px,#151515 3px 5px);transform:rotate(0)}.vinyl .object:after{content:'';position:absolute;inset:58px;border-radius:50%;background:#a58d70;border:12px solid #77624d}.frame{background:#222526}.frame .object{border:10px solid #c8c1b0;background:linear-gradient(155deg,#89918c 45%,#323d3c 46%,#101d1d 70%);transform:rotate(8deg)}.sculpture{background:#282521}.sculpture .object{border-radius:48% 48% 8% 8%;background:linear-gradient(110deg,#d9cbb3,#7c715e 70%,#483f34);height:155px;width:105px;transform:rotate(12deg);box-shadow:20px 20px 30px #0007}.large{min-height:360px}.large .object{scale:1.5}
+.art {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  background: #1b1b1b;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+.art:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, #ffffff03 4px);
+  pointer-events: none;
+}
+.object {
+  width: 100px;
+  height: 140px;
+  background: #776551;
+  box-shadow: 18px 20px 40px #0007;
+  transform: rotate(-12deg);
+}
+.caption {
+  position: absolute;
+  bottom: 18px;
+  left: 20px;
+  font: 8px Arial;
+  letter-spacing: 3px;
+  color: #d2c3ae;
+}
+.pages {
+  background: #27231f;
+}
+.pages .object {
+  border-left: 8px solid #42392f;
+  border-right: 5px solid #c4b599;
+  background: repeating-linear-gradient(0deg, #72614c, #72614c 3px, #85725b 4px);
+  transform: rotate(-18deg);
+}
+.screen {
+  background: #1d2324;
+}
+.screen .object {
+  width: 165px;
+  height: 105px;
+  border: 12px solid #343c3b;
+  background: radial-gradient(ellipse, #a6b4a1, #526961 35%, #101817 75%);
+  transform: rotate(-7deg);
+  box-shadow: 0 0 50px #78917a18;
+}
+.portal {
+  background: #202024;
+}
+.portal .object {
+  background: #17171c;
+  border: 1px solid #817b99;
+  box-shadow:
+    inset 0 0 30px #7e769333,
+    0 0 0 14px #3c394544,
+    0 0 0 28px #3c394522;
+  transform: perspective(200px) rotateY(-20deg);
+}
+.vinyl {
+  background: #272323;
+}
+.vinyl .object {
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, #292726 0 2px, #151515 3px 5px);
+  transform: rotate(0);
+}
+.vinyl .object:after {
+  content: '';
+  position: absolute;
+  inset: 58px;
+  border-radius: 50%;
+  background: #a58d70;
+  border: 12px solid #77624d;
+}
+.frame {
+  background: #222526;
+}
+.frame .object {
+  border: 10px solid #c8c1b0;
+  background: linear-gradient(155deg, #89918c 45%, #323d3c 46%, #101d1d 70%);
+  transform: rotate(8deg);
+}
+.sculpture {
+  background: #282521;
+}
+.sculpture .object {
+  border-radius: 48% 48% 8% 8%;
+  background: linear-gradient(110deg, #d9cbb3, #7c715e 70%, #483f34);
+  height: 155px;
+  width: 105px;
+  transform: rotate(12deg);
+  box-shadow: 20px 20px 30px #0007;
+}
+.large {
+  min-height: 360px;
+}
+.large .object {
+  scale: 1.5;
+}

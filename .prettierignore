@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.git/
+.vercel/
+.env*
+package-lock.json
+*.tsbuildinfo
+coverage/
+logs/
+docs/evidence/
+docs/fixtures/
+public/artworks/
+supabase/.temp/
+supabase/.branches/

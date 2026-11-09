@@ -34,26 +34,26 @@ A busca usa a altura real do cabeçalho, limites da janela e rolagem interna. No
 
 ## D. Arquivos e responsabilidades
 
-| Arquivo | Responsabilidade nesta etapa |
-| --- | --- |
-| `src/components/brand/NoctisWordmark.tsx` (novo) | Marca acessível e grupos opcionais para abertura. |
-| `src/components/brand/NoctisWordmark.module.css` (novo) | Glifo original bronze e transição dos grupos. |
-| `src/config/portfolio.ts` (novo) | Centraliza a apresentação do portfólio sem promover contas. |
-| `src/components/navigation/Navigation.tsx` | Marca, agrupamento, atalhos, estado e destaque de álbuns. |
-| `src/components/navigation/Navigation.module.css` | Cabeçalho, itens, ícones, hierarquia e adaptação móvel. |
-| `src/components/ui/Modal.tsx` | Foco inicial da busca e restauração de foco sem rolagem. |
-| `src/components/ui/Modal.module.css` | Painéis contidos, espaçamento, áreas seguras e entrada discreta. |
-| `src/app/App.tsx` | Marca do rodapé e foco do conteúdo após navegar. |
-| `src/features/home/Home.tsx` | Reutiliza a marca na introdução existente. |
-| `src/features/home/Home.module.css` | Anima grupos explícitos e usa a altura compartilhada do cabeçalho. |
-| `src/styles/global.css` | Tokens, compensação do cabeçalho e reserva da barra de rolagem. |
-| `src/features/discovery/Discovery.module.css` | Recuo, filtros, alvos da busca e legibilidade de metadados. |
-| `src/features/personal/PersonalActions.tsx` | Mantém ações locais sem chamadas para contas futuras. |
-| `src/features/personal/PersonalPages.tsx` | Settings coerente com a versão local. |
-| `src/features/personal/Personal.module.css` | Corrige o vazio superior das páginas pessoais. |
-| `src/test/NavigationHUD.test.tsx` (novo) | Nove testes de marca, atalhos, foco, menu e modo portfólio. |
-| `README.md` e este documento | Estado atual, aprendizado, resultados e roteiro. |
-| `docs/evidence/stage-06-2-*` | Capturas e medidas reais desta verificação. |
+| Arquivo                                                 | Responsabilidade nesta etapa                                       |
+| ------------------------------------------------------- | ------------------------------------------------------------------ |
+| `src/components/brand/NoctisWordmark.tsx` (novo)        | Marca acessível e grupos opcionais para abertura.                  |
+| `src/components/brand/NoctisWordmark.module.css` (novo) | Glifo original bronze e transição dos grupos.                      |
+| `src/config/portfolio.ts` (novo)                        | Centraliza a apresentação do portfólio sem promover contas.        |
+| `src/components/navigation/Navigation.tsx`              | Marca, agrupamento, atalhos, estado e destaque de álbuns.          |
+| `src/components/navigation/Navigation.module.css`       | Cabeçalho, itens, ícones, hierarquia e adaptação móvel.            |
+| `src/components/ui/Modal.tsx`                           | Foco inicial da busca e restauração de foco sem rolagem.           |
+| `src/components/ui/Modal.module.css`                    | Painéis contidos, espaçamento, áreas seguras e entrada discreta.   |
+| `src/app/App.tsx`                                       | Marca do rodapé e foco do conteúdo após navegar.                   |
+| `src/features/home/Home.tsx`                            | Reutiliza a marca na introdução existente.                         |
+| `src/features/home/Home.module.css`                     | Anima grupos explícitos e usa a altura compartilhada do cabeçalho. |
+| `src/styles/global.css`                                 | Tokens, compensação do cabeçalho e reserva da barra de rolagem.    |
+| `src/features/discovery/Discovery.module.css`           | Recuo, filtros, alvos da busca e legibilidade de metadados.        |
+| `src/features/personal/PersonalActions.tsx`             | Mantém ações locais sem chamadas para contas futuras.              |
+| `src/features/personal/PersonalPages.tsx`               | Settings coerente com a versão local.                              |
+| `src/features/personal/Personal.module.css`             | Corrige o vazio superior das páginas pessoais.                     |
+| `src/test/NavigationHUD.test.tsx` (novo)                | Nove testes de marca, atalhos, foco, menu e modo portfólio.        |
+| `README.md` e este documento                            | Estado atual, aprendizado, resultados e roteiro.                   |
+| `docs/evidence/stage-06-2-*`                            | Capturas e medidas reais desta verificação.                        |
 
 ## E. Testes executados
 

@@ -33,7 +33,7 @@ Para revisão visual: avaliar se duas fotografias são suficientes para esta pri
 
 ### O que mudou e por quê
 
-**Homepage:** mosaico e seis ilustrações originais preservados. A marca da primeira abertura permanece; ao terminar, cede espaço a uma pequena ficha editorial em vez de repetir o wordmark do cabeçalho. O primeiro ritual continua cinematográfico e pode ser pulado. Um marcador funcional `noctis.home.intro-seen.v1` guarda apenas que a abertura já foi vista, inclusive em outra sessão. Não envia dados nem cria identificador de rastreamento. Com armazenamento bloqueado, navegação e Skip continuam disponíveis. Ao entrar por uma peça do mosaico, a sala recebe um eco decorativo daquela ilustração; nenhum clique espera a animação acabar.
+**Homepage (comportamento histórico desta revisão):** mosaico e seis ilustrações originais preservados. A marca da primeira abertura permanece; ao terminar, cede espaço a uma pequena ficha editorial em vez de repetir o wordmark do cabeçalho. O primeiro ritual continua cinematográfico e pode ser pulado. Nesta etapa, um marcador funcional `noctis.home.intro-seen.v1` guardava que a abertura já havia sido vista, inclusive em outra sessão. Essa regra foi substituída pela [abertura cinematográfica atual](29-abertura-cinematografica.md), que toca novamente após refresh e oferece Replay. Ao entrar por uma peça do mosaico, a sala recebe um eco decorativo daquela ilustração; nenhum clique espera a animação acabar.
 
 **Books:** única sala redesenhada neste incremento. A capa real de Frankenstein abre a sala sobre papel marfim, com nota de margem específica. A coleção usa o título “On the reading table.” As outras cinco salas preservam sua estrutura visual e animações; passaram a usar registros reais. As entradas de sala não repetem o ritual em cada retorno na mesma sessão; Replay continua disponível.
 
@@ -59,11 +59,11 @@ Rota: `/discover/after-hours`. A arquitetura em SVG foi desenhada no código: fa
 
 Seleção final:
 
-| Obra | Mídia | Papel na narrativa |
-| --- | --- | --- |
-| Metropolis — Fritz Lang, 1927 | Cinema | A arquitetura como organização social; a cidade acima e as vidas abaixo. |
+| Obra                                  | Mídia      | Papel na narrativa                                                               |
+| ------------------------------------- | ---------- | -------------------------------------------------------------------------------- |
+| Metropolis — Fritz Lang, 1927         | Cinema     | A arquitetura como organização social; a cidade acima e as vidas abaixo.         |
 | The Steerage — Alfred Stieglitz, 1907 | Fotografia | A separação passa à imagem documental: corpos, grades e passagem entre conveses. |
-| The Bedroom — Vincent van Gogh, 1889 | Pintura | O percurso termina na promessa de um espaço privado. |
+| The Bedroom — Vincent van Gogh, 1889  | Pintura    | O percurso termina na promessa de um espaço privado.                             |
 
 Firewatch continua na coleção The spaces we inhabit. Para esta exposição, sua paisagem de floresta enfraquecia o percurso urbano; a fotografia sustenta melhor a passagem entre cidade, circulação e abrigo. As relações são uma proposta de leitura, não uma cronologia compartilhada.
 
@@ -77,45 +77,45 @@ Para revisão visual: avaliar a intensidade da luz, a geometria da cidade, o tam
 
 ## Arquivos e funções importantes
 
-| Arquivo ou grupo | Responsabilidade |
-| --- | --- |
-| `src/data/editorialAdditions.ts` | Oito novos registros reais com metadados, fontes e sínteses originais. |
-| `src/data/editorialPaths.ts` | Notas de margem, passos da exposição e conexões entre mídias. Separa a curadoria dos componentes. |
-| `src/data/curated.ts` | Une os 17 registros e define a ordem e descrição das coleções editoriais. |
-| `src/data/artwork.ts`, `bundledArtwork.ts` | Associação por ID entre obra e imagem exata; referências locais e oficiais, créditos e direitos. |
-| `public/artworks/`, `sources.json` | Reproduções verificadas servidas junto ao site e inventário de procedência. Não contém imagens de jogo extraídas. |
-| `src/services/catalog.ts` | Catálogo principal real, acesso aos IDs legados, fallback e correção de apresentação de imagens conhecidas. |
-| `src/services/catalogUtils.ts`, `artwork.ts` | Validação: imagens locais só sob `/artworks/` em JPEG; destinos externos continuam HTTPS. Seleção de variantes preservada. Retornos limitados às rotas permitidas. |
-| `src/hooks/useCatalogSearch.ts` | Carregamento, cancelamento e erro com resultados locais úteis. |
-| `src/features/discovery/DiscoverPage.tsx`, `Editorial.module.css` | Composição editorial, seleção com rolagem/foco/anúncio e percurso entre mídias. |
-| `QuickPreview.tsx`, `ExternalDestinations.tsx`, `ProviderNotice.tsx` | Hierarquia da prévia, explicações expansíveis e disponibilidade das fontes. |
-| `SearchPage.tsx`, `CatalogFilters.tsx` | Estados de busca honestos, microcopy e retirada do filtro de demonstrações. |
-| `src/features/experiences/RoomEntrance.tsx` e estilos | Entrada por sala, marcador de visita, eco do mosaico e Books piloto. Motion mantém a aparição breve; CSS preserva os rituais existentes. |
-| `RoomExperience.tsx`, `WorkDetail.tsx`, `WorkContent.tsx`, `WorkCard.tsx` e estilos | Seleção real por sala, breadcrumb, retorno contextual, créditos, ações e apresentação do registro. |
-| `src/features/home/Home.tsx`, `Home.module.css`, `useAwakening.ts` | Ficha no lugar da repetição de marca, ligação à sala, abertura vista e retorno ágil. `RoomScene` não foi redesenhado. |
-| `src/features/personal/AlbumTools.tsx` | Capa automática derivada, respeito à escolha existente e texto do editor. |
-| `PersonalPages.tsx`, `PersonalActions.tsx`, `Personal.module.css` | Obras antes do editor, aviso local compacto, esclarecimento sobre Album e controles acessíveis. |
-| `src/features/personal/schema.ts` | Aceita referências de imagens locais verificadas nos snapshots; sem migração destrutiva. |
-| `src/services/format.ts` | `workCount()` centraliza singular/plural dos álbuns. |
-| `src/features/exhibitions/NightCity.tsx` | SVG original, decorativo e estático; IDs de gradientes isolados com `useId`. |
-| `AfterHours.tsx`, `AfterHours.module.css` | Exposição, links, créditos, notas, prévias, composição desktop e percurso mobile. |
-| `src/app/App.tsx`, `Navigation.tsx` | Nova rota, título, foco de fragmento, Discover ativo na exposição e texto de rodapé. |
-| `server/start.mjs`, `vercel.json` | Tipos MIME de imagens locais e exclusão de `/artworks/` do fallback SPA. Não foi feito deploy. |
-| `src/test/EditorialRevision.test.tsx` | 16 testes sobre confiabilidade, legado, foco, capas, curadoria, exposição e movimento reduzido. |
-| Testes existentes de experiências, navegação, Discover, arquivo, capas e homepage | Ajustam expectativas de demonstrações principais para obras reais, preservando testes das fichas antigas e dos comportamentos pessoais. |
-| `server/vercel.test.mjs`, `src/test/setup.ts` | Verifica que imagem ausente não recebe HTML; simula `scrollIntoView` apenas no jsdom. |
+| Arquivo ou grupo                                                                    | Responsabilidade                                                                                                                                                   |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `src/data/editorialAdditions.ts`                                                    | Oito novos registros reais com metadados, fontes e sínteses originais.                                                                                             |
+| `src/data/editorialPaths.ts`                                                        | Notas de margem, passos da exposição e conexões entre mídias. Separa a curadoria dos componentes.                                                                  |
+| `src/data/curated.ts`                                                               | Une os 17 registros e define a ordem e descrição das coleções editoriais.                                                                                          |
+| `src/data/artwork.ts`, `bundledArtwork.ts`                                          | Associação por ID entre obra e imagem exata; referências locais e oficiais, créditos e direitos.                                                                   |
+| `public/artworks/`, `sources.json`                                                  | Reproduções verificadas servidas junto ao site e inventário de procedência. Não contém imagens de jogo extraídas.                                                  |
+| `src/services/catalog.ts`                                                           | Catálogo principal real, acesso aos IDs legados, fallback e correção de apresentação de imagens conhecidas.                                                        |
+| `src/services/catalogUtils.ts`, `artwork.ts`                                        | Validação: imagens locais só sob `/artworks/` em JPEG; destinos externos continuam HTTPS. Seleção de variantes preservada. Retornos limitados às rotas permitidas. |
+| `src/hooks/useCatalogSearch.ts`                                                     | Carregamento, cancelamento e erro com resultados locais úteis.                                                                                                     |
+| `src/features/discovery/DiscoverPage.tsx`, `Editorial.module.css`                   | Composição editorial, seleção com rolagem/foco/anúncio e percurso entre mídias.                                                                                    |
+| `QuickPreview.tsx`, `ExternalDestinations.tsx`, `ProviderNotice.tsx`                | Hierarquia da prévia, explicações expansíveis e disponibilidade das fontes.                                                                                        |
+| `SearchPage.tsx`, `CatalogFilters.tsx`                                              | Estados de busca honestos, microcopy e retirada do filtro de demonstrações.                                                                                        |
+| `src/features/experiences/RoomEntrance.tsx` e estilos                               | Entrada por sala, marcador de visita, eco do mosaico e Books piloto. Motion mantém a aparição breve; CSS preserva os rituais existentes.                           |
+| `RoomExperience.tsx`, `WorkDetail.tsx`, `WorkContent.tsx`, `WorkCard.tsx` e estilos | Seleção real por sala, breadcrumb, retorno contextual, créditos, ações e apresentação do registro.                                                                 |
+| `src/features/home/Home.tsx`, `Home.module.css`, `useAwakening.ts`                  | Ficha no lugar da repetição de marca, ligação à sala, abertura vista e retorno ágil. `RoomScene` não foi redesenhado.                                              |
+| `src/features/personal/AlbumTools.tsx`                                              | Capa automática derivada, respeito à escolha existente e texto do editor.                                                                                          |
+| `PersonalPages.tsx`, `PersonalActions.tsx`, `Personal.module.css`                   | Obras antes do editor, aviso local compacto, esclarecimento sobre Album e controles acessíveis.                                                                    |
+| `src/features/personal/schema.ts`                                                   | Aceita referências de imagens locais verificadas nos snapshots; sem migração destrutiva.                                                                           |
+| `src/services/format.ts`                                                            | `workCount()` centraliza singular/plural dos álbuns.                                                                                                               |
+| `src/features/exhibitions/NightCity.tsx`                                            | SVG original, decorativo e estático; IDs de gradientes isolados com `useId`.                                                                                       |
+| `AfterHours.tsx`, `AfterHours.module.css`                                           | Exposição, links, créditos, notas, prévias, composição desktop e percurso mobile.                                                                                  |
+| `src/app/App.tsx`, `Navigation.tsx`                                                 | Nova rota, título, foco de fragmento, Discover ativo na exposição e texto de rodapé.                                                                               |
+| `server/start.mjs`, `vercel.json`                                                   | Tipos MIME de imagens locais e exclusão de `/artworks/` do fallback SPA. Não foi feito deploy.                                                                     |
+| `src/test/EditorialRevision.test.tsx`                                               | 16 testes sobre confiabilidade, legado, foco, capas, curadoria, exposição e movimento reduzido.                                                                    |
+| Testes existentes de experiências, navegação, Discover, arquivo, capas e homepage   | Ajustam expectativas de demonstrações principais para obras reais, preservando testes das fichas antigas e dos comportamentos pessoais.                            |
+| `server/vercel.test.mjs`, `src/test/setup.ts`                                       | Verifica que imagem ausente não recebe HTML; simula `scrollIntoView` apenas no jsdom.                                                                              |
 
 ## Verificação final executada
 
-| Verificação | Resultado |
-| --- | --- |
-| `npm run typecheck` | Passou. |
-| `npm run lint` | Passou. É a checagem estática TypeScript configurada pelo projeto, não ESLint. |
-| `npm test -- --reporter=dot` | **267 testes passaram em 19 arquivos**. Base anterior: 249 em 18. |
-| `npm run build` | Passou; saída `dist/`. Bundle principal 420,72 kB / 132,30 kB gzip; CSS principal 49,19 kB / 10,89 kB gzip. |
+| Verificação                         | Resultado                                                                                                                                                                                                                                                                     |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run typecheck`                 | Passou.                                                                                                                                                                                                                                                                       |
+| `npm run lint`                      | Passou. É a checagem estática TypeScript configurada pelo projeto, não ESLint.                                                                                                                                                                                                |
+| `npm test -- --reporter=dot`        | **267 testes passaram em 19 arquivos**. Base anterior: 249 em 18.                                                                                                                                                                                                             |
+| `npm run build`                     | Passou; saída `dist/`. Bundle principal 420,72 kB / 132,30 kB gzip; CSS principal 49,19 kB / 10,89 kB gzip.                                                                                                                                                                   |
 | Distribuição no servidor Node local | `/discover/after-hours` e `/books`: HTTP 200 HTML; `/artworks/bedroom.jpg`: HTTP 200, MIME JPEG e assinatura binária JPEG; manifesto: HTTP 200 JSON; imagem inexistente: HTTP 404. Servidor temporário encerrado após o teste, sem interromper o servidor de desenvolvimento. |
-| Navegador local | Books, Discover e After Hours em 1440×1000, 768×1024, 390×844 e 320×740, sem transbordamento horizontal nas 12 combinações. Imagens verificadas nas seis salas. |
-| Interações manuais | Coleção com foco e feedback, Follow a Thread, breadcrumb separado da busca, prévia estreita, Escape/foco/rolagem, Enter em janela da exposição, ficha e retorno, preferência interna de movimento reduzido e restauração à preferência do dispositivo. |
+| Navegador local                     | Books, Discover e After Hours em 1440×1000, 768×1024, 390×844 e 320×740, sem transbordamento horizontal nas 12 combinações. Imagens verificadas nas seis salas.                                                                                                               |
+| Interações manuais                  | Coleção com foco e feedback, Follow a Thread, breadcrumb separado da busca, prévia estreita, Escape/foco/rolagem, Enter em janela da exposição, ficha e retorno, preferência interna de movimento reduzido e restauração à preferência do dispositivo.                        |
 
 Os registros de dimensões e imagens ficam em [layout-checks.json](evidence/editorial/layout-checks.json). Capturas: [Books desktop](evidence/editorial/books-desktop.jpg), [Books mobile](evidence/editorial/books-mobile.jpg), [homepage preservada](evidence/editorial/home-preserved.jpg), [After Hours desktop](evidence/editorial/after-hours-desktop.jpg), [After Hours mobile](evidence/editorial/after-hours-mobile.jpg) e [prévia mobile](evidence/editorial/preview-mobile.jpg).
 

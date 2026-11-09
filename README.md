@@ -2,7 +2,13 @@
 
 Uma biblioteca de experiências culturais. Interface em inglês; documentação em português brasileiro.
 
-Revisão integrada mais recente: [auditoria, escopo real da busca, hierarquia, proporções, livros, exposição e evidências](docs/27-integrated-audit.md). Alterações apenas locais; as seções seguintes registram etapas anteriores.
+Revisão com mídias reais: seis salas com obras do catálogo, trecho silencioso de cinema, fotografias com tamanho controlado e duas adições históricas. **19 obras reais; 327 testes em 23 arquivos.** [Arquivos, fontes, direitos, verificação e limites](docs/30-midias-reais.md).
+
+Código organizado com Prettier: `npm run format` aplica a formatação e `npm run format:check` confere o padrão. [Configuração e guia de leitura](docs/28-formatacao.md).
+
+Abertura cinematográfica restaurada: portal bronze, Skip intro, Replay e correção da marca permanente que impedia novas exibições. [Comportamento, arquivos, acessibilidade e verificações](docs/29-abertura-cinematografica.md).
+
+Revisão integrada anterior: [auditoria, escopo real da busca, hierarquia, proporções, livros, exposição e evidências](docs/27-integrated-audit.md). As seções seguintes registram etapas anteriores.
 
 Refinamento atual: cantos arredondados, cartões com ações agrupadas e microanimações da navegação. [Arquivos, decisões e verificações desta rodada](docs/24-soft-ui-motion.md). As contagens nas seções abaixo registram as respectivas etapas históricas.
 

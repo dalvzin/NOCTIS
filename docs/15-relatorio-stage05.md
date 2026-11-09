@@ -38,13 +38,13 @@ As decisões centrais são: preservar os comandos existentes por um repositório
 
 ## F. Testes efetivamente executados
 
-| Comando | Resultado obtido |
-| --- | --- |
-| `npm run typecheck` | Aprovado. |
-| `npm run lint` | Aprovado; regras estáticas do TypeScript, sem ESLint. |
-| `npm test -- --reporter=dot` | **191 testes passaram em 14 arquivos**, execução final de 18,44 s. |
-| `npm run test:security` | **18 testes passaram em 3 arquivos**, 3,04 s. Esses testes também fazem parte dos 191, não são somados novamente. |
-| `npm run build` | Aprovado, 1,72 s, sem aviso de chunk acima de 500 kB na execução final. |
+| Comando                      | Resultado obtido                                                                                                  |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `npm run typecheck`          | Aprovado.                                                                                                         |
+| `npm run lint`               | Aprovado; regras estáticas do TypeScript, sem ESLint.                                                             |
+| `npm test -- --reporter=dot` | **191 testes passaram em 14 arquivos**, execução final de 18,44 s.                                                |
+| `npm run test:security`      | **18 testes passaram em 3 arquivos**, 3,04 s. Esses testes também fazem parte dos 191, não são somados novamente. |
+| `npm run build`              | Aprovado, 1,72 s, sem aviso de chunk acima de 500 kB na execução final.                                           |
 
 O grupo de segurança inclui **15 casos PostgreSQL executados**, dois testes do handler HTTP de capa e um teste da proteção de variáveis públicas. PostgreSQL foi exercitado com visitante, A e B: isolamento privado, capacidades, revogação, ratings, follows, likes, importação transacional e proveniência entre gerações.
 

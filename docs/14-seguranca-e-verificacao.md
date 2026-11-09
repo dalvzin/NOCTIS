@@ -77,16 +77,16 @@ Use duas contas de teste suas, A e B, e uma janela anônima. Não use arquivos o
 
 ### Matriz de visibilidade
 
-| Recurso de A | Visitante | B | A |
-| --- | --- | --- | --- |
-| Arquivo pessoal, preferências e histórico | Negado | Negado | Permitido |
-| Álbum privado por ID | Indisponível | Indisponível | Permitido |
-| Álbum público | Leitura | Leitura e interação autenticada | Edição |
-| Álbum não listado sem token | Indisponível | Indisponível | Editor próprio |
-| Álbum não listado com token válido | Leitura | Leitura/like com token | Edição |
-| Upload privado por URL pública construída manualmente | Negado | Negado | Apenas acesso autorizado |
-| Avaliação sem opt-in | Oculta | Oculta | Próprio arquivo |
-| Lista social privada | Sem lista/contagem | Sem lista/contagem | Própria gestão |
+| Recurso de A                                          | Visitante          | B                               | A                        |
+| ----------------------------------------------------- | ------------------ | ------------------------------- | ------------------------ |
+| Arquivo pessoal, preferências e histórico             | Negado             | Negado                          | Permitido                |
+| Álbum privado por ID                                  | Indisponível       | Indisponível                    | Permitido                |
+| Álbum público                                         | Leitura            | Leitura e interação autenticada | Edição                   |
+| Álbum não listado sem token                           | Indisponível       | Indisponível                    | Editor próprio           |
+| Álbum não listado com token válido                    | Leitura            | Leitura/like com token          | Edição                   |
+| Upload privado por URL pública construída manualmente | Negado             | Negado                          | Apenas acesso autorizado |
+| Avaliação sem opt-in                                  | Oculta             | Oculta                          | Próprio arquivo          |
+| Lista social privada                                  | Sem lista/contagem | Sem lista/contagem              | Própria gestão           |
 
 Não se limite a esconder botões: repita consultas diretas via Data API com as sessões de teste, usando apenas as permissões normais de cada identidade. A chave publishable não deve permitir ler dados privados de outra pessoa. Nunca utilize service-role para simular B, pois ela ignora RLS.
 

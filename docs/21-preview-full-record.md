@@ -6,14 +6,14 @@ Revisão local de 05/11/2026. O HUD, a homepage, as seis salas e a exposição A
 
 A prévia antes reutilizava `WorkContent`, o mesmo bloco da ficha: descrição, ações, rating, destinos e fontes. Por isso a ficha parecia apenas uma ampliação do modal. Agora cada superfície tem uma apresentação própria, compartilhando somente imagem, regras de identificação e os comandos pessoais existentes.
 
-| Quick Preview | Full Record |
-| --- | --- |
-| Imagem com proporção original; título; tipo; ano disponível; criador identificado. | Cabeçalho editorial com imagem, identificação e descrição integral disponível. |
-| Descrição curta, até 230 caracteres, terminando em limite de palavra quando possível. | Nota específica sobre a obra; fatos existentes, assuntos e atmosfera quando disponíveis. |
-| Save e Want to Experience principais; Add to Album expansível. | As mesmas ações, álbuns e rating privado, em Your archive. |
-| Open full record evidente. | Beyond this record reúne destinos verificados; procedência fica acessível em Sources & image credits. |
-| Image credit discreto, com crédito, direitos e referência da imagem. | Continuidade para outras obras da sala e retorno ao contexto anterior. |
-| Sem rating, blocos de destinos ou explicações do funcionamento do sistema. | Sem links presumidos, disponibilidade inventada ou preenchimento artificial de dados. |
+| Quick Preview                                                                         | Full Record                                                                                           |
+| ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Imagem com proporção original; título; tipo; ano disponível; criador identificado.    | Cabeçalho editorial com imagem, identificação e descrição integral disponível.                        |
+| Descrição curta, até 230 caracteres, terminando em limite de palavra quando possível. | Nota específica sobre a obra; fatos existentes, assuntos e atmosfera quando disponíveis.              |
+| Save e Want to Experience principais; Add to Album expansível.                        | As mesmas ações, álbuns e rating privado, em Your archive.                                            |
+| Open full record evidente.                                                            | Beyond this record reúne destinos verificados; procedência fica acessível em Sources & image credits. |
+| Image credit discreto, com crédito, direitos e referência da imagem.                  | Continuidade para outras obras da sala e retorno ao contexto anterior.                                |
+| Sem rating, blocos de destinos ou explicações do funcionamento do sistema.            | Sem links presumidos, disponibilidade inventada ou preenchimento artificial de dados.                 |
 
 A prévia não faz mais uma consulta de enriquecimento de destinos ao abrir. Usa o registro disponível; a ficha continua buscando detalhes quando o provedor oferece esse fluxo. Uma capa não fornecida pode, portanto, continuar como placeholder na prévia e ser enriquecida no registro completo. A imagem ainda tem seus estados próprios de carregamento e erro.
 
@@ -44,42 +44,42 @@ O link em Image credit na prévia é atribuição da imagem, não um bloco de de
 
 ## Arquivos desta rodada
 
-| Arquivo | Responsabilidade |
-| --- | --- |
-| `src/features/discovery/QuickPreview.tsx` | Apresentação curta e independente; ações rápidas e atribuição da imagem. |
-| `src/features/discovery/QuickPreview.module.css` | Composição compacta, limites da imagem e organização mobile. |
-| `src/features/experiences/WorkDetail.tsx` | Novo cabeçalho da ficha, descrição, identificação e retorno contextual. Mantém os estados de busca, erro e atualização de dados. |
-| `src/features/experiences/WorkContent.tsx` | Conteúdo exclusivo do registro: nota, informações adicionais, arquivo pessoal, destinos e procedência. |
-| `src/features/experiences/FullRecord.module.css` | Cabeçalho, nota em papel, painel pessoal e seções responsivas. Estilos limitados ao registro. |
-| `src/data/recordNotes.ts` | 17 notas editoriais específicas e seleção de notas existentes adequadas. |
-| `src/services/recordPresentation.ts` | Identificação responsável do criador, descrição curta e comparação de URLs. Não altera o objeto salvo. |
-| `src/features/personal/PersonalActions.tsx` | Variação visual da prévia sem rating ou aviso técnico, mantendo os comandos de álbuns. |
-| `src/components/ui/Modal.tsx` | Rótulo visual opcional e ciclo de foco de teclado. Aparência do HUD preservada. |
-| `src/services/destinations.ts` | Deduplicação de endereços equivalentes. Validação e seleção existentes mantidas. |
-| `src/services/catalogUtils.ts` | Lista permitida de retornos internos inclui arquivo e álbuns. |
-| `src/test/RecordSurfaces.test.tsx` | 15 testes novos sobre a separação das superfícies, dados ausentes, funções, ações, persistência, URLs e foco. |
-| `src/test/Destinations.test.tsx` | Destinos agora são esperados somente na ficha; enriquecimento de Spotify verificado no registro completo. |
-| `src/test/Experiences.test.tsx` | Verifica descrição curta na prévia e nota específica na ficha das seis salas. |
-| `src/test/Discovery.test.tsx`, `EditorialRevision.test.tsx` | Atualizam expectativas de crédito e deduplicação sem retirar a verificação de procedência. |
-| `README.md` | Link para este relatório e resultado atual. |
+| Arquivo                                                     | Responsabilidade                                                                                                                 |
+| ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `src/features/discovery/QuickPreview.tsx`                   | Apresentação curta e independente; ações rápidas e atribuição da imagem.                                                         |
+| `src/features/discovery/QuickPreview.module.css`            | Composição compacta, limites da imagem e organização mobile.                                                                     |
+| `src/features/experiences/WorkDetail.tsx`                   | Novo cabeçalho da ficha, descrição, identificação e retorno contextual. Mantém os estados de busca, erro e atualização de dados. |
+| `src/features/experiences/WorkContent.tsx`                  | Conteúdo exclusivo do registro: nota, informações adicionais, arquivo pessoal, destinos e procedência.                           |
+| `src/features/experiences/FullRecord.module.css`            | Cabeçalho, nota em papel, painel pessoal e seções responsivas. Estilos limitados ao registro.                                    |
+| `src/data/recordNotes.ts`                                   | 17 notas editoriais específicas e seleção de notas existentes adequadas.                                                         |
+| `src/services/recordPresentation.ts`                        | Identificação responsável do criador, descrição curta e comparação de URLs. Não altera o objeto salvo.                           |
+| `src/features/personal/PersonalActions.tsx`                 | Variação visual da prévia sem rating ou aviso técnico, mantendo os comandos de álbuns.                                           |
+| `src/components/ui/Modal.tsx`                               | Rótulo visual opcional e ciclo de foco de teclado. Aparência do HUD preservada.                                                  |
+| `src/services/destinations.ts`                              | Deduplicação de endereços equivalentes. Validação e seleção existentes mantidas.                                                 |
+| `src/services/catalogUtils.ts`                              | Lista permitida de retornos internos inclui arquivo e álbuns.                                                                    |
+| `src/test/RecordSurfaces.test.tsx`                          | 15 testes novos sobre a separação das superfícies, dados ausentes, funções, ações, persistência, URLs e foco.                    |
+| `src/test/Destinations.test.tsx`                            | Destinos agora são esperados somente na ficha; enriquecimento de Spotify verificado no registro completo.                        |
+| `src/test/Experiences.test.tsx`                             | Verifica descrição curta na prévia e nota específica na ficha das seis salas.                                                    |
+| `src/test/Discovery.test.tsx`, `EditorialRevision.test.tsx` | Atualizam expectativas de crédito e deduplicação sem retirar a verificação de procedência.                                       |
+| `README.md`                                                 | Link para este relatório e resultado atual.                                                                                      |
 
 Alterações de rodadas anteriores foram preservadas; o status do Git já continha essas alterações no início desta rodada.
 
 ## Verificações realmente executadas
 
-| Verificação | Resultado |
-| --- | --- |
-| `npm run typecheck` | Passou. |
-| `npm run lint` | Passou. Usa as regras TypeScript do projeto, não ESLint. |
-| `npm test -- --reporter=dot` | **282 testes passaram em 20 arquivos**; 15 testes a mais que a base anterior de 267. |
-| `npm run build` | Passou; saída `dist/`. Bundle principal 429,03 kB / 134,98 kB gzip; CSS principal 53,19 kB / 11,60 kB gzip. |
-| Navegador: seis categorias | Prévia e ficha de Frankenstein, Metropolis, INSIDE, Apollo, The Steerage e The Bedroom em 1365×900 e 390×844. Nenhum transbordamento horizontal; imagens carregadas com `contain`; zero controles de rating nas prévias e um na ficha. |
-| Navegador: largura intermediária e estreita | Apollo em 768×1024 sem transbordamento. A 320×740, título completo, diálogo com rolagem interna e sem transbordamento horizontal. |
-| Ações pessoais manuais | Save e Want na prévia, rating 4,5 na ficha, reload e My Archive confirmados. Os valores originais de salvo/desejado/rating foram restaurados depois. Nenhum álbum foi apagado ou criado no navegador. |
-| Álbuns | Associações existentes confirmadas na prévia e na ficha, sem alterá-las. Criação, associação e persistência foram exercitadas nos testes automatizados com repositórios de teste isolados. |
-| Teclado e modal | Tab/Shift+Tab nos limites, Escape, retorno ao acionador, botão de fechar e liberação da rolagem confirmados no navegador. |
-| Movimento reduzido | Preferência interna testada: animação do diálogo `none`, conteúdo e ações preservados. Preferência restaurada depois. A regra do sistema permanece no CSS; o sistema operacional não foi alterado para um ensaio manual. |
-| Contexto | Busca com `q=Frankenstein&format=Novel` preservada no retorno; My Archive e After Hours também verificados. |
+| Verificação                                 | Resultado                                                                                                                                                                                                                              |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run typecheck`                         | Passou.                                                                                                                                                                                                                                |
+| `npm run lint`                              | Passou. Usa as regras TypeScript do projeto, não ESLint.                                                                                                                                                                               |
+| `npm test -- --reporter=dot`                | **282 testes passaram em 20 arquivos**; 15 testes a mais que a base anterior de 267.                                                                                                                                                   |
+| `npm run build`                             | Passou; saída `dist/`. Bundle principal 429,03 kB / 134,98 kB gzip; CSS principal 53,19 kB / 11,60 kB gzip.                                                                                                                            |
+| Navegador: seis categorias                  | Prévia e ficha de Frankenstein, Metropolis, INSIDE, Apollo, The Steerage e The Bedroom em 1365×900 e 390×844. Nenhum transbordamento horizontal; imagens carregadas com `contain`; zero controles de rating nas prévias e um na ficha. |
+| Navegador: largura intermediária e estreita | Apollo em 768×1024 sem transbordamento. A 320×740, título completo, diálogo com rolagem interna e sem transbordamento horizontal.                                                                                                      |
+| Ações pessoais manuais                      | Save e Want na prévia, rating 4,5 na ficha, reload e My Archive confirmados. Os valores originais de salvo/desejado/rating foram restaurados depois. Nenhum álbum foi apagado ou criado no navegador.                                  |
+| Álbuns                                      | Associações existentes confirmadas na prévia e na ficha, sem alterá-las. Criação, associação e persistência foram exercitadas nos testes automatizados com repositórios de teste isolados.                                             |
+| Teclado e modal                             | Tab/Shift+Tab nos limites, Escape, retorno ao acionador, botão de fechar e liberação da rolagem confirmados no navegador.                                                                                                              |
+| Movimento reduzido                          | Preferência interna testada: animação do diálogo `none`, conteúdo e ações preservados. Preferência restaurada depois. A regra do sistema permanece no CSS; o sistema operacional não foi alterado para um ensaio manual.               |
+| Contexto                                    | Busca com `q=Frankenstein&format=Novel` preservada no retorno; My Archive e After Hours também verificados.                                                                                                                            |
 
 Os testes antigos que esperavam rating/destinos na prévia foram adaptados à nova função de cada superfície. Houve falhas intermediárias nessas expectativas e em uma tipagem de teste; foram corrigidas antes dos resultados finais acima.
 

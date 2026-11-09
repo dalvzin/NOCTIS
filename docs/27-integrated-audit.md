@@ -4,21 +4,21 @@ Esta rodada aplica a auditoria ao projeto existente. O checkout começou sem alt
 
 ## Achados e diagnóstico
 
-| Achado da auditoria | O que foi observado nesta revisão |
-| --- | --- |
-| Seis fontes indisponíveis | Não se reproduziu no servidor local: Open Library e AIC responderam à busca por Severance. O módulo do servidor também carregou diretamente em Node, fora do Vite. Não foi confirmada a causa da falha simultânea na instância publicada. |
-| Severance sem série nos resultados | A busca de filmes/séries pelo TMDB não está implementada/conectada nesta versão. Os resultados externos de livros não representam uma busca de séries. A busca restrita a Films & Series expõe essa limitação em disponibilidade das fontes. |
-| MusicBrainz indisponível | Reproduzido: falta o contato real de aplicação no servidor, `NOCTIS_CONTACT`. O cliente não recebe nem precisa desse valor. |
-| RAWG e Unsplash indisponíveis | São integrações ainda não conectadas. Acrescentar uma variável isolada não cria seus adaptadores; são necessários aplicação/credenciais e validação dos termos correspondentes. |
-| Uma fonte atrasar a busca inteira | O endpoint agregado esperava todos os provedores. A interface global passou a consultar as salas independentemente e mostrar respostas concluídas enquanto as outras continuam pendentes. |
-| Busca local e filtro de período de Books | Mantidos. A coleção não depende da resposta externa; os refinamentos continuam na URL. |
-| Games residual no mosaico | Reproduzido: cerca de 122 px de altura na medição inicial em 1440 px. A nova distribuição deu aproximadamente 285 px nessa revisão. |
-| Photography estreita/quebra artificial | Confirmado no layout e no `<wbr>` do título. A peça agora ocupa uma linha inteira no celular, sem quebra inserida na palavra. |
-| Prévia horizontal numa coluna vertical pequena | Reproduzido com Firewatch: a imagem ficava na coluna de 128 px. A composição horizontal agora usa um diálogo de até 820 px e uma área de imagem proporcional. |
-| Filtros extensos antes de duas/três obras | Reproduzido nas salas. Busca curta permanece visível; refinamentos ficam numa expansão e formatos sem alternativa útil são omitidos. |
-| Livro alto, caixas dentro do papel, abertura recorrente | Reorganizados a partir da implementação existente. O livro continua com duas aberturas/quatro páginas, mas com diagramação mais densa, cabeçalho compacto e abertura lembrada por sessão. |
-| Excesso de superfícies arredondadas | Confirmado visualmente. Cartões de obras perderam a caixa externa; curvas maiores permanecem nos modais. Papel e arquitetura têm tratamentos próprios. |
-| Fechar prévia após expandir álbum | Durante o teste móvel, o fechamento podia sair do enquadramento ao rolar. O cabeçalho do diálogo agora é sticky dentro do modal. |
+| Achado da auditoria                                     | O que foi observado nesta revisão                                                                                                                                                                                                            |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Seis fontes indisponíveis                               | Não se reproduziu no servidor local: Open Library e AIC responderam à busca por Severance. O módulo do servidor também carregou diretamente em Node, fora do Vite. Não foi confirmada a causa da falha simultânea na instância publicada.    |
+| Severance sem série nos resultados                      | A busca de filmes/séries pelo TMDB não está implementada/conectada nesta versão. Os resultados externos de livros não representam uma busca de séries. A busca restrita a Films & Series expõe essa limitação em disponibilidade das fontes. |
+| MusicBrainz indisponível                                | Reproduzido: falta o contato real de aplicação no servidor, `NOCTIS_CONTACT`. O cliente não recebe nem precisa desse valor.                                                                                                                  |
+| RAWG e Unsplash indisponíveis                           | São integrações ainda não conectadas. Acrescentar uma variável isolada não cria seus adaptadores; são necessários aplicação/credenciais e validação dos termos correspondentes.                                                              |
+| Uma fonte atrasar a busca inteira                       | O endpoint agregado esperava todos os provedores. A interface global passou a consultar as salas independentemente e mostrar respostas concluídas enquanto as outras continuam pendentes.                                                    |
+| Busca local e filtro de período de Books                | Mantidos. A coleção não depende da resposta externa; os refinamentos continuam na URL.                                                                                                                                                       |
+| Games residual no mosaico                               | Reproduzido: cerca de 122 px de altura na medição inicial em 1440 px. A nova distribuição deu aproximadamente 285 px nessa revisão.                                                                                                          |
+| Photography estreita/quebra artificial                  | Confirmado no layout e no `<wbr>` do título. A peça agora ocupa uma linha inteira no celular, sem quebra inserida na palavra.                                                                                                                |
+| Prévia horizontal numa coluna vertical pequena          | Reproduzido com Firewatch: a imagem ficava na coluna de 128 px. A composição horizontal agora usa um diálogo de até 820 px e uma área de imagem proporcional.                                                                                |
+| Filtros extensos antes de duas/três obras               | Reproduzido nas salas. Busca curta permanece visível; refinamentos ficam numa expansão e formatos sem alternativa útil são omitidos.                                                                                                         |
+| Livro alto, caixas dentro do papel, abertura recorrente | Reorganizados a partir da implementação existente. O livro continua com duas aberturas/quatro páginas, mas com diagramação mais densa, cabeçalho compacto e abertura lembrada por sessão.                                                    |
+| Excesso de superfícies arredondadas                     | Confirmado visualmente. Cartões de obras perderam a caixa externa; curvas maiores permanecem nos modais. Papel e arquitetura têm tratamentos próprios.                                                                                       |
+| Fechar prévia após expandir álbum                       | Durante o teste móvel, o fechamento podia sair do enquadramento ao rolar. O cabeçalho do diálogo agora é sticky dentro do modal.                                                                                                             |
 
 ### O que não foi atribuído a um defeito novo
 
@@ -74,18 +74,18 @@ O arquivo passou a usar menos painéis e linhas mais discretas. Edit album e Cha
 
 ## Arquivos e responsabilidades
 
-| Grupo | Arquivos principais |
-| --- | --- |
-| Busca progressiva e mensagens | `src/services/catalog.ts`, `src/hooks/useCatalogSearch.ts`, `src/features/discovery/ProviderNotice.tsx`, `SearchPanel.tsx` |
+| Grupo                                | Arquivos principais                                                                                                                                     |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Busca progressiva e mensagens        | `src/services/catalog.ts`, `src/hooks/useCatalogSearch.ts`, `src/features/discovery/ProviderNotice.tsx`, `SearchPanel.tsx`                              |
 | Recortes e coleção antes dos filtros | `src/data/roomCuration.ts` (novo), `src/features/experiences/RoomExperience.tsx`, `Experiences.module.css`, `src/features/discovery/CatalogFilters.tsx` |
-| Proporções e modal | `QuickPreview.tsx`, `QuickPreview.module.css`, `Artwork.module.css`, `src/components/ui/Modal.tsx`, `Modal.module.css` |
-| Hierarquia geral e mosaico | `src/styles/global.css`, `Home.tsx`, `Home.module.css`, `Discovery.module.css` |
-| Livro compartilhado | `useManuscriptBook.ts`, `FrankensteinManuscriptPage.tsx`, `FrankensteinManuscript.module.css` |
-| Full Record | `WorkDetail.tsx`, `WorkContent.tsx`, `FullRecord.module.css` |
-| Exposição | `src/data/editorialPaths.ts`, `AfterHours.tsx`, `AfterHours.module.css` |
-| Gestos de entrada | `RoomEntrance.tsx`, `RoomEntrance.module.css`, `WorkVisual.tsx` |
-| Arquivo pessoal | `PersonalPages.tsx`, `Personal.module.css` — sem mudanças de schema/repositório/IndexedDB |
-| Verificação de comportamentos | `src/test/AuditReliability.test.tsx` (novo), `Experiences.test.tsx`, `FrankensteinManuscript.test.tsx`, `PersonalUI.test.tsx` |
+| Proporções e modal                   | `QuickPreview.tsx`, `QuickPreview.module.css`, `Artwork.module.css`, `src/components/ui/Modal.tsx`, `Modal.module.css`                                  |
+| Hierarquia geral e mosaico           | `src/styles/global.css`, `Home.tsx`, `Home.module.css`, `Discovery.module.css`                                                                          |
+| Livro compartilhado                  | `useManuscriptBook.ts`, `FrankensteinManuscriptPage.tsx`, `FrankensteinManuscript.module.css`                                                           |
+| Full Record                          | `WorkDetail.tsx`, `WorkContent.tsx`, `FullRecord.module.css`                                                                                            |
+| Exposição                            | `src/data/editorialPaths.ts`, `AfterHours.tsx`, `AfterHours.module.css`                                                                                 |
+| Gestos de entrada                    | `RoomEntrance.tsx`, `RoomEntrance.module.css`, `WorkVisual.tsx`                                                                                         |
+| Arquivo pessoal                      | `PersonalPages.tsx`, `Personal.module.css` — sem mudanças de schema/repositório/IndexedDB                                                               |
+| Verificação de comportamentos        | `src/test/AuditReliability.test.tsx` (novo), `Experiences.test.tsx`, `FrankensteinManuscript.test.tsx`, `PersonalUI.test.tsx`                           |
 
 ## Evidências e limites
 

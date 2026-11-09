@@ -41,14 +41,14 @@ Discover e busca usam o mesmo sistema, com títulos de página de até 64 px e e
 
 ## C. Fontes e normalização
 
-| Categoria | Fonte atual e relação com a obra |
-| --- | --- |
-| Livros | Gutenberg para ebooks editoriais e Open Library para buscas. `cover_i` identifica a imagem; `cover_edition_key` identifica sua edição. A proteção existente contra trocar uma capa específica por uma capa genérica foi mantida. |
-| Filmes | O pôster editorial de Metropolis vem do Wikimedia Commons e mantém o crédito de Boris Bilinski. Há uma miniatura de 500 px extraída da página de origem. TMDB continua sem integração de imagem/pesquisa ao vivo configurada. |
-| Jogos | Journey usa a arte oficial do desenvolvedor. Firewatch passou do screenshot para a arte da página Steam indicada pelo site oficial. Nenhum endereço de capa foi deduzido pelo título. |
-| Música | Ambient 2 mantém a imagem da discografia oficial. MusicBrainz fornece metadados; Cover Art Archive fornece a capa frontal aprovada vinculada à release retornada, quando o detalhe consegue consultá-la. |
-| Fotografia | Migrant Mother usa a fotografia da Library of Congress e mantém crédito e declaração de direitos. Unsplash ao vivo permanece sem configuração. |
-| Arte | AIC fornece identificador IIIF e informação de domínio público. Só são normalizadas imagens com `is_public_domain === true`. O link oficial da coleção é preservado quando a imagem falha. |
+| Categoria  | Fonte atual e relação com a obra                                                                                                                                                                                                 |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Livros     | Gutenberg para ebooks editoriais e Open Library para buscas. `cover_i` identifica a imagem; `cover_edition_key` identifica sua edição. A proteção existente contra trocar uma capa específica por uma capa genérica foi mantida. |
+| Filmes     | O pôster editorial de Metropolis vem do Wikimedia Commons e mantém o crédito de Boris Bilinski. Há uma miniatura de 500 px extraída da página de origem. TMDB continua sem integração de imagem/pesquisa ao vivo configurada.    |
+| Jogos      | Journey usa a arte oficial do desenvolvedor. Firewatch passou do screenshot para a arte da página Steam indicada pelo site oficial. Nenhum endereço de capa foi deduzido pelo título.                                            |
+| Música     | Ambient 2 mantém a imagem da discografia oficial. MusicBrainz fornece metadados; Cover Art Archive fornece a capa frontal aprovada vinculada à release retornada, quando o detalhe consegue consultá-la.                         |
+| Fotografia | Migrant Mother usa a fotografia da Library of Congress e mantém crédito e declaração de direitos. Unsplash ao vivo permanece sem configuração.                                                                                   |
+| Arte       | AIC fornece identificador IIIF e informação de domínio público. Só são normalizadas imagens com `is_public_domain === true`. O link oficial da coleção é preservado quando a imagem falha.                                       |
 
 O campo `image` recebeu metadados **opcionais**: `provider`, `kind`, `width`, `height` e `thumbnailUrl`. Os campos anteriores continuam aceitos. O snapshot pessoal preserva esses dados, filtrando dimensões inválidas e URLs inseguras. A versão do arquivo local continua 1; não é necessário migrar ou limpar os dados do usuário.
 
@@ -68,27 +68,27 @@ Não foi encontrada uma variante maior confirmada nas páginas Gutenberg inspeci
 
 ## D. Arquivos e responsabilidades
 
-| Arquivo | Alteração |
-| --- | --- |
-| `src/services/artwork.ts` — novo | Seleção finita de variantes, proporções e filtragem dos metadados opcionais. |
-| `src/types/catalog.ts` | Estende image de forma compatível com os registros antigos. |
-| `src/services/providers.ts` | Mapeia variantes e identificação de capas Open Library/CAA e imagens IIIF do AIC. |
-| `src/services/catalog.ts` | Preserva imagens musicais já enriquecidas sem restaurar imagens de museu retiradas pela resposta atual. |
-| `src/data/artwork.ts` | Arte de loja Firewatch, miniatura do pôster e dimensões verificadas. |
-| `src/data/curated.ts` | Variantes menores IIIF para os registros editoriais existentes. |
-| `src/features/discovery/ItemImage.tsx` | Renderização compartilhada, estados de carregamento e fallback explícito. |
-| `src/features/discovery/Artwork.module.css` | Palco, quadros por proporção, legendas e variantes de contexto. |
-| `src/features/experiences/WorkCard.tsx` | Imagem de cartão, nomes das categorias e interação discreta de prévia. |
-| `src/features/experiences/Experiences.module.css` | Alinhamento de grades, títulos, prévia e detalhe. |
-| `src/features/discovery/SearchPanel.tsx` | Reutiliza ItemImage para miniaturas completas, inclusive o fallback. |
-| `src/features/discovery/QuickPreview.tsx` | Usa crédito compacto no cabeçalho; direitos completos continuam no conteúdo. |
-| `src/features/discovery/Discovery.module.css` | Hierarquia dos títulos e espaçamento de seções. |
-| `src/features/personal/AlbumTools.tsx` | Contexto de imagem próprio da capa de obra; decodificação assíncrona do upload. |
-| `src/features/personal/Personal.module.css` | Limites da capa, grades mistas, controles e recuo móvel corrigido. |
-| `src/features/personal/schema.ts` | Preserva os novos metadados opcionais no snapshot local. |
-| `src/test/ArtworkPresentation.test.tsx` — novo | Quinze casos de resolução, permissão, persistência, fallback e teclado. |
+| Arquivo                                                    | Alteração                                                                                                                                    |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/services/artwork.ts` — novo                           | Seleção finita de variantes, proporções e filtragem dos metadados opcionais.                                                                 |
+| `src/types/catalog.ts`                                     | Estende image de forma compatível com os registros antigos.                                                                                  |
+| `src/services/providers.ts`                                | Mapeia variantes e identificação de capas Open Library/CAA e imagens IIIF do AIC.                                                            |
+| `src/services/catalog.ts`                                  | Preserva imagens musicais já enriquecidas sem restaurar imagens de museu retiradas pela resposta atual.                                      |
+| `src/data/artwork.ts`                                      | Arte de loja Firewatch, miniatura do pôster e dimensões verificadas.                                                                         |
+| `src/data/curated.ts`                                      | Variantes menores IIIF para os registros editoriais existentes.                                                                              |
+| `src/features/discovery/ItemImage.tsx`                     | Renderização compartilhada, estados de carregamento e fallback explícito.                                                                    |
+| `src/features/discovery/Artwork.module.css`                | Palco, quadros por proporção, legendas e variantes de contexto.                                                                              |
+| `src/features/experiences/WorkCard.tsx`                    | Imagem de cartão, nomes das categorias e interação discreta de prévia.                                                                       |
+| `src/features/experiences/Experiences.module.css`          | Alinhamento de grades, títulos, prévia e detalhe.                                                                                            |
+| `src/features/discovery/SearchPanel.tsx`                   | Reutiliza ItemImage para miniaturas completas, inclusive o fallback.                                                                         |
+| `src/features/discovery/QuickPreview.tsx`                  | Usa crédito compacto no cabeçalho; direitos completos continuam no conteúdo.                                                                 |
+| `src/features/discovery/Discovery.module.css`              | Hierarquia dos títulos e espaçamento de seções.                                                                                              |
+| `src/features/personal/AlbumTools.tsx`                     | Contexto de imagem próprio da capa de obra; decodificação assíncrona do upload.                                                              |
+| `src/features/personal/Personal.module.css`                | Limites da capa, grades mistas, controles e recuo móvel corrigido.                                                                           |
+| `src/features/personal/schema.ts`                          | Preserva os novos metadados opcionais no snapshot local.                                                                                     |
+| `src/test/ArtworkPresentation.test.tsx` — novo             | Quinze casos de resolução, permissão, persistência, fallback e teclado.                                                                      |
 | `src/test/Covers.test.tsx` e `src/test/Discovery.test.tsx` | Adaptam expectativas à tentativa finita de variantes e ao placeholder explícito. Os testes de upload continuam exercitando o fluxo completo. |
-| `docs/18-catalog-artwork.md`, evidências e README | Auditoria, aprendizado e resultados. |
+| `docs/18-catalog-artwork.md`, evidências e README          | Auditoria, aprendizado e resultados.                                                                                                         |
 
 `CatalogResults`, páginas de busca, salas e arquivo reutilizam WorkCard; não precisaram ser reconstruídos. A lógica de ordenação, filtros e paginação não foi alterada. O armazenamento de uploads continua em IndexedDB, com referências nos metadados; não houve substituição de Blob, migração, reset de capa ou alteração dos álbuns existentes pelo código desta etapa. Nenhuma dependência foi adicionada.
 

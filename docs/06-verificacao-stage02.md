@@ -8,12 +8,12 @@ Confirmamos a base existente: os 14 testes da Stage 01 passaram e `npm run build
 
 ## Verificações automatizadas finais
 
-| Comando | Resultado |
-| --- | --- |
-| `npm run typecheck` | Aprovado: TypeScript sem erros. |
-| `npm test` | Aprovado: 60 testes em 2 arquivos. |
-| `npm run build` | Aprovado: TypeScript e Vite geraram a distribuição. JavaScript aproximadamente 431 kB / 139 kB gzip; CSS aproximadamente 22 kB / 5,5 kB gzip. |
-| Lint | Não disponível: `npm run` confirma que não existe script ou configuração de lint. Não declaramos lint aprovado nem adicionamos ferramentas apenas para criar um resultado. |
+| Comando             | Resultado                                                                                                                                                                  |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run typecheck` | Aprovado: TypeScript sem erros.                                                                                                                                            |
+| `npm test`          | Aprovado: 60 testes em 2 arquivos.                                                                                                                                         |
+| `npm run build`     | Aprovado: TypeScript e Vite geraram a distribuição. JavaScript aproximadamente 431 kB / 139 kB gzip; CSS aproximadamente 22 kB / 5,5 kB gzip.                              |
+| Lint                | Não disponível: `npm run` confirma que não existe script ou configuração de lint. Não declaramos lint aprovado nem adicionamos ferramentas apenas para criar um resultado. |
 
 ### O que os testes cobrem
 

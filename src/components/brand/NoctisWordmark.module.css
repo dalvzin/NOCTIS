@@ -1,4 +1,18 @@
-.wordmark { display:inline-flex; white-space:nowrap; font-family:Georgia,'Times New Roman',serif; font-weight:400; }
-.dot { color:var(--bronze); }
-.wordmark[data-split] > span { display:block; transition:transform .8s cubic-bezier(.22,.7,.2,1); }
-@media(prefers-reduced-motion:reduce) { .wordmark[data-split] > span { transition:none; } }
+.wordmark {
+  display: inline-flex;
+  white-space: nowrap;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+}
+.dot {
+  color: var(--bronze);
+}
+.wordmark[data-split] > span {
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.22, 0.7, 0.2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wordmark[data-split] > span {
+    transition: none;
+  }
+}

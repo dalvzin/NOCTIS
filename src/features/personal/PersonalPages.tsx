@@ -9,53 +9,518 @@ import { CatalogResults } from '../discovery/CatalogResults';
 import { QuickPreview } from '../discovery/QuickPreview';
 import { WorkCard } from '../experiences/WorkCard';
 import { usePersonalArchive } from './context';
-import { AlbumCover, AlbumForm, Confirm, CoverEditor, accentStyle, removeAlbumImage } from './AlbumTools';
+import {
+  AlbumCover,
+  AlbumForm,
+  Confirm,
+  CoverEditor,
+  accentStyle,
+  removeAlbumImage,
+} from './AlbumTools';
 import { useMedia } from './MediaContext';
 import { AlbumSharing } from '../community/AlbumSharing';
 import styles from './Personal.module.css';
 
-function useArchiveLabel(){const {repository}=usePersonalArchive();return repository.mode==='cloud'?'Account archive · Stored in Supabase · History is always private':'Private · Stored in this browser · Not synchronized to an account';}
-function Empty({ children }: { children: React.ReactNode }) { return <div className={styles.empty}><p>{children}</p><Link to="/discover" className="textLink">Discover something worth keeping ↗</Link></div>; }
-export function HistoryPanel() {
-  const { data, repository } = usePersonalArchive(); const [confirm, setConfirm] = useState(false);
-  return <><p>Recording is {data.preferences.historyEnabled ? 'enabled' : 'paused'}. Only visits to full work pages are recorded. Search and Quick Preview are never recorded.</p><div className={styles.row}><button onClick={() => void repository.dispatch({ type: 'preferences', patch: { historyEnabled: !data.preferences.historyEnabled } })}>{data.preferences.historyEnabled ? 'Pause history' : 'Enable history'}</button><button disabled={!data.history.length} onClick={() => setConfirm(true)}>Clear history</button></div>
-    {!data.history.length ? <Empty>No recorded visits. Recording starts only after you enable it.</Empty> : <ul className={styles.history}>{data.history.map(visit => { const work = data.entries[visit.workId].work; return <li key={visit.id}><Link to={workPath(work)}>{work.title}</Link><span>{work.category} · <time dateTime={visit.visitedAt}>{new Date(visit.visitedAt).toLocaleString('en-US')}</time></span><button aria-label={`Remove visit to ${work.title}`} onClick={() => void repository.dispatch({ type: 'deleteHistory', id: visit.id })}>Remove visit</button></li>; })}</ul>}
-    {confirm && <Confirm title="Clear history" action={() => repository.dispatch({ type: 'clearHistory' })} onClose={() => setConfirm(false)}>Delete all recorded visits from this browser? Saved works, ratings and albums will remain.</Confirm>}
-  </>;
+function useArchiveLabel() {
+  const { repository } = usePersonalArchive();
+  return repository.mode === 'cloud'
+    ? 'Account archive · Stored in Supabase · History is always private'
+    : 'Private · Stored in this browser · Not synchronized to an account';
 }
-export function RecentPage() { const localNote=useArchiveLabel(); return <section className={styles.page}><p className="eyebrow">YOUR SPACE</p><h1>Recently Explored</h1><p className={styles.intro}>{localNote}</p><HistoryPanel/></section>; }
+function Empty({ children }: { children: React.ReactNode }) {
+  return (
+    <div className={styles.empty}>
+      <p>{children}</p>
+      <Link
+        to="/discover"
+        className="textLink"
+      >
+        Discover something worth keeping ↗
+      </Link>
+    </div>
+  );
+}
+export function HistoryPanel() {
+  const { data, repository } = usePersonalArchive();
+  const [confirm, setConfirm] = useState(false);
+  return (
+    <>
+      <p>
+        Recording is {data.preferences.historyEnabled ? 'enabled' : 'paused'}. Only visits to full
+        work pages are recorded. Search and Quick Preview are never recorded.
+      </p>
+      <div className={styles.row}>
+        <button
+          onClick={() =>
+            void repository.dispatch({
+              type: 'preferences',
+              patch: { historyEnabled: !data.preferences.historyEnabled },
+            })
+          }
+        >
+          {data.preferences.historyEnabled ? 'Pause history' : 'Enable history'}
+        </button>
+        <button
+          disabled={!data.history.length}
+          onClick={() => setConfirm(true)}
+        >
+          Clear history
+        </button>
+      </div>
+      {!data.history.length ? (
+        <Empty>No recorded visits. Recording starts only after you enable it.</Empty>
+      ) : (
+        <ul className={styles.history}>
+          {data.history.map((visit) => {
+            const work = data.entries[visit.workId].work;
+            return (
+              <li key={visit.id}>
+                <Link to={workPath(work)}>{work.title}</Link>
+                <span>
+                  {work.category} ·{' '}
+                  <time dateTime={visit.visitedAt}>
+                    {new Date(visit.visitedAt).toLocaleString('en-US')}
+                  </time>
+                </span>
+                <button
+                  aria-label={`Remove visit to ${work.title}`}
+                  onClick={() => void repository.dispatch({ type: 'deleteHistory', id: visit.id })}
+                >
+                  Remove visit
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      {confirm && (
+        <Confirm
+          title="Clear history"
+          action={() => repository.dispatch({ type: 'clearHistory' })}
+          onClose={() => setConfirm(false)}
+        >
+          Delete all recorded visits from this browser? Saved works, ratings and albums will remain.
+        </Confirm>
+      )}
+    </>
+  );
+}
+export function RecentPage() {
+  const localNote = useArchiveLabel();
+  return (
+    <section className={styles.page}>
+      <p className="eyebrow">YOUR SPACE</p>
+      <h1>Recently Explored</h1>
+      <p className={styles.intro}>{localNote}</p>
+      <HistoryPanel />
+    </section>
+  );
+}
 export function MyArchive() {
-  const localNote=useArchiveLabel();
-  const { data, repository } = usePersonalArchive(); const [params, setParams] = useSearchParams(); const [category, setCategory] = useState('all');
-  const entries = Object.values(data.entries); const tabs = [ ['saved', 'Saved', entries.filter(e => e.saved).length], ['want', 'Want to Experience', entries.filter(e => e.wanted).length], ['albums', 'My Albums', data.albums.length], ['ratings', 'My Ratings', entries.filter(e => e.rating !== null).length], ['history', 'Recently Explored', data.history.length] ] as const;
+  const localNote = useArchiveLabel();
+  const { data, repository } = usePersonalArchive();
+  const [params, setParams] = useSearchParams();
+  const [category, setCategory] = useState('all');
+  const entries = Object.values(data.entries);
+  const tabs = [
+    ['saved', 'Saved', entries.filter((e) => e.saved).length],
+    ['want', 'Want to Experience', entries.filter((e) => e.wanted).length],
+    ['albums', 'My Albums', data.albums.length],
+    ['ratings', 'My Ratings', entries.filter((e) => e.rating !== null).length],
+    ['history', 'Recently Explored', data.history.length],
+  ] as const;
   const tab = tabs.some(([key]) => key === params.get('tab')) ? params.get('tab')! : 'saved';
-  const items = entries.filter(entry => tab === 'saved' ? entry.saved : tab === 'want' ? entry.wanted : tab === 'ratings' ? entry.rating !== null : false).map(e => e.work).filter(work => category === 'all' || work.category === category);
-  return <section className={styles.page}><p className="eyebrow">YOUR SPACE</p><h1>My Archive</h1><p className={styles.intro}>Keep what stays with you.</p><details className={styles.storageNote}><summary>Private · Stored in this browser</summary><p>{localNote}. Export a backup in Settings; clearing browser data may remove this collection. Uploaded covers stay on this device.</p></details>
-    <nav className={styles.tabs} aria-label="Archive collections">{tabs.map(([key, label, count]) => <Link key={key} to={`?tab=${key}`} aria-current={tab === key ? 'page' : undefined} onClick={() => setCategory('all')}>{label} ({count})</Link>)}</nav>
-    <h2>{tabs.find(([key]) => key === tab)?.[1]}</h2>
-    {tab === 'albums' ? <><p>Mix books, films, games, music, photographs and art in one collection.</p><details><summary>Create an album</summary><AlbumForm submitLabel="Create album" onSubmit={fields => repository.dispatch({ type: 'createAlbum', fields })}/></details>{!data.albums.length ? <Empty>Your first album begins with a connection between works.</Empty> : <div className={styles.albums}>{data.albums.map(album => <article key={album.id} className={styles.album} style={accentStyle(album.accent)}><AlbumCover album={album}/><h2><Link to={`/albums/${album.id}`}>{album.title}</Link></h2><p>{album.description}</p><small>{workCount(album.workIds.length)} · {repository.mode==='cloud'?'Account album':'Private / Local'}</small></article>)}</div>}</> : tab === 'history' ? <HistoryPanel/> : <><label htmlFor="archive-category">Category </label><select id="archive-category" value={category} onChange={event => { setCategory(event.target.value); setParams({ tab }); }}><option value="all">All categories</option>{rooms.map(room => <option key={room.slug} value={room.slug}>{room.category}</option>)}</select>{items.length ? <CatalogResults items={items}/> : <Empty>{category !== 'all' ? 'No works in this category yet.' : tab === 'ratings' ? 'Your ratings are private. Rate a work from its full record.' : 'Nothing here yet. Use the personal archive actions on a work to begin.'}</Empty>}</>}
-  </section>;
+  const items = entries
+    .filter((entry) =>
+      tab === 'saved'
+        ? entry.saved
+        : tab === 'want'
+          ? entry.wanted
+          : tab === 'ratings'
+            ? entry.rating !== null
+            : false,
+    )
+    .map((e) => e.work)
+    .filter((work) => category === 'all' || work.category === category);
+  return (
+    <section className={styles.page}>
+      <p className="eyebrow">YOUR SPACE</p>
+      <h1>My Archive</h1>
+      <p className={styles.intro}>Keep what stays with you.</p>
+      <details className={styles.storageNote}>
+        <summary>Private · Stored in this browser</summary>
+        <p>
+          {localNote}. Export a backup in Settings; clearing browser data may remove this
+          collection. Uploaded covers stay on this device.
+        </p>
+      </details>
+      <nav
+        className={styles.tabs}
+        aria-label="Archive collections"
+      >
+        {tabs.map(([key, label, count]) => (
+          <Link
+            key={key}
+            to={`?tab=${key}`}
+            aria-current={tab === key ? 'page' : undefined}
+            onClick={() => setCategory('all')}
+          >
+            {label} ({count})
+          </Link>
+        ))}
+      </nav>
+      <h2>{tabs.find(([key]) => key === tab)?.[1]}</h2>
+      {tab === 'albums' ? (
+        <>
+          <p>Mix books, films, games, music, photographs and art in one collection.</p>
+          <details>
+            <summary>Create an album</summary>
+            <AlbumForm
+              submitLabel="Create album"
+              onSubmit={(fields) => repository.dispatch({ type: 'createAlbum', fields })}
+            />
+          </details>
+          {!data.albums.length ? (
+            <Empty>Your first album begins with a connection between works.</Empty>
+          ) : (
+            <div className={styles.albums}>
+              {data.albums.map((album) => (
+                <article
+                  key={album.id}
+                  className={styles.album}
+                  style={accentStyle(album.accent)}
+                >
+                  <AlbumCover album={album} />
+                  <h2>
+                    <Link to={`/albums/${album.id}`}>{album.title}</Link>
+                  </h2>
+                  <p>{album.description}</p>
+                  <small>
+                    {workCount(album.workIds.length)} ·{' '}
+                    {repository.mode === 'cloud' ? 'Account album' : 'Private / Local'}
+                  </small>
+                </article>
+              ))}
+            </div>
+          )}
+        </>
+      ) : tab === 'history' ? (
+        <HistoryPanel />
+      ) : (
+        <>
+          <label htmlFor="archive-category">Category </label>
+          <select
+            id="archive-category"
+            value={category}
+            onChange={(event) => {
+              setCategory(event.target.value);
+              setParams({ tab });
+            }}
+          >
+            <option value="all">All categories</option>
+            {rooms.map((room) => (
+              <option
+                key={room.slug}
+                value={room.slug}
+              >
+                {room.category}
+              </option>
+            ))}
+          </select>
+          {items.length ? (
+            <CatalogResults items={items} />
+          ) : (
+            <Empty>
+              {category !== 'all'
+                ? 'No works in this category yet.'
+                : tab === 'ratings'
+                  ? 'Your ratings are private. Rate a work from its full record.'
+                  : 'Nothing here yet. Use the personal archive actions on a work to begin.'}
+            </Empty>
+          )}
+        </>
+      )}
+    </section>
+  );
 }
 export function AlbumPage() {
-  const localNote=useArchiveLabel(),media=useMedia();
-  const { albumId } = useParams(); const { data, repository, loading } = usePersonalArchive(); const navigate = useNavigate(); const location = useLocation();
-  const [confirm, setConfirm] = useState(false), [preview, setPreview] = useState<Work | null>(null);
-  const album = data.albums.find(item => item.id === albumId);
-  if (loading) return <section className={styles.page}><p role="status">Loading cloud album…</p></section>;
-  if (!album) return <section className={styles.page}><h1>{repository.mode==='cloud'?'Album unavailable in this account.':'Album unavailable in this browser.'}</h1><p>{repository.mode==='cloud'?'Open the album with its owning account. Public and unlisted links are created in the album visibility settings.':'Album addresses are local. A copied URL does not publish or transfer an album to another device.'}</p><Link to="/my-archive?tab=albums">Return to My Albums</Link></section>;
-  return <section className={styles.page} style={accentStyle(album.accent)}><Link to="/my-archive?tab=albums">← My Albums</Link><p className="eyebrow">{repository.mode==='cloud'?'ACCOUNT ALBUM':'PRIVATE / LOCAL ALBUM'}</p><h1>{album.title}</h1><p className={styles.intro}>{album.description}</p><p>{workCount(album.workIds.length)} · A private collection</p><details className={styles.storageNote}><summary>About this local album</summary><p>{localNote}. This address does not publish or transfer your collection.</p></details><div className={styles.heroCover}><AlbumCover album={album}/></div>
-    {!album.workIds.length ? <Empty>Add works through Add to Album in a Quick Preview or full record.</Empty> : <ol className={`${styles.contents} ${styles[album.layout] ?? ''}`}>{album.workIds.map((id, index) => { const work = data.entries[id].work; return <li key={id}><WorkCard work={work} onPreview={setPreview} returnTo={location.pathname}/><div className={styles.row}><button disabled={!index} aria-label={`Move ${work.title} earlier`} onClick={() => void repository.dispatch({ type: 'moveAlbumWork', id: album.id, workId: id, direction: -1 })}>↑ Earlier</button><button disabled={index === album.workIds.length - 1} aria-label={`Move ${work.title} later`} onClick={() => void repository.dispatch({ type: 'moveAlbumWork', id: album.id, workId: id, direction: 1 })}>↓ Later</button><button aria-label={`Remove ${work.title} from album`} onClick={() => void repository.dispatch({ type: 'albumWork', id: album.id, work, value: false })}>Remove</button></div></li>; })}</ol>}
-    <details className={styles.panel}><summary>Edit album</summary><AlbumForm key={album.id + album.updatedAt} initial={album} submitLabel="Save album changes" onSubmit={fields => repository.dispatch({ type: 'updateAlbum', id: album.id, fields })}/><button className={styles.danger} onClick={() => setConfirm(true)}>Delete album</button></details><details className={styles.panel}><summary>Change album cover</summary><CoverEditor album={album}/></details>{repository.mode==='cloud'&&<AlbumSharing id={album.id}/>}
-    {preview && <QuickPreview work={preview} returnTo={location.pathname} onClose={() => setPreview(null)}/>}
-    {confirm && <Confirm title="Delete album" onClose={() => setConfirm(false)} action={async () => { const result = await repository.dispatch({ type: 'deleteAlbum', id: album.id }); if (result.ok) { try { await removeAlbumImage(album,media); } catch { repository.reportIssue('Album removed, but its cover could not be deleted. Clear personal archive in Settings to retry cleanup.'); } navigate('/my-archive?tab=albums'); } return result; }}>Delete “{album.title}” and its uploaded cover from {repository.mode==='cloud'?'your cloud account':'this browser'}? Saved works and ratings will remain.</Confirm>}
-  </section>;
+  const localNote = useArchiveLabel(),
+    media = useMedia();
+  const { albumId } = useParams();
+  const { data, repository, loading } = usePersonalArchive();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [confirm, setConfirm] = useState(false),
+    [preview, setPreview] = useState<Work | null>(null);
+  const album = data.albums.find((item) => item.id === albumId);
+  if (loading)
+    return (
+      <section className={styles.page}>
+        <p role="status">Loading cloud album…</p>
+      </section>
+    );
+  if (!album)
+    return (
+      <section className={styles.page}>
+        <h1>
+          {repository.mode === 'cloud'
+            ? 'Album unavailable in this account.'
+            : 'Album unavailable in this browser.'}
+        </h1>
+        <p>
+          {repository.mode === 'cloud'
+            ? 'Open the album with its owning account. Public and unlisted links are created in the album visibility settings.'
+            : 'Album addresses are local. A copied URL does not publish or transfer an album to another device.'}
+        </p>
+        <Link to="/my-archive?tab=albums">Return to My Albums</Link>
+      </section>
+    );
+  return (
+    <section
+      className={styles.page}
+      style={accentStyle(album.accent)}
+    >
+      <Link to="/my-archive?tab=albums">← My Albums</Link>
+      <p className="eyebrow">
+        {repository.mode === 'cloud' ? 'ACCOUNT ALBUM' : 'PRIVATE / LOCAL ALBUM'}
+      </p>
+      <h1>{album.title}</h1>
+      <p className={styles.intro}>{album.description}</p>
+      <p>{workCount(album.workIds.length)} · A private collection</p>
+      <details className={styles.storageNote}>
+        <summary>About this local album</summary>
+        <p>{localNote}. This address does not publish or transfer your collection.</p>
+      </details>
+      <div className={styles.heroCover}>
+        <AlbumCover album={album} />
+      </div>
+      {!album.workIds.length ? (
+        <Empty>Add works through Add to Album in a Quick Preview or full record.</Empty>
+      ) : (
+        <ol className={`${styles.contents} ${styles[album.layout] ?? ''}`}>
+          {album.workIds.map((id, index) => {
+            const work = data.entries[id].work;
+            return (
+              <li key={id}>
+                <WorkCard
+                  work={work}
+                  onPreview={setPreview}
+                  returnTo={location.pathname}
+                />
+                <div className={styles.row}>
+                  <button
+                    disabled={!index}
+                    aria-label={`Move ${work.title} earlier`}
+                    onClick={() =>
+                      void repository.dispatch({
+                        type: 'moveAlbumWork',
+                        id: album.id,
+                        workId: id,
+                        direction: -1,
+                      })
+                    }
+                  >
+                    ↑ Earlier
+                  </button>
+                  <button
+                    disabled={index === album.workIds.length - 1}
+                    aria-label={`Move ${work.title} later`}
+                    onClick={() =>
+                      void repository.dispatch({
+                        type: 'moveAlbumWork',
+                        id: album.id,
+                        workId: id,
+                        direction: 1,
+                      })
+                    }
+                  >
+                    ↓ Later
+                  </button>
+                  <button
+                    aria-label={`Remove ${work.title} from album`}
+                    onClick={() =>
+                      void repository.dispatch({
+                        type: 'albumWork',
+                        id: album.id,
+                        work,
+                        value: false,
+                      })
+                    }
+                  >
+                    Remove
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+      )}
+      <details className={styles.panel}>
+        <summary>Edit album</summary>
+        <AlbumForm
+          key={album.id + album.updatedAt}
+          initial={album}
+          submitLabel="Save album changes"
+          onSubmit={(fields) => repository.dispatch({ type: 'updateAlbum', id: album.id, fields })}
+        />
+        <button
+          className={styles.danger}
+          onClick={() => setConfirm(true)}
+        >
+          Delete album
+        </button>
+      </details>
+      <details className={styles.panel}>
+        <summary>Change album cover</summary>
+        <CoverEditor album={album} />
+      </details>
+      {repository.mode === 'cloud' && <AlbumSharing id={album.id} />}
+      {preview && (
+        <QuickPreview
+          work={preview}
+          returnTo={location.pathname}
+          onClose={() => setPreview(null)}
+        />
+      )}
+      {confirm && (
+        <Confirm
+          title="Delete album"
+          onClose={() => setConfirm(false)}
+          action={async () => {
+            const result = await repository.dispatch({ type: 'deleteAlbum', id: album.id });
+            if (result.ok) {
+              try {
+                await removeAlbumImage(album, media);
+              } catch {
+                repository.reportIssue(
+                  'Album removed, but its cover could not be deleted. Clear personal archive in Settings to retry cleanup.',
+                );
+              }
+              navigate('/my-archive?tab=albums');
+            }
+            return result;
+          }}
+        >
+          Delete “{album.title}” and its uploaded cover from{' '}
+          {repository.mode === 'cloud' ? 'your cloud account' : 'this browser'}? Saved works and
+          ratings will remain.
+        </Confirm>
+      )}
+    </section>
+  );
 }
 export function SettingsPage() {
-  const localNote=useArchiveLabel(),media=useMedia();
-  const { data, repository, blocked } = usePersonalArchive(); const [confirm, setConfirm] = useState(false),[cleanupIds,setCleanupIds]=useState<string[]>([]);
-  function download() { const url = URL.createObjectURL(new Blob([repository.rawExport()], { type: blocked ? 'text/plain' : 'application/json' })); const anchor = document.createElement('a'); anchor.href = url; anchor.download = blocked ? 'noctis-archive-recovery.txt' : 'noctis-personal-archive.json'; anchor.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
-  return <section className={styles.page}><p className="eyebrow">YOUR SPACE</p><h1>Settings</h1>{!portfolioMode && <p><Link to="/account">Open Account & privacy settings</Link></p>}<p className={styles.intro}>{localNote}. {portfolioMode ? 'Manage your private browser archive here. No account is required.' : 'Publishing and profile privacy are managed in Account; this page controls the selected archive.'}</p><section className={styles.panel}><h2>Recently Explored</h2><HistoryPanel/></section><section className={styles.panel}><h2>Motion</h2><label htmlFor="motion-preference">Animation preference </label><select id="motion-preference" value={data.preferences.motion} disabled={blocked} onChange={e => void repository.dispatch({ type: 'preferences', patch: { motion: e.target.value as 'system' | 'reduce' } })}><option value="system">Follow device preference</option><option value="reduce">Reduce motion</option></select><p>Your device’s reduced motion setting is always respected.</p></section>
-    <section className={styles.panel}><h2>{repository.mode==='cloud'?'Cloud archive data':'Local personal data'}</h2><p>{repository.mode==='cloud'?'Saved works, wishlists, ratings, albums and optional history belong to this signed-in account. Clearing this archive deletes its cloud records; your profile and local archive remain.':'Saved works, wishlists, ratings, albums and optional history live on this browser origin. Another browser, address or device has a separate archive. Clearing browser data may permanently remove it.'}</p><p>Export includes metadata and cover references, but not uploaded image files. Keep original cover files separately. {!portfolioMode && 'Importing this browser archive into an account is available in Account, with explicit consent.'}</p><div className={styles.row}><button onClick={download}>{blocked ? 'Export recovery data' : 'Export archive metadata (JSON)'}</button><button className={styles.danger} onClick={() => {setCleanupIds(data.albums.flatMap(album=>album.cover.kind==='upload'?[album.cover.imageId]:[]));setConfirm(true);}}>Clear personal archive</button></div></section>
-    {confirm && <Confirm title="Clear personal archive" onClose={() => setConfirm(false)} action={async () => { const result = await repository.dispatch({ type: 'reset' }); if (!result.ok) return result; try { if(repository.mode==='cloud'){for(const id of cleanupIds)await media.remove(id);}else await media.clear(); return { ok: true }; } catch { const error = 'Archive metadata was cleared, but image storage could not be cleared. Retry this action to remove uploaded covers.'; repository.reportIssue(error); return { ok: false, error }; } }}>Permanently delete saved works, wishlists, ratings, albums, uploaded covers, history and personal preferences from {repository.mode==='cloud'?'your cloud account':'this browser'}? This cannot be undone. Unrelated browser data will remain.</Confirm>}
-  </section>;
+  const localNote = useArchiveLabel(),
+    media = useMedia();
+  const { data, repository, blocked } = usePersonalArchive();
+  const [confirm, setConfirm] = useState(false),
+    [cleanupIds, setCleanupIds] = useState<string[]>([]);
+  function download() {
+    const url = URL.createObjectURL(
+      new Blob([repository.rawExport()], { type: blocked ? 'text/plain' : 'application/json' }),
+    );
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = blocked ? 'noctis-archive-recovery.txt' : 'noctis-personal-archive.json';
+    anchor.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+  return (
+    <section className={styles.page}>
+      <p className="eyebrow">YOUR SPACE</p>
+      <h1>Settings</h1>
+      {!portfolioMode && (
+        <p>
+          <Link to="/account">Open Account & privacy settings</Link>
+        </p>
+      )}
+      <p className={styles.intro}>
+        {localNote}.{' '}
+        {portfolioMode
+          ? 'Manage your private browser archive here. No account is required.'
+          : 'Publishing and profile privacy are managed in Account; this page controls the selected archive.'}
+      </p>
+      <section className={styles.panel}>
+        <h2>Recently Explored</h2>
+        <HistoryPanel />
+      </section>
+      <section className={styles.panel}>
+        <h2>Motion</h2>
+        <label htmlFor="motion-preference">Animation preference </label>
+        <select
+          id="motion-preference"
+          value={data.preferences.motion}
+          disabled={blocked}
+          onChange={(e) =>
+            void repository.dispatch({
+              type: 'preferences',
+              patch: { motion: e.target.value as 'system' | 'reduce' },
+            })
+          }
+        >
+          <option value="system">Follow device preference</option>
+          <option value="reduce">Reduce motion</option>
+        </select>
+        <p>Your device’s reduced motion setting is always respected.</p>
+      </section>
+      <section className={styles.panel}>
+        <h2>{repository.mode === 'cloud' ? 'Cloud archive data' : 'Local personal data'}</h2>
+        <p>
+          {repository.mode === 'cloud'
+            ? 'Saved works, wishlists, ratings, albums and optional history belong to this signed-in account. Clearing this archive deletes its cloud records; your profile and local archive remain.'
+            : 'Saved works, wishlists, ratings, albums and optional history live on this browser origin. Another browser, address or device has a separate archive. Clearing browser data may permanently remove it.'}
+        </p>
+        <p>
+          Export includes metadata and cover references, but not uploaded image files. Keep original
+          cover files separately.{' '}
+          {!portfolioMode &&
+            'Importing this browser archive into an account is available in Account, with explicit consent.'}
+        </p>
+        <div className={styles.row}>
+          <button onClick={download}>
+            {blocked ? 'Export recovery data' : 'Export archive metadata (JSON)'}
+          </button>
+          <button
+            className={styles.danger}
+            onClick={() => {
+              setCleanupIds(
+                data.albums.flatMap((album) =>
+                  album.cover.kind === 'upload' ? [album.cover.imageId] : [],
+                ),
+              );
+              setConfirm(true);
+            }}
+          >
+            Clear personal archive
+          </button>
+        </div>
+      </section>
+      {confirm && (
+        <Confirm
+          title="Clear personal archive"
+          onClose={() => setConfirm(false)}
+          action={async () => {
+            const result = await repository.dispatch({ type: 'reset' });
+            if (!result.ok) return result;
+            try {
+              if (repository.mode === 'cloud') {
+                for (const id of cleanupIds) await media.remove(id);
+              } else await media.clear();
+              return { ok: true };
+            } catch {
+              const error =
+                'Archive metadata was cleared, but image storage could not be cleared. Retry this action to remove uploaded covers.';
+              repository.reportIssue(error);
+              return { ok: false, error };
+            }
+          }}
+        >
+          Permanently delete saved works, wishlists, ratings, albums, uploaded covers, history and
+          personal preferences from{' '}
+          {repository.mode === 'cloud' ? 'your cloud account' : 'this browser'}? This cannot be
+          undone. Unrelated browser data will remain.
+        </Confirm>
+      )}
+    </section>
+  );
 }
