@@ -103,11 +103,6 @@
     transform 0.8s cubic-bezier(0.22, 0.7, 0.2, 1),
     filter 0.8s;
 }
-.scene {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
 .tileShade {
   position: absolute;
   inset: 0;
@@ -278,132 +273,10 @@
     transform: translate(2px, -2px);
   }
 }
-.book {
-  transform-origin: 55% 65%;
-}
-.pageTurn {
-  transform-box: fill-box;
-  transform-origin: right center;
-}
-.vinyl {
-  transform-origin: 252px 206px;
-}
-.bootLine {
-  transform-origin: 360px 220px;
-}
-.brush {
-  stroke-dasharray: 500;
-  stroke-dashoffset: 0;
-}
-.entrance:is(
-    [data-phase='assembling'],
-    [data-phase='ready']
-  )[data-instant='false'][data-reduced='false']
-  .books
-  .book {
-  animation: bookWake 1.4s ease both;
-}
-.entrance:is(
-    [data-phase='assembling'],
-    [data-phase='ready']
-  )[data-instant='false'][data-reduced='false']
-  .films
-  .scene {
-  animation: signalWake 1.5s ease both;
-}
-.entrance:is(
-    [data-phase='assembling'],
-    [data-phase='ready']
-  )[data-instant='false'][data-reduced='false']
-  .games
-  .bootScreen {
-  animation: signalWake 1.3s ease 0.15s both;
-}
-.entrance:is(
-    [data-phase='assembling'],
-    [data-phase='ready']
-  )[data-instant='false'][data-reduced='false']
-  .music
-  .scene {
-  animation: recordWake 1.6s ease both;
-}
-.entrance:is(
-    [data-phase='assembling'],
-    [data-phase='ready']
-  )[data-instant='false'][data-reduced='false']
-  .photography
-  .develop {
-  animation: signalWake 1.6s ease both;
-}
-.entrance:is(
-    [data-phase='assembling'],
-    [data-phase='ready']
-  )[data-instant='false'][data-reduced='false']
-  .art
-  .paintLight {
-  animation: signalWake 1.5s ease both;
-}
-.entrance[data-visible='false'] .scene,
-.entrance[data-visible='false'] .scene * {
-  animation-play-state: paused !important;
-}
-@keyframes bookWake {
-  from {
-    transform: translateY(12px) rotate(-3deg);
-    opacity: 0.3;
-  }
-  to {
-    transform: none;
-    opacity: 1;
-  }
-}
-@keyframes signalWake {
-  from {
-    opacity: 0.05;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes recordWake {
-  from {
-    transform: rotate(-9deg) scale(0.96);
-  }
-  to {
-    transform: none;
-  }
-}
-.entrance[data-visible='true'][data-reduced='false'] .tile:is(:hover, :focus-visible) .pageTurn {
-  animation: page 1.6s ease both;
-}
 .entrance[data-visible='true'][data-reduced='false']
   .tile:is(:hover, :focus-visible)
   .projectorBeam {
   animation: projection 1.8s ease both;
-}
-.entrance[data-visible='true'][data-reduced='false'] .tile:is(:hover, :focus-visible) .screenLight {
-  animation: screen 1.6s ease both;
-}
-.entrance[data-visible='true'][data-reduced='false'] .tile:is(:hover, :focus-visible) .bootLine {
-  animation: boot 1.4s ease both;
-}
-.entrance[data-visible='true'][data-reduced='false'] .tile:is(:hover, :focus-visible) .vinyl {
-  animation: vinyl 2.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-.entrance[data-visible='true'][data-reduced='false'] .tile:is(:hover, :focus-visible) .emulsion {
-  animation: develop 2s ease both;
-}
-.entrance[data-visible='true'][data-reduced='false'] .tile:is(:hover, :focus-visible) .brush {
-  animation: brush 1.8s ease both;
-}
-@keyframes page {
-  0%,
-  100% {
-    transform: scaleX(1) skewY(0);
-  }
-  45% {
-    transform: scaleX(0.65) skewY(-9deg);
-  }
 }
 @keyframes projection {
   from {
@@ -411,47 +284,6 @@
   }
   to {
     opacity: 0.16;
-  }
-}
-@keyframes screen {
-  from {
-    opacity: 0.24;
-  }
-  to {
-    opacity: 0.6;
-  }
-}
-@keyframes boot {
-  from {
-    transform: scaleX(0.03);
-    opacity: 0.15;
-  }
-  to {
-    transform: scaleX(1);
-    opacity: 1;
-  }
-}
-@keyframes vinyl {
-  to {
-    transform: rotate(34deg);
-  }
-}
-@keyframes develop {
-  from {
-    opacity: 0.85;
-  }
-  to {
-    opacity: 0.06;
-  }
-}
-@keyframes brush {
-  from {
-    stroke-dashoffset: 500;
-    opacity: 0.1;
-  }
-  to {
-    stroke-dashoffset: 0;
-    opacity: 0.65;
   }
 }
 .editorial {
@@ -705,16 +537,10 @@
   .arrow {
     transition: none !important;
   }
-  .scene * {
-    animation: none !important;
-  }
   .tile:focus-visible .visual,
   .tile:hover .visual {
     transform: none;
   }
-}
-.entrance[data-reduced='true'] .scene * {
-  animation: none !important;
 }
 .entrance[data-reduced='true'] .visual {
   transform: none !important;

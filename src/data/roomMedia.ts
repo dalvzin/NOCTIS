@@ -5,7 +5,7 @@ import type { CategorySlug } from '../types/catalog';
 const selections: Record<CategorySlug, string[]> = {
   books: ['gutenberg:books:84', 'gutenberg:books:1342', 'gutenberg:books:345'],
   films: ['moma:films:299946', 'commons:films:sherlock-jr', 'commons:films:trip-moon'],
-  games: ['thatgamecompany:games:journey', 'camposanto:games:firewatch', 'playdead:games:inside'],
+  games: ['thatgamecompany:games:journey', 'playdead:games:limbo', 'playdead:games:inside'],
   music: [
     'brianeno:music:ambient-2',
     'brianeno:music:apollo',

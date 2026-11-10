@@ -5,6 +5,9 @@ import { curatedArtwork } from './artwork';
 
 // URLs conferidas nas páginas oficiais em 04/11/2026; não são resultados de busca.
 const verifiedDestinations: Record<string, Destination[]> = {
+  'playdead:games:limbo': [
+    { kind: 'official', url: 'https://playdead.com/games/limbo/', verifiedBy: 'curator' },
+  ],
   'moma:films:299946': [
     { kind: 'tmdb', url: 'https://www.themoviedb.org/movie/19-metropolis', verifiedBy: 'curator' },
   ],

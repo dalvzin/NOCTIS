@@ -23,6 +23,22 @@ afterEach(() => {
 });
 
 describe('Real works replace decorative studies', () => {
+  it('shows LIMBO gameplay in Games while retaining Firewatch in the catalog', () => {
+    const selected = roomWorks('games');
+    const limbo = selected.find((work) => work.title === 'LIMBO')!;
+    expect(limbo.image?.url).toBe('/artworks/limbo.jpg');
+    expect(limbo.image?.sourceUrl).toBe('https://playdead.com/press/');
+    expect(
+      getDestinations(limbo).some(
+        (destination) => destination.url === 'https://playdead.com/games/limbo/',
+      ),
+    ).toBe(true);
+    expect(selected.some((work) => work.title === 'Firewatch')).toBe(false);
+    expect(curatedWorks.some((work) => work.title === 'Firewatch')).toBe(true);
+    expect(selected.find((work) => work.title === 'INSIDE')?.image?.url).toBe(
+      '/artworks/inside-gameplay.jpg',
+    );
+  });
   it.each(rooms)('uses only existing, attributed real works for $slug', (room) => {
     const selected = roomWorks(room.slug as Parameters<typeof roomWorks>[0]);
     expect(selected).toHaveLength(3);

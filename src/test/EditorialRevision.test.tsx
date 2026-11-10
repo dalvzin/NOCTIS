@@ -62,8 +62,8 @@ afterEach(() => {
 });
 describe('Editorial reliability increment', () => {
   it('offers only complete real works in the main catalog, retaining every legacy identifier', () => {
-    expect(curatedWorks).toHaveLength(19);
-    expect(new Set(curatedWorks.map((work) => work.id)).size).toBe(19);
+    expect(curatedWorks).toHaveLength(20);
+    expect(new Set(curatedWorks.map((work) => work.id)).size).toBe(20);
     for (const room of rooms) expect(localSearch('', room.slug).length).toBeGreaterThanOrEqual(2);
     for (const work of localSearch('')) {
       expect(work.source.kind).toBe('curated');

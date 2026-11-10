@@ -1,6 +1,25 @@
 import type { RecordInput } from './curated';
 export const editorialAdditions: RecordInput[] = [
   {
+    key: 'limbo',
+    category: 'games',
+    provider: 'playdead',
+    title: 'LIMBO',
+    creator: 'Playdead',
+    year: 2010,
+    format: 'Game',
+    description:
+      'A boy moves through a monochrome world of silhouettes, uncertain paths and physical puzzles. Light and distance become clues in Playdead’s first game.',
+    tags: ['Atmosphere', 'Puzzles', 'Monochrome'],
+    url: 'https://playdead.com/games/limbo/',
+    credit:
+      'Playdead official game and press pages. Screenshot from the July 2010 press archive; copyright retained by Playdead. Editorial text by NOCTIS.',
+    facts: [
+      ['Developer', 'Playdead'],
+      ['First release', '2010'],
+    ],
+  },
+  {
     key: 'earthrise',
     provider: 'nasa',
     category: 'photography',

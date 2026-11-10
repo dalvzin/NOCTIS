@@ -24,7 +24,9 @@ export function ItemImage({
   const ratio = artworkRatio(work);
   const compact = variant === 'card' || variant === 'album' || compactCredits;
   const thumbnail = variant === 'thumbnail';
-  const className = `${styles.artwork} ${styles[work.category]} ${styles[variant]}`;
+  const className = [styles.artwork, styles[work.category], styles[variant]]
+    .filter(Boolean)
+    .join(' ');
   const unavailable = failed.length > 0 ? 'Source image unavailable' : 'Artwork unavailable';
   return (
     <figure

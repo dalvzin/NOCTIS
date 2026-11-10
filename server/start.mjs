@@ -16,6 +16,7 @@ const mime = {
   '.jpeg': 'image/jpeg',
   '.webp': 'image/webp',
   '.json': 'application/json',
+  '.mp4': 'video/mp4',
 };
 createServer((req, res) =>
   api(req, res, async () => {

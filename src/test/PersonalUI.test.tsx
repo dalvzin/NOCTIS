@@ -10,6 +10,29 @@ import { localCatalog } from '../services/catalog';
 import { workPath } from '../data/works';
 import { STORAGE_KEY } from '../features/personal/schema';
 import { coverStore } from '../features/personal/images';
+import { AlbumForm } from '../features/personal/AlbumTools';
+
+it('allows retrying an album save after an unexpected storage rejection', async () => {
+  const submit = vi
+    .fn()
+    .mockRejectedValueOnce(new Error('Storage unavailable'))
+    .mockResolvedValueOnce({ ok: true });
+  render(
+    <AlbumForm
+      onSubmit={submit}
+      submitLabel="Create album"
+    />,
+  );
+  const user = userEvent.setup();
+  await user.type(screen.getByLabelText('Album title'), 'Night studies');
+  await user.click(screen.getByRole('button', { name: 'Create album' }));
+  expect(await screen.findByRole('status')).toHaveTextContent('Could not save album');
+  expect(screen.getByRole('button', { name: 'Create album' })).toBeEnabled();
+  expect(screen.getByLabelText('Album title')).toHaveValue('Night studies');
+  await user.click(screen.getByRole('button', { name: 'Create album' }));
+  expect(await screen.findByRole('status')).toHaveTextContent('Album saved in this browser.');
+  expect(submit).toHaveBeenCalledTimes(2);
+});
 
 afterEach(() => {
   cleanup();

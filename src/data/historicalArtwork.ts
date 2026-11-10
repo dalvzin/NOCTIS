@@ -2,6 +2,16 @@ import type { Work } from '../types/catalog';
 
 // Provenance and download URLs: public/artworks/sources.json.
 export const historicalArtwork = {
+  'after-hours-city': {
+    url: '/artworks/after-hours-city.jpg',
+    width: 560,
+    height: 391,
+    sourceUrl: 'https://www.loc.gov/pictures/item/gsc1994017109/PP/',
+    credit: 'Samuel H. Gottscho / Gottscho-Schleisner collection · Library of Congress, 1933',
+    rights:
+      'No known restrictions on publication; public-domain dedication identified by Wikimedia Commons.',
+    alt: 'New York city views — illuminated streets photographed by Samuel H. Gottscho, 1933',
+  },
   earthrise: {
     url: '/artworks/earthrise.jpg',
     thumbnailUrl: '/artworks/earthrise-card.jpg',

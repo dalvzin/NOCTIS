@@ -3,7 +3,7 @@ import styles from './AfterHours.module.css';
 
 /** Real archival photograph; its visible source link is below the exhibition. */
 export function NightCity() {
-  const image = historicalArtwork['new-york-night'];
+  const image = historicalArtwork['after-hours-city'];
   return (
     <div
       className={styles.cityBackdrop}

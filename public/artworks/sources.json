@@ -240,5 +240,40 @@
     "height": 1080,
     "downloadUrl": "https://imagedelivery.net/y8Uk2RiAwNIsFgf5GYjAnw/f8b871bc-34ac-4237-92e3-49136566b700/covers",
     "checked": "2026-11-08"
+  },
+  "limbo": {
+    "url": "/artworks/limbo.jpg",
+    "thumbnailUrl": "/artworks/limbo-card.jpg",
+    "sourceUrl": "https://playdead.com/press/",
+    "downloadUrl": "https://playdead.com/press/LIMBO/LIMBO%20-%20Screenshots%20-%20July%202010.zip",
+    "archiveMember": "Running Left.jpg",
+    "credit": "Playdead / Official press screenshots",
+    "rights": "Official press screenshot. Copyright retained by Playdead; editorial presentation of the identified game.",
+    "width": 1280,
+    "height": 720,
+    "checked": "2026-11-09"
+  },
+  "inside-gameplay": {
+    "url": "/artworks/inside-gameplay.jpg",
+    "thumbnailUrl": "/artworks/inside-gameplay-card.jpg",
+    "sourceUrl": "https://playdead.com/press/",
+    "downloadUrl": "https://playdead.com/press/INSIDE/INSIDE_screenshots.zip",
+    "archiveMember": "INSIDE_01.png",
+    "credit": "Playdead / Official press screenshots",
+    "rights": "Official press screenshot. Copyright retained by Playdead; editorial presentation of the identified game.",
+    "width": 1280,
+    "height": 720,
+    "checked": "2026-11-09"
+  },
+  "after-hours-city": {
+    "url": "/artworks/after-hours-city.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_York_city_views._LOC_gsc.5a18133.jpg",
+    "originalRecordUrl": "https://www.loc.gov/pictures/item/gsc1994017109/PP",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/New_York_city_views._LOC_gsc.5a18133.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "credit": "Samuel H. Gottscho / Gottscho-Schleisner Collection, Library of Congress",
+    "rights": "No known restrictions on publication, per source collection. Public-domain dedication identified by Wikimedia Commons.",
+    "width": 560,
+    "height": 391,
+    "checked": "2026-11-09"
   }
 }

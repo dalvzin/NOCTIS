@@ -35,7 +35,7 @@ describe('Stage 01', () => {
     open(`/${room.slug}?source=demo`);
     expect(screen.getByRole('heading', { level: 1, name: room.name })).toBeInTheDocument();
     expect(screen.getByRole('status')).toHaveTextContent(
-      room.slug === 'photography' ? '4 works' : '3 works',
+      ['photography', 'games'].includes(room.slug) ? '4 works' : '3 works',
     );
   });
   it.each(personalPages)('opens the local personal page $slug', (page) => {

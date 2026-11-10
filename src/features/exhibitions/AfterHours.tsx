@@ -46,47 +46,49 @@ export function AfterHours() {
         </div>
         <p className={styles.direction}>Follow the lights. Every window opens onto a work.</p>
       </header>
-      <nav
-        className={styles.city}
-        aria-label="Three illuminated rooms"
-      >
+      <div className={styles.cityStage}>
         <NightCity />
-        {stops.map((stop, index) => (
-          <Link
-            key={stop.id}
-            className={styles.window}
-            to={workPath(stop.work)}
-            state={{ returnTo: '/discover/after-hours' }}
-            aria-label={`Explore ${stop.work.title}`}
-          >
-            <span className={styles.address}>{stop.address}</span>
-            <ItemImage
-              work={stop.work}
-              context="preview"
-              decorative
-              compactCredits
-            />
-            <span className={styles.windowLabel}>
-              <small>
-                0{index + 1} / {stop.name}
-              </small>
-              <strong>{stop.work.title}</strong>
-              <span>
-                {stop.work.creator} · {stop.work.year}
+        <nav
+          className={styles.city}
+          aria-label="Three illuminated rooms"
+        >
+          {stops.map((stop, index) => (
+            <Link
+              key={stop.id}
+              className={styles.window}
+              to={workPath(stop.work)}
+              state={{ returnTo: '/discover/after-hours' }}
+              aria-label={`Explore ${stop.work.title}`}
+            >
+              <span className={styles.address}>{stop.address}</span>
+              <ItemImage
+                work={stop.work}
+                context="preview"
+                decorative
+                compactCredits
+              />
+              <span className={styles.windowLabel}>
+                <small>
+                  0{index + 1} / {stop.name}
+                </small>
+                <strong>{stop.work.title}</strong>
+                <span>
+                  {stop.work.creator} · {stop.work.year}
+                </span>
               </span>
-            </span>
-            <ArrowUpRight
-              size={18}
-              className={styles.windowArrow}
-            />
-          </Link>
-        ))}
-      </nav>
+              <ArrowUpRight
+                size={18}
+                className={styles.windowArrow}
+              />
+            </Link>
+          ))}
+        </nav>
+      </div>
       <p className={styles.cityCredit}>
-        City photograph: Carol M. Highsmith / Library of Congress. Empire State Building at night,
-        1980s. No known restrictions on publication.{' '}
+        City photograph: Samuel H. Gottscho / Library of Congress. New York city views, 1933. No
+        known restrictions on publication.{' '}
         <a
-          href="https://www.loc.gov/item/2011630645/"
+          href="https://www.loc.gov/pictures/item/gsc1994017109/PP/"
           target="_blank"
           rel="noopener noreferrer"
         >

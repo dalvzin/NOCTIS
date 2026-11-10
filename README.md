@@ -1,112 +1,79 @@
-# NOCTIS · Stage 06.1 — The Awakening + The Living Mosaic
+# NOCTIS — A library of experiences
 
-Uma biblioteca de experiências culturais. Interface em inglês; documentação em português brasileiro.
+Um museu digital de livros, cinema, jogos, música, fotografia e arte. O projeto combina uma entrada cinematográfica, seis salas culturais e um arquivo pessoal no navegador. Interface em inglês; documentação em português brasileiro.
 
-Revisão com mídias reais: seis salas com obras do catálogo, trecho silencioso de cinema, fotografias com tamanho controlado e duas adições históricas. **19 obras reais; 329 testes em 23 arquivos.** [Arquivos, fontes, direitos, verificação e limites](docs/30-midias-reais.md).
+[Ver o site](https://noctis-dalva1.vercel.app/) · [Auditoria final](docs/31-final-audit.md) · [Fontes das mídias](public/artworks/sources.json)
 
-Código organizado com Prettier: `npm run format` aplica a formatação e `npm run format:check` confere o padrão. [Configuração e guia de leitura](docs/28-formatacao.md).
+A hospedagem mantém a proteção de acesso existente da Vercel. O link pode exigir uma sessão autorizada; isso precisa ser considerado antes de compartilhá-lo com recrutadores. O repositório permanece privado.
 
-Abertura cinematográfica restaurada: portal bronze, Skip intro, Replay e correção da marca permanente que impedia novas exibições. [Comportamento, arquivos, acessibilidade e verificações](docs/29-abertura-cinematografica.md).
+## O que está implementado
 
-Revisão integrada anterior: [auditoria, escopo real da busca, hierarquia, proporções, livros, exposição e evidências](docs/27-integrated-audit.md). As seções seguintes registram etapas anteriores.
+- Homepage The Living Archive com intro, Skip intro, replay e seis ambientes.
+- Catálogo editorial com **20 obras reais** e créditos de imagem. Capturas de gameplay oficiais de LIMBO e INSIDE; quatro fotografias históricas.
+- Busca global com Ctrl+K/⌘K, busca por texto, filtros e estados vazios/indisponíveis.
+- Quick Preview separado das fichas completas, destinos externos identificados e exposição After Hours.
+- Livro interativo compartilhado por Frankenstein, Dracula e Pride and Prejudice, com informações próprias de cada obra.
+- Saved, Want to Experience, avaliações privadas, álbuns, capas personalizadas e histórico opcional, desligado inicialmente.
+- Layout responsivo, controles de teclado e preferência por movimento reduzido.
 
-Refinamento atual: cantos arredondados, cartões com ações agrupadas e microanimações da navegação. [Arquivos, decisões e verificações desta rodada](docs/24-soft-ui-motion.md). As contagens nas seções abaixo registram as respectivas etapas históricas.
+Contas e comunidade têm infraestrutura anterior preservada, mas **não fazem parte da experiência remota validada deste portfólio**. Esta entrega não configura Supabase nem autenticação.
 
-Continuação: [rolagem suave, entrada das páginas e acabamento de Discover](docs/25-navigation-transitions.md), com movimento reduzido e verificações locais.
+## Executar localmente
 
-Books: [abertura compartilhada de Frankenstein, Pride and Prejudice e Dracula](docs/26-shared-book-experience.md), com acabamento das páginas, dados próprios e 306 testes aprovados.
-
-## Homepage do portfólio
-
-A entrada cinematográfica de 3,1 segundos se torna um mosaico assimétrico dos seis ambientes. Tem Skip intro, memória por sessão, teclado, reduced motion e composições SVG originais, sem vídeo ou áudio. Abaixo ficam seleções de obras reais do catálogo existente. Salas, pesquisa, arquivo pessoal e navegação global foram preservados. Contas/Supabase foram postergados para depois do portfólio e não são exigidos para navegar.
-
-Verificação Stage 06.1: **207 testes passaram em 15 arquivos**; TypeScript, lint e build aprovados. Foram conferidos primeira entrada, skip por teclado, retorno, seis links, movimento reduzido, pesquisa, fallback e sete tamanhos de viewport. [Guia e relatório A–H da homepage](docs/16-homepage-awakening.md). Stage 06.2 não foi iniciada.
-
-## Executar
-
-No Windows, você também pode abrir `Iniciar-NOCTIS.cmd` pelo Explorador de Arquivos. Ele inicia a prévia no terminal normal do Windows, em `http://127.0.0.1:5180/`, e mantém a janela aberta. A opção `--strictPort` exibe erro se essa porta estiver ocupada, evitando uma mudança silenciosa de endereço. Esse iniciador não foi executado no ambiente normal do usuário pela automação.
-
-Use Node.js 24 LTS e npm. Dentro desta pasta:
+Use Node.js 24 e npm, dentro desta pasta:
 
 ```sh
 npm ci
 npm run dev
+```
+
+Abra o endereço exibido no terminal e mantenha o servidor em execução. Não abra `index.html` por duplo clique. No Windows, `Iniciar-NOCTIS.cmd` é uma alternativa já existente que usa a porta 5180.
+
+```sh
 npm test
+npm run test:security
 npm run typecheck
 npm run lint
+npm run format:check
 npm run build
 npm run preview
 ```
 
-Abra o endereço exibido pelo Vite. `dev` serve o código durante o desenvolvimento; `build` verifica TypeScript e gera `dist/`; `preview` permite conferir esse resultado localmente. Não abra `index.html` por duplo clique.
+`build` gera `dist/`. `preview` confere a distribuição. `npm start` serve a build com o serviço de catálogo em Node; `HOST` e `PORT` são opcionais nesse servidor. `lint` utiliza verificações estáticas do TypeScript, não ESLint. `format` aplica o Prettier; `format:check` apenas verifica.
 
-## Entrega
+## Estrutura e decisões
 
-Homepage e seis experiências preservadas. A experiência principal oferece 17 obras reais selecionadas; 18 demonstrações antigas continuam acessíveis por referências legadas e salvamentos existentes. Busca global Ctrl+K/⌘K, `/search?q=...`, filtros por categoria/formato/criador/tag/período, Quick Preview e fichas com fontes. Discover oferece coleções editoriais e a exposição After Hours. Saved, Want to Experience, avaliações privadas de meia estrela, álbuns multimídia e histórico opcional estão disponíveis localmente. O histórico começa desligado. A infraestrutura anterior de contas e comunidade foi preservada, mas não é promovida no portfólio atual nem foi configurada nesta revisão. Não existe integração remota validada neste workspace.
+| Caminho                             | Responsabilidade                                                                       |
+| ----------------------------------- | -------------------------------------------------------------------------------------- |
+| `src/app/`                          | Rotas, composição da aplicação e transições globais.                                   |
+| `src/components/`                   | Componentes compartilhados, incluindo diálogos acessíveis.                             |
+| `src/features/`                     | Homepage, salas, busca, detalhes, exposições e arquivo pessoal.                        |
+| `src/data/`                         | Obras editoriais, textos, fontes e relações entre imagens e registros.                 |
+| `src/services/`                     | Consulta, normalização, validação de URLs e destinos externos.                         |
+| `src/test/`                         | Testes de interface e regressões dos fluxos.                                           |
+| `server/`, `api/`                   | Serviço de metadados e adaptação para funções da Vercel.                               |
+| `public/artworks/`, `public/media/` | Mídias locais com procedência documentada.                                             |
+| `docs/`                             | Guias didáticos, decisões e relatórios de cada etapa.                                  |
+| `supabase/`                         | Infraestrutura anterior e testes locais; sem serviço remoto configurado nesta entrega. |
 
-Open Library e Art Institute of Chicago têm consultas externas implementadas e verificadas no navegador. O museu inicialmente devolveu HTTP 403; após ajustes de parâmetros e identificação, a busca respondeu com metadados reais. Falhas continuam sendo exibidas sem impedir o catálogo local. MusicBrainz depende de um contato real em `.env`. TMDB, RAWG e Unsplash foram investigados, mas permanecem desconectados; adicionar uma chave não os habilita nesta versão. Veja o guia de provedores antes de configurar ou publicar.
+React e TypeScript organizam os componentes e contratos de dados; Vite gera a distribuição. CSS Modules mantém os estilos por componente. Motion for React cuida das transições, React Router da navegação e Lucide dos ícones. IndexedDB guarda os uploads; o arquivo pessoal guarda referências e metadados no armazenamento local.
 
-A seleção editorial possui imagens reais associadas aos 17 registros, com origem e créditos. Livros Open Library usam capas e edições fornecidas pela Covers API; os três livros locais identificam o ebook exato do Gutenberg. O detalhe musical pode consultar a Cover Art Archive com identificação da release. A API AIC retornou bloqueio 403 na revisão atual; as três pinturas selecionadas agora usam reproduções locais verificadas, com procedência em `public/artworks/sources.json`. Imagens promocionais e capas sob copyright mantêm seus titulares e não são declaradas CC0. Falhas ainda exibem o placeholder NOCTIS identificado. Nada é anunciado como disponível para streaming.
+## Dados, APIs e privacidade
 
-Capas de álbuns aceitam JPEG, PNG ou WebP até 2 MiB. Os arquivos ficam no IndexedDB deste navegador, sem envio a servidor; o JSON do arquivo pessoal guarda somente referências. Trocar endereço, porta ou navegador muda os dados acessíveis.
+O catálogo editorial funciona sem variáveis de ambiente. Os dados pessoais ficam vinculados ao navegador e à origem (domínio/porta); mudar de navegador ou limpar os dados do site pode torná-los indisponíveis. Não há sincronização remota validada. Capas aceitam JPEG, PNG ou WebP até 2 MiB; o arquivo de imagem fica no IndexedDB e não é enviado a um servidor de mídia.
 
-## Serviço de metadados
+Open Library e Art Institute of Chicago têm adaptadores implementados; disponibilidade e imagens dependem dos respectivos provedores. MusicBrainz exige `NOCTIS_CONTACT` real, configurado **no servidor**. TMDB, RAWG e Unsplash continuam desconectados: adicionar uma chave não os habilita. Falhas externas preservam o catálogo local e exibem estados apropriados. [Guia de provedores](docs/08-provedores.md).
 
-`npm run dev` e `npm run preview` incluem `/api/catalog/` pelo Vite. O iniciador do Windows continua usando a porta 5180. Para servir a distribuição com a API, após `npm run build`, execute `npm start` (Node.js 24). Esse servidor se limita à interface e à consulta de metadados; banco, autenticação e mídias das contas são fornecidos pelo Supabase quando configurado.
+`.env.example` contém somente exemplos. `.gitignore` protege `.env` privados, credenciais, chaves, dependências e artefatos locais. Variáveis `VITE_` são públicas no bundle; segredos nunca devem usar esse prefixo. As variáveis Supabase permanecem vazias nesta versão.
 
-Copie `.env.example` para `.env` para configurar Supabase e/ou `NOCTIS_CONTACT`. Não coloque credenciais em variáveis `VITE_`. Para uma futura hospedagem, é necessário manter um serviço Node ou adaptar os endpoints para funções de servidor; enviar somente `dist/` a uma hospedagem estática mantém o catálogo local, mas não habilita as consultas externas.
+## Publicação e limites
 
-`npm run lint` usa regras estáticas do TypeScript para código não utilizado, inalcançável e rótulos inválidos. Não é ESLint. A Stage 05 adiciona o SDK oficial Supabase e PGlite apenas para testes PostgreSQL locais.
+A Vercel usa `npm ci`, `npm run build` e `dist/`. `vercel.json` preserva `/api/catalog/` e o fallback das rotas SPA, excluindo assets, imagens e vídeos. A aplicação usa URLs relativas para o serviço, sem exigir um servidor localhost em produção.
 
-## Contas: postergadas no portfólio atual
+As imagens mantêm seus autores e direitos. Capas e capturas promocionais não são declaradas livres de copyright; são reproduções editoriais com links para as fontes. [Procedência e direitos](public/artworks/sources.json). A fotografia de fundo de After Hours é uma reprodução histórica de baixa resolução usada como atmosfera, sem reconstrução por IA.
 
-Não há `.env` real configurado. A infraestrutura da Stage 05 foi preservada como preparação e ficou fora do escopo da Stage 06.1. Não é preciso configurá-la para usar a homepage ou o arquivo local. Se essa integração for retomada depois do portfólio, aplique as duas migrações em `supabase/migrations/`, configure Auth/Google/redirects, preencha as duas variáveis públicas Supabase do `.env.example` e implante a função `shared-cover`. Nunca coloque chaves privilegiadas em `VITE_`. Veja [Configuração Supabase](docs/12-supabase-configuracao.md). Entrar não importa dados automaticamente: importação e histórico têm consentimentos próprios.
+A suíte de testes não substitui uma auditoria completa por leitor de tela, aparelhos físicos ou testes de todos os provedores. Metadados sociais são globais; não há geração de cards sociais específicos por obra. Veja o [relatório final](docs/31-final-audit.md) para resultados executados, limitações e checklist manual.
 
-Verificação Stage 05: TypeScript, lint e build aprovados; **191 testes passaram em 14 arquivos**. `npm run test:security`: 18 testes locais aprovados, incluídos nesse total. Os testes de RLS executaram PostgreSQL via PGlite com visitante/A/B; Auth real, OAuth e Storage remoto não foram testados por falta de configuração. [Relatório completo](docs/15-relatorio-stage05.md).
+## Documentação para estudar
 
-## Aprender e evoluir
-
-Stage 06.4A — Frankenstein Manuscript: somente a ficha `gutenberg:books:84` usa o livro interativo. A revisão atual tem duas aberturas no desktop e quatro folhas no celular, com sumário superior, seções identificadas por cor e ações/fontes abaixo do livro. Abertura física, demais fichas, HUD e homepage preservados. TypeScript, lint e build aprovados; **302 testes em 21 arquivos**. Sem deploy. [Revisão atual, arquivos, capturas e testes](docs/23-frankenstein-hierarquia.md); [relatório inicial A–H](docs/22-frankenstein-manuscript.md).
-
-Refinamento atual de Quick Preview e Full Record (05/11/2026): prévia curta com ações rápidas; ficha com nota editorial específica, dados adicionais, rating, álbuns e destinos. Comportamento aplicado às seis categorias; HUD e After Hours preservados. TypeScript, lint e build aprovados; **282 testes em 20 arquivos**. Sem deploy ou mudança no armazenamento. [Arquivos, decisões, capturas desktop/mobile, testes e limites](docs/21-preview-full-record.md).
-
-Revisão editorial atual (05/11/2026): confiabilidade, seleção real, Books como sala piloto e exposição localizada `/discover/after-hours`. Mosaico preservado, prévias com créditos expansíveis e capas automáticas que respeitam escolhas existentes. TypeScript, lint e build aprovados; **267 testes em 19 arquivos**. Nenhuma dependência nova e nenhum deploy. [Arquivos, decisões, fontes, resultados, capturas e pendências para revisão visual](docs/20-editorial-after-hours.md).
-
-Verificação final da Stage 04.1 (04/11/2026): `npm run typecheck`, `npm run lint` e `npm run build` concluídos sem erros; `npm test -- --reporter=dot`: **157 testes passaram, em 8 arquivos**. Upload, substituição, remoção, seleção da capa de uma obra e refresh foram exercitados no navegador integrado, além de medidas em 390×844 e 1365×900. Imagens de cinco categorias carregaram; AIC retornou bloqueio externo e exibiu fallback. Detalhes e limites no guia abaixo.
-
-- [Mapa de todas as pastas e arquivos](docs/01-estrutura.md)
-- [React, funções e fluxo da aplicação](docs/02-funcionamento.md)
-- [Decisões, acessibilidade e escopo](docs/03-decisoes.md)
-- [Verificação histórica da Stage 01](docs/04-verificacao.md)
-- [Stage 02: arquivos, componentes, animações e fluxo](docs/05-experiences.md)
-- [Stage 02: resultados e limites da verificação](docs/06-verificacao-stage02.md)
-- [Stage 03: arquitetura, arquivos e aprendizado](docs/07-discovery.md)
-- [Stage 03: provedores, configuração e direitos](docs/08-provedores.md)
-- [Stage 03: verificações e roteiro de uso](docs/09-verificacao-stage03.md)
-- [Stage 03: auditoria e correção de links externos](docs/10-auditoria-links.md)
-- [Stage 04.1: capas, imagens, persistência, arquivos e roteiro de testes](docs/11-capas-e-imagens.md)
-- [Stage 05: configuração do Supabase](docs/12-supabase-configuracao.md)
-- [Stage 05: arquitetura, arquivos e conceitos](docs/13-contas-comunidade-arquitetura.md)
-- [Stage 05: segurança e roteiro visitante/A/B](docs/14-seguranca-e-verificacao.md)
-- [Stage 05: relatório A–I, testes e limitações](docs/15-relatorio-stage05.md)
-- [Stage 06.1: homepage, introdução, mosaico e relatório A–H](docs/16-homepage-awakening.md)
-
-Para hospedar futuramente, o servidor deve devolver `index.html` para rotas da aplicação como `/books`, preservando os caminhos de arquivos estáticos. A publicação não faz parte desta entrega.
-
-## Stage 06.2 — Navegação, HUD e marca
-
-Marca compartilhada com o círculo dourado original no cabeçalho, abertura e rodapé; menu agrupado, busca adaptativa, foco de teclado corrigido e espaçamento compartilhado. O modo portfólio oculta convites para contas futuras e mantém o arquivo local. Nenhuma dependência nova.
-
-Verificação: TypeScript, lint e build aprovados; **216 testes em 16 arquivos**. [Explicação, arquivos, evidências, limitações e roteiro A–H](docs/17-navigation-hud-brand.md). A evolução do catálogo está descrita na etapa seguinte.
-
-## Publicação na Vercel — preparada, sem deploy
-
-Vite, Node 24.x, instalação `npm ci`, build `npm run build` e saída `dist` estão configurados em `vercel.json`. O adaptador `api/catalog.mjs` preserva o catálogo existente; há fallback SPA e atalho `/archive` para `/my-archive`. Nenhuma autenticação foi configurada.
-
-Build, TypeScript e lint aprovados; **249 testes em 18 arquivos**. Nenhum push ou deploy realizado. Consulte o [guia de publicação GitHub/Vercel](docs/19-publicacao-vercel.md), com arquivos, variáveis e limitações da verificação local.
-
-## Stage 06.3 — Cartões, imagens e layouts
-
-Cartões alinhados com proporções por categoria, miniaturas compartilhadas, variantes de imagem verificadas, fallback explícito e limites para prévias/detalhes/capas. Uploads e personalização preservados. Nenhuma dependência nova.
-
-Verificação final: TypeScript, lint e build aprovados; **231 testes em 17 arquivos**. [Auditoria, fontes, arquivos, evidências e relatório A–H](docs/18-catalog-artwork.md). AIC não carregou neste ambiente; os limites estão documentados. Stage 06.4 não iniciada.
+Comece por [mídias reais](docs/30-midias-reais.md), [livros compartilhados](docs/26-shared-book-experience.md), [transições](docs/25-navigation-transitions.md), [formatação](docs/28-formatacao.md) e [auditoria final](docs/31-final-audit.md). Os documentos anteriores registram suas respectivas etapas; contagens e verificações antigas não descrevem necessariamente a versão atual.

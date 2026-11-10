@@ -86,13 +86,19 @@ export function AlbumForm({
       onSubmit={async (event) => {
         event.preventDefault();
         setBusy(true);
-        const result = await onSubmit(fields);
-        setBusy(false);
-        setMessage(
-          result.ok ? 'Album saved in this browser.' : (result.error ?? 'Could not save album.'),
-        );
-        if (result.ok && !initial)
-          setFields({ title: '', description: '', accent: 'bronze', layout: 'grid' });
+        setMessage('');
+        try {
+          const result = await onSubmit(fields);
+          setMessage(
+            result.ok ? 'Album saved in this browser.' : (result.error ?? 'Could not save album.'),
+          );
+          if (result.ok && !initial)
+            setFields({ title: '', description: '', accent: 'bronze', layout: 'grid' });
+        } catch {
+          setMessage('Could not save album. Please try again.');
+        } finally {
+          setBusy(false);
+        }
       }}
     >
       <label htmlFor={`${id}-title`}>Album title</label>
