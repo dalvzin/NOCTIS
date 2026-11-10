@@ -56,7 +56,28 @@ O fundo vem da [Library of Congress](https://www.loc.gov/pictures/item/gsc199401
 - Foram revisados fallback SPA, exclusões de mídias/API, `.gitignore`, exemplos de ambiente, validação de URLs, diálogos, persistência e limites de uploads. Nenhuma chave privada foi incluída. Supabase e autenticação não foram configurados.
 - A suíte cobre rotas, busca/filtros, prévias, destinos, livros, arquivo pessoal, capas, estados de falha, movimento reduzido e regras de segurança locais. Usa fixtures; não prova disponibilidade de cada serviço remoto.
 
-A prévia local desta rodada retornou timeout na conexão do navegador, embora o processo do servidor tenha iniciado. Por isso, não se atribui a essa tentativa uma validação visual ou de uploads. A conferência da versão publicada será registrada no relatório de entrega, após a conclusão efetiva do deploy. Não foram executados Lighthouse, leitor de tela real nem testes em aparelho físico nesta auditoria.
+A prévia local desta rodada retornou timeout na conexão do navegador, embora o processo do servidor tenha iniciado. Por isso, não se atribui a essa tentativa uma validação visual ou de uploads. A conferência publicada foi realizada no Brave após o deploy e está registrada abaixo. Não foram executados Lighthouse, leitor de tela real nem testes em aparelho físico nesta auditoria.
+
+### Conferência efetiva em produção
+
+A Vercel confirmou **Ready / Production / Current** para o commit `55a9104`, com build concluída e função TypeScript transpilada sem erro. Os cinco avisos exibidos referem-se à versão Node 24 definida no projeto sobrepondo a configuração Node 26 da plataforma e à variável de cache do npm. Não foram alteradas configurações da conta para silenciar avisos.
+
+No Brave, foram executados:
+
+- Homepage publicada com imagens de Journey, LIMBO e INSIDE carregadas; ausência de overflow horizontal em 1920 px. Metadado do card social presente.
+- After Hours com fotografia real carregada, largura lateral completa, fades, três destinos e crédito correto. Captura real salva na pasta de visualizações da entrega.
+- Abertura direta das seis salas, com títulos próprios e sem imagens já concluídas em erro no momento da inspeção. Imagens lazy ainda não solicitadas não foram consideradas verificadas.
+- Replay da intro seguido de Skip: botão ausente imediatamente após o clique. Também observada a saída natural da intro.
+- Quick Preview de Frankenstein: foco inicial no fechamento; Shift+Tab permaneceu no diálogo; Escape fechou e devolveu foco ao botão que abriu a prévia.
+- Busca por LIMBO, submissão por Enter, filtro Games e período 2010s; navegação até a ficha completa com destino oficial Playdead.
+- Na **origem exclusiva desse deploy**, Save, Want e nota 4,5 persistiram após refresh. Criado o álbum `QA · Night studies`, adicionada a obra LIMBO, escolhida sua imagem como capa e verificada a imagem depois de atualizar a página. Isso não alterou o arquivo pessoal do domínio habitual do usuário.
+- Histórico inicialmente pausado; após opt-in, visitas às fichas completas apareceram em Recently Explored. Sem apagar histórico ou arquivo pessoal para teste.
+- Settings em Reduce motion: na sala Films, vídeo permaneceu pausado e sem `src`.
+- Em viewport de **390 × 844**, Dracula, Pride and Prejudice e Frankenstein abriram e avançaram da página 1 para a 2. Também conferidos homepage, Discover, Search, alias `/archive` (redireciona a `/my-archive`), After Hours, álbum e Films, sem overflow horizontal nas inspeções. O tamanho normal do navegador foi restaurado.
+
+**Upload não validado no navegador nesta rodada:** o seletor abriu, mas a extensão do Brave impediu a seleção automatizada de arquivo por não possuir acesso a URLs de arquivos locais. Nenhuma permissão da extensão foi alterada. Upload, substituição e remoção de arquivos continuam cobertos pela suíte automatizada e devem ser repetidos manualmente no checklist; não se declara esse fluxo aprovado no navegador.
+
+Não foram testados todos os destinos externos por navegação real, todas as combinações de filtros, todos os tamanhos ou a animação de virada em todos os dispositivos. Os três livros foram inspecionados no modo de movimento reduzido; a suíte também cobre sua lógica de navegação.
 
 ## E. Limitações conhecidas
 
